@@ -19,9 +19,7 @@ class RegistredViewModel: ObservableObject {
     
     
     func createUser() async throws {
-        email.replacingOccurrences(of: " ", with: "")
-        password.replacingOccurrences(of: " ", with: "")
-        fullName.replacingOccurrences(of: " ", with: "")
+        
         
         if age <= 14 {
             alertTitle = "Error"

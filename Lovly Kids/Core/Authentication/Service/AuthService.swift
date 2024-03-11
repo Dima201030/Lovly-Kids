@@ -40,6 +40,7 @@ class AuthService {
             
             
         } catch {
+            print("DEBUG: Failed to create user with error: \(error.localizedDescription)")
         }
     }
     func singOut() {
