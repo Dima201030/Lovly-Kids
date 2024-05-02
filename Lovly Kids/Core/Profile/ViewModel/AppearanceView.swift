@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AppearanceView: View {
     @EnvironmentObject var appData: AppData
-
+    @State private var showAlert = false
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -20,10 +21,18 @@ struct AppearanceView: View {
                     set: { newValue in
                         appData.appearance = newValue ? .dark : .light
                         appData.saveColorScheme()
+                        showAlert.toggle()
                     }
                 )) {
                     Text("Dark appearance")
                 }
+                .padding()
+                
+                Button(action: {
+                    toggleSystemTheme()
+                }, label: {
+                    Text("Toggle System Theme")
+                })
                 .padding()
                 
                 Text("Current color scheme: \(appData.appearance == .dark ? "Dark" : "Light")")
@@ -31,6 +40,17 @@ struct AppearanceView: View {
             }
         }
     }
+    
+    private func toggleSystemTheme() {
+        // Toggle between light and dark modes
+        let newAppearance = appData.appearance == ColorScheme.dark ? ColorScheme.light : ColorScheme.dark
+        appData.appearance = newAppearance
+        appData.saveColorScheme()
+        
+        // Show alert to restart the app
+        showAlert.toggle()
+    }
+
 }
 
 struct AppearanceView_Previews: PreviewProvider {

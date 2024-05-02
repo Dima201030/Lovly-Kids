@@ -16,14 +16,16 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(header: Text("Profile settings")) {
-                    if let user = user {
+                if let user = user {
+                    Section(header: Text("Profile settings")) {
+                        
                         NavigationLink(destination: ProfileView(user: user)) {
                             HStack {
                                 Image(systemName: "person.text.rectangle.fill")
                                 Text("Profile")
                             }
                         }
+                        
                     }
                 }
                 Section {

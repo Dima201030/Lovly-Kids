@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810FFF392BE3E3EE006E818E /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810FFF382BE3E3EE006E818E /* Gradients.swift */; };
+		810FFF3B2BE40971006E818E /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810FFF3A2BE40971006E818E /* UIExtension.swift */; };
+		810FFF3D2BE40984006E818E /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810FFF3C2BE40984006E818E /* IntExtension.swift */; };
+		810FFF3F2BE41C11006E818E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 810FFF3E2BE41C11006E818E /* Localizable.xcstrings */; };
 		812F9E012B9F813800BED361 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 812F9E002B9F813800BED361 /* FirebaseAnalytics */; };
 		812F9E032B9F813800BED361 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 812F9E022B9F813800BED361 /* FirebaseAnalyticsOnDeviceConversion */; };
 		812F9E052B9F813800BED361 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 812F9E042B9F813800BED361 /* FirebaseAnalyticsSwift */; };
@@ -96,6 +100,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		810FFF382BE3E3EE006E818E /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
+		810FFF3A2BE40971006E818E /* UIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
+		810FFF3C2BE40984006E818E /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		810FFF3E2BE41C11006E818E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		81419C7F2BD53F4600656957 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8179B1142BD59784009AED7C /* Lovly_KidsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lovly_KidsApp.swift; path = "../../../../Swift/Lovly Kids/Lovly Kids/App/Lovly_KidsApp.swift"; sourceTree = "<group>"; };
 		817F7B0C2B9C7DFD0067A24A /* Lovly Kids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lovly Kids.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +277,7 @@
 			children = (
 				8179B1142BD59784009AED7C /* Lovly_KidsApp.swift */,
 				81419C7F2BD53F4600656957 /* GoogleService-Info.plist */,
+				810FFF3E2BE41C11006E818E /* Localizable.xcstrings */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -456,6 +465,8 @@
 			isa = PBXGroup;
 			children = (
 				817F7BE32B9C86F70067A24A /* Date.swift */,
+				810FFF3A2BE40971006E818E /* UIExtension.swift */,
+				810FFF3C2BE40984006E818E /* IntExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -491,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				817F7BF32B9C87370067A24A /* Constants.swift */,
+				810FFF382BE3E3EE006E818E /* Gradients.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -705,6 +717,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 817F7B032B9C7DFD0067A24A;
 			packageReferences = (
@@ -728,6 +741,7 @@
 			files = (
 				817F7B172B9C7DFF0067A24A /* Preview Assets.xcassets in Resources */,
 				817F7B142B9C7DFF0067A24A /* Assets.xcassets in Resources */,
+				810FFF3F2BE41C11006E818E /* Localizable.xcstrings in Resources */,
 				81419C802BD53F4600656957 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +775,7 @@
 				817F7BAA2B9C84260067A24A /* RegistredViewModel.swift in Sources */,
 				817F7C782B9C99FE0067A24A /* SettingsView.swift in Sources */,
 				817F7BBC2B9C85600067A24A /* ChatView.swift in Sources */,
+				810FFF392BE3E3EE006E818E /* Gradients.swift in Sources */,
 				817F7BEA2B9C871B0067A24A /* InfoViewModel.swift in Sources */,
 				817F7BC32B9C85A00067A24A /* InboxView.swift in Sources */,
 				817F7BDE2B9C86B80067A24A /* ContentViewModel.swift in Sources */,
@@ -772,9 +787,11 @@
 				817F7BDC2B9C86B40067A24A /* ContentView.swift in Sources */,
 				817F7BB62B9C852F0067A24A /* ChatService.swift in Sources */,
 				817F7BCA2B9C85E20067A24A /* NewMessageView.swift in Sources */,
+				810FFF3D2BE40984006E818E /* IntExtension.swift in Sources */,
 				817F7BF22B9C872B0067A24A /* UserService.swift in Sources */,
 				817F7BC02B9C85890067A24A /* InboxService.swift in Sources */,
 				817F7BC42B9C85A00067A24A /* InboxRootNew.swift in Sources */,
+				810FFF3B2BE40971006E818E /* UIExtension.swift in Sources */,
 				817F7BC62B9C85AE0067A24A /* InboxViewModel.swift in Sources */,
 				817F7BD42B9C86440067A24A /* PrivacyView.swift in Sources */,
 				817F7BDA2B9C86800067A24A /* SettignsProfileViewModel.swift in Sources */,
