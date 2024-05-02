@@ -3,28 +3,28 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyAt004bxygnGwg4xKH7rPPljj-D4ItuSwY</string>
+	<string>AIzaSyALCaycmPNves3EcObL8ZHrDpkx2ZxifXU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>307715450183</string>
+	<string>126039075348</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.dori.Lovly-Kids</string>
 	<key>PROJECT_ID</key>
-	<string>Lovly-Kids</string>
+	<string>messanger-8c488</string>
 	<key>STORAGE_BUCKET</key>
-	<string>lovly-kids.appspot.com</string>
+	<string>messanger-8c488.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:307715450183:ios:0b260f4f41da4a23c39862</string>
+	<string>1:126039075348:ios:adaba599ad5523b5295501</string>
 </dict>
 </plist>
