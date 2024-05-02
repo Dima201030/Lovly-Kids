@@ -14,58 +14,113 @@ struct SettingsView: View {
         return viewModel.currentUser
     }
     var body: some View {
-        NavigationView {
-            VStack {
-                    List {
-                        Section(header: Text("Profile")) {
-                            NavigationLink(value: user) {
-                                HStack {
-                                    Image(systemName: "person.text.rectangle.fill")
-                                    Text("Profile")
-                                }
-                            }
-                            
-                        }
-                        Section {
-                            ForEach(SettingsOptionsViewModel.allCases, id: \.self) { option in
-                                NavigationLink(destination: option.destinationView) {
-                                    HStack {
-                                        Image(systemName: "\(option.icon)")
-                                        Text(option.title)
-                                            .font(.subheadline)
-                                    }
-                                }
-                            }
-                        }
-                        Section(header: Text("Info")) {
+        NavigationStack {
+            List {
+                Section(header: Text("Profile settings")) {
+                    if let user = user {
+                        NavigationLink(destination: ProfileView(user: user)) {
                             HStack {
-                                NavigationLink {
-                                    InfoByAppOffical()
-                                } label: {
-                                    HStack {
-                                        Image(systemName: "info")
-                                        Text("Info")
-                                    }
-                                }
-                                
-                            }
-                        }
-                        Section {
-                            Button(action: {AuthService.shared.singOut()}) {
-                                Text("Log out")
-                                    .foregroundColor(.red)
+                                Image(systemName: "person.text.rectangle.fill")
+                                Text("Profile")
                             }
                         }
                     }
-                    .navigationTitle("Settings")
-                    .navigationDestination(for: User.self, destination: { user in
-                        ProfileView(user: user)
-                    })
+                }
+                Section {
+                    ForEach(SettingsOptionsViewModel.allCases, id: \.self) { option in
+                        NavigationLink(destination: option.destinationView) {
+                            HStack {
+                                Image(systemName: "\(option.icon)")
+                                Text(option.title)
+                                    .font(.subheadline)
+                            }
+                        }
+                    }
+                }
+                Section(header: Text("Info")) {
+                    HStack {
+                        NavigationLink {
+                            InfoByAppOffical()
+                        } label: {
+                            HStack {
+                                Image(systemName: "info")
+                                Text("Info")
+                            }
+                        }
+                        
+                    }
+                }
+                Section {
+                    Button(action: {AuthService.shared.singOut()}) {
+                        Text("Log out")
+                            .foregroundColor(.red)
+                    }
+                }
             }
+            .navigationTitle("Settings")
         }
-        
     }
 }
+
+//struct SettingsView: View {
+//    @StateObject var viewModel = InboxViewModel()
+//    @EnvironmentObject var appData: AppData
+//    private var user: User? {
+//        return viewModel.currentUser
+//    }
+//    var body: some View {
+//        NavigationStack {
+//            VStack {
+//                List {
+//                    Section(header: Text("Profile")) {
+//                        NavigationLink(value: user) {
+//                            HStack {
+//                                Image(systemName: "person.text.rectangle.fill")
+//                                Text("Profile")
+//                            }
+//                        }
+//
+//                    }
+//                    Section {
+//                        ForEach(SettingsOptionsViewModel.allCases, id: \.self) { option in
+//                            NavigationLink(destination: option.destinationView) {
+//                                HStack {
+//                                    Image(systemName: "\(option.icon)")
+//                                    Text(option.title)
+//                                        .font(.subheadline)
+//                                }
+//                            }
+//                        }
+//                    }
+//                    Section(header: Text("Info")) {
+//                        HStack {
+//                            NavigationLink {
+//                                InfoByAppOffical()
+//                            } label: {
+//                                HStack {
+//                                    Image(systemName: "info")
+//                                    Text("Info")
+//                                }
+//                            }
+//
+//                        }
+//                    }
+//                    Section {
+//                        Button(action: {AuthService.shared.singOut()}) {
+//                            Text("Log out")
+//                                .foregroundColor(.red)
+//                        }
+//                    }
+//                }
+//                .navigationTitle("Settings")
+//                .navigationDestination(for: User.self, destination: { user in
+//                    ProfileView(user: user)
+//                })
+//            }
+//        }
+//
+//    }
+//}
 
 #Preview {
     SettingsView()

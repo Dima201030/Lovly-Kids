@@ -35,10 +35,18 @@ class InboxViewModel: ObservableObject {
         for i in 0 ..< messages.count {
             let message = messages[i]
             
-            UserService.fetchUser(withUid: message.chatPartnerId) { user in
-                messages[i].user = user
-                self.recentMessages.append(messages[i])
+            // Проверяем, существует ли уже сообщение от этого пользователя в списке
+            if let existingMessageIndex = recentMessages.firstIndex(where: { $0.chatPartnerId == message.chatPartnerId }) {
+                // Если существует, обновляем его
+                recentMessages[existingMessageIndex] = message
+            } else {
+                // Если нет, добавляем новое сообщение в список
+                UserService.fetchUser(withUid: message.chatPartnerId) { user in
+                    messages[i].user = user
+                    self.recentMessages.append(messages[i])
+                }
             }
         }
     }
+
 }

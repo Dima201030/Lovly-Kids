@@ -34,7 +34,8 @@
 		812F9E312B9F813800BED361 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 812F9E302B9F813800BED361 /* FirebaseRemoteConfigSwift */; };
 		812F9E332B9F813900BED361 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 812F9E322B9F813900BED361 /* FirebaseStorage */; };
 		812F9E352B9F813900BED361 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 812F9E342B9F813900BED361 /* FirebaseStorageCombine-Community */; };
-		817F7B102B9C7DFD0067A24A /* Lovly_KidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F7B0F2B9C7DFD0067A24A /* Lovly_KidsApp.swift */; };
+		81419C802BD53F4600656957 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81419C7F2BD53F4600656957 /* GoogleService-Info.plist */; };
+		8179B1152BD59784009AED7C /* Lovly_KidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8179B1142BD59784009AED7C /* Lovly_KidsApp.swift */; };
 		817F7B142B9C7DFF0067A24A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 817F7B132B9C7DFF0067A24A /* Assets.xcassets */; };
 		817F7B172B9C7DFF0067A24A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 817F7B162B9C7DFF0067A24A /* Preview Assets.xcassets */; };
 		817F7B212B9C7DFF0067A24A /* Lovly_KidsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F7B202B9C7DFF0067A24A /* Lovly_KidsTests.swift */; };
@@ -75,7 +76,6 @@
 		817F7BF22B9C872B0067A24A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F7BF02B9C872B0067A24A /* UserService.swift */; };
 		817F7BF42B9C87370067A24A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F7BF32B9C87370067A24A /* Constants.swift */; };
 		817F7C782B9C99FE0067A24A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F7C772B9C99FE0067A24A /* SettingsView.swift */; };
-		817F7CB02B9C9AF20067A24A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 817F7CAF2B9C9AF20067A24A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,8 +96,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81419C7F2BD53F4600656957 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8179B1142BD59784009AED7C /* Lovly_KidsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lovly_KidsApp.swift; path = "../../../../Swift/Lovly Kids/Lovly Kids/App/Lovly_KidsApp.swift"; sourceTree = "<group>"; };
 		817F7B0C2B9C7DFD0067A24A /* Lovly Kids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lovly Kids.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		817F7B0F2B9C7DFD0067A24A /* Lovly_KidsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lovly_KidsApp.swift; sourceTree = "<group>"; };
 		817F7B132B9C7DFF0067A24A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		817F7B162B9C7DFF0067A24A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		817F7B1C2B9C7DFF0067A24A /* Lovly KidsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lovly KidsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +141,6 @@
 		817F7BF02B9C872B0067A24A /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		817F7BF32B9C87370067A24A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		817F7C772B9C99FE0067A24A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		817F7CAF2B9C9AF20067A24A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,8 +219,6 @@
 		817F7B0E2B9C7DFD0067A24A /* Lovly Kids */ = {
 			isa = PBXGroup;
 			children = (
-				817F7B0F2B9C7DFD0067A24A /* Lovly_KidsApp.swift */,
-				817F7CAF2B9C9AF20067A24A /* GoogleService-Info.plist */,
 				817F7B812B9C819A0067A24A /* App */,
 				817F7B862B9C81BE0067A24A /* Core */,
 				817F7B9C2B9C83970067A24A /* Extension */,
@@ -269,6 +267,8 @@
 		817F7B812B9C819A0067A24A /* App */ = {
 			isa = PBXGroup;
 			children = (
+				8179B1142BD59784009AED7C /* Lovly_KidsApp.swift */,
+				81419C7F2BD53F4600656957 /* GoogleService-Info.plist */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -726,9 +726,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				817F7CB02B9C9AF20067A24A /* GoogleService-Info.plist in Resources */,
 				817F7B172B9C7DFF0067A24A /* Preview Assets.xcassets in Resources */,
 				817F7B142B9C7DFF0067A24A /* Assets.xcassets in Resources */,
+				81419C802BD53F4600656957 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,7 +770,6 @@
 				817F7BD32B9C86440067A24A /* EditPrivaryInfo.swift in Sources */,
 				817F7BA62B9C84150067A24A /* RegisterView.swift in Sources */,
 				817F7BDC2B9C86B40067A24A /* ContentView.swift in Sources */,
-				817F7B102B9C7DFD0067A24A /* Lovly_KidsApp.swift in Sources */,
 				817F7BB62B9C852F0067A24A /* ChatService.swift in Sources */,
 				817F7BCA2B9C85E20067A24A /* NewMessageView.swift in Sources */,
 				817F7BF22B9C872B0067A24A /* UserService.swift in Sources */,
@@ -787,6 +786,7 @@
 				817F7BB82B9C85450067A24A /* ChatViewModel.swift in Sources */,
 				817F7BA22B9C840A0067A24A /* AuthService.swift in Sources */,
 				817F7BE02B9C86D60067A24A /* SettingsViewModel.swift in Sources */,
+				8179B1152BD59784009AED7C /* Lovly_KidsApp.swift in Sources */,
 				817F7BF42B9C87370067A24A /* Constants.swift in Sources */,
 				817F7BED2B9C87240067A24A /* User.swift in Sources */,
 			);
