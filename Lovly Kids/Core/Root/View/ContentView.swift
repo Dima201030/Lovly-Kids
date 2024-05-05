@@ -22,7 +22,7 @@ struct ContentView: View {
                                 }
                             InboxView()
                                 .tabItem {
-                                    Label("Messanger",
+                                    Label("Messenger",
                                           systemImage: "message"
                                     )
                                 }

@@ -9,25 +9,43 @@ import SwiftUI
 import PhotosUI
 
 struct EditPrivaryInfo: View {
-    @StateObject var viewModel = ProfileViewModel()
+    @Environment (\.colorScheme) var colorScheme
+    @StateObject var profileViewModel = ProfileViewModel()
     @State private var fullname = ""
     @State private var age = ""
     @Environment(\.dismiss) var dissmis
-    let user: User
+    @State private var selectColor = 1
+    var user: User
     var body: some View {
         NavigationView {
             VStack {
                 VStack {
-                    PhotosPicker(selection: $viewModel.selectItme) {
-                        if let profileImage = viewModel.profileImage {
-                            profileImage
-                                .resizable()
-                                .frame(width: 120, height: 120)
-                                .foregroundColor(Color(.systemGray4))
-                                .scaledToFill()
-                                .clipShape(Circle())
+                    PhotosPicker(selection: $profileViewModel.selectItme) {
+                        if let profileImage = profileViewModel.profileImage {
+                            ZStack {
+                                Circle()
+                                    .frame(width: 127, height: 127)
+                                    .foregroundColor(profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.gray : Color.black))
+                                
+                                profileImage
+                                    .resizable()
+                                    .cornerRadius(15)
+                                    .scaledToFill()
+                                    .clipShape(Circle())
+                                    .frame(width: 120, height: 120)
+                                    .shadow(color: profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black), radius: 30) // Use average color in shadow
+                                
+                            }
                         } else {
-                            CircularProfileImageView(user: user, size: .max)
+                            Circle()
+                                .frame(width: 120, height: 120)
+                                .foregroundColor(profileViewModel.averageColor.map { Color($0) } ?? (user.profileColor))
+                                .overlay(
+                                    // Добавляем случайную букву "P" внутри круга
+                                    Text("\(firstWordOfName())")
+                                        .font(.system(size: 50, weight: .bold, design: .default))
+                                        .foregroundColor(.white)
+                                )
                         }
                     }
                 }
@@ -42,12 +60,18 @@ struct EditPrivaryInfo: View {
                             .multilineTextAlignment(.center)
                         
                         TextField("Age", text: $age)
+                            
                             .font(.subheadline)
                             .fontWeight(.light)
                             .multilineTextAlignment(.center)
                     }
                     
-                    
+                    Section {
+                        Picker(selection: $selectColor, label: Text("Color")) {
+                            Text("Red").tag(1)
+                            Text("Blue").tag(2)
+                        }
+                    }
                 }
                 Spacer()
                 
@@ -66,24 +90,48 @@ struct EditPrivaryInfo: View {
                 }
             }, trailing: HStack {
                 Button {
-                    saveDataOfUser(fullname: fullname, age: "12", email: "\(user.email)")
+                    let selectedColor = selectToColor(select: selectColor)
+                    saveDataOfUser(fullname: fullname, age: age, email: user.email, profileColor: selectedColor)
                 } label: {
                     Text("Done")
                 }
+
                 
             })
         }
         
     }
+    private func firstWordOfName() -> String {
+        var words: [Character] = []
+        
+        for i in user.fullname {
+            words.append(i)
+        }
+        return "\(words[0])"
+    }
     
-    
-    private func saveDataOfUser(fullname: String, age: String, email: String){
+    private func saveDataOfUser(fullname: String, age: String, email: String, profileColor: String){
         Task {
-            try await AuthService.shared.changeUserData(email: email, fullname: fullname, id: user.uid!, age: Int(age)!)
+            do {
+                try await AuthService.shared.changeUserData(email: email, fullname: fullname, id: user.uid!, age: Int(age)!, profileColor: profileColor)
+                try await UserService.shared.fetchCurrentUser() // Обновление данных текущего пользователя
+            } catch {
+                print("Failed to save user data with error: \(error.localizedDescription)")
+            }
         }
         dissmis()
     }
-    
+
+    private func selectToColor(select: Int) -> String {
+        switch select {
+        case 1:
+            return "red"
+        case 2:
+            return "blue"
+        default:
+            return "gray"
+        }
+    }
 }
 
 #Preview {

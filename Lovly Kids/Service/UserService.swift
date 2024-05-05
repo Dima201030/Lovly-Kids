@@ -20,11 +20,8 @@ class UserService {
         do{
             guard let uid = Auth.auth().currentUser?.uid else { return }
             let snapshot = try await Firestore.firestore().collection("users").document(uid).getDocument()
-            print("DEBUG: Failed to create user with error: A")
             let user = try snapshot.data(as: User.self)
-            print("DEBUG: Failed to create user with error: B")
             self.currentUser = user
-            print("DEBUG: Failed to create user with error: C")
             print("userUID: \(uid), data: \(snapshot), user: \(user)")
         } catch {
             print("DEBUG: Failed to create user with error: \(error.localizedDescription)")

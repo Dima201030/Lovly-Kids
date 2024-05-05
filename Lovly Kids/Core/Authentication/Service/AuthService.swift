@@ -31,11 +31,11 @@ class AuthService {
     }
     
     @MainActor
-    func createUser(withEmail email: String, password: String, fullname: String, age: Int) async throws {
+    func createUser(withEmail email: String, password: String, fullname: String, age: Int, profileColor: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
-            try await self.uploadUserData(email: email, fullname: fullname, id: result.user.uid, age: age)
+            try await self.uploadUserData(email: email, fullname: fullname, id: result.user.uid, age: age, profileColor: profileColor)
             loadCurrentUserData()
             
             
@@ -53,15 +53,15 @@ class AuthService {
         }
     }
     
-    private func uploadUserData(email: String, fullname: String, id: String, age: Int) async throws {
-        let user = User(fullname: fullname, email: email, age: age, profileImageUrl: nil)
+    private func uploadUserData(email: String, fullname: String, id: String, age: Int, profileColor: String) async throws {
+        let user = User(fullname: fullname, email: email, age: age, profileImageUrl: nil, profileColorString: profileColor)
         guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
         try await Firestore.firestore().collection("users").document(id).setData(encodedUser)
     }
     
-    func changeUserData(email: String, fullname: String, id: String, age: Int) async throws {
+    func changeUserData(email: String, fullname: String, id: String, age: Int, profileColor: String) async throws {
         do {
-            let user = User(fullname: fullname, email: email, age: age, profileImageUrl: nil)
+            let user = User(fullname: fullname, email: email, age: age, profileImageUrl: nil, profileColorString: profileColor)
             guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
             try await Firestore.firestore().collection("users").document(id).setData(encodedUser)
         } catch {

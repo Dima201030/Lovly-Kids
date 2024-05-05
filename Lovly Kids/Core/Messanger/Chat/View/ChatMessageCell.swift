@@ -31,7 +31,7 @@ struct ChatMessageView: View {
                     Text(message.messageText)
                         .font(.subheadline)
                         .padding()
-                        .background(Color(.systemGray5))
+                        .background(Color(.systemGray))
                         .foregroundColor(.black)
                         .clipShape(ChatBubble(isFromCurrentUser: isFromCurrnetUser))
                         .frame(maxWidth: UIScreen.main.bounds.width / 1.75, alignment: .leading)
@@ -45,5 +45,5 @@ struct ChatMessageView: View {
 }
 //
 //#Preview {
-//    ChatMessageView(isFromCurrentUser: false)
+//    ChatMessageView(message: false)
 //}

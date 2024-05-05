@@ -8,6 +8,12 @@
             "state" : "translated",
             "value" : "%@"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
         }
       }
     },
@@ -41,6 +47,26 @@
         }
       }
     },
+    "Ask a Question" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помощь"
+          }
+        }
+      }
+    },
+    "Blue" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синий"
+          }
+        }
+      }
+    },
     "Cancle" : {
       "localizations" : {
         "ru" : {
@@ -57,6 +83,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Чаты"
+          }
+        }
+      }
+    },
+    "Color" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цвет"
           }
         }
       }
@@ -97,6 +133,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Темная тема"
+          }
+        }
+      }
+    },
+    "Devices" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устройства "
           }
         }
       }
@@ -181,6 +227,16 @@
         }
       }
     },
+    "Firebase version: %@" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firebase version: %@"
+          }
+        }
+      }
+    },
     "Forgot your password" : {
       "localizations" : {
         "ru" : {
@@ -241,6 +297,16 @@
         }
       }
     },
+    "Lovly kids FAQ" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вопросы о Lovly Kids "
+          }
+        }
+      }
+    },
     "Main" : {
       "localizations" : {
         "ru" : {
@@ -271,22 +337,12 @@
         }
       }
     },
-    "Messager" : {
+    "Messenger" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Мессенджер "
-          }
-        }
-      }
-    },
-    "Messanger" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мессенджер "
+            "value" : "Мессенджер"
           }
         }
       }
@@ -341,12 +397,12 @@
         }
       }
     },
-    "Profile settings" : {
+    "Red" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Настройка профиля"
+            "value" : "Красный"
           }
         }
       }
@@ -407,6 +463,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Включить системную тему"
+          }
+        }
+      }
+    },
+    "ООО «LOVLYKIDS»" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ООО «LOVLYKIDS»"
           }
         }
       }

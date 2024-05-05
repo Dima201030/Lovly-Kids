@@ -37,7 +37,7 @@ class RegistredViewModel: ObservableObject {
             return
         }
         
-        try await AuthService.shared.createUser(withEmail: email, password: password, fullname: fullName, age: age)
+        try await AuthService.shared.createUser(withEmail: email, password: password, fullname: fullName, age: age, profileColor: "gray")
         isAnimation.toggle()
     }
 }

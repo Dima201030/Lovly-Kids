@@ -11,9 +11,14 @@ struct InfoByAppOffical: View {
     @StateObject var viewModel = InfoViewModelTexts()
     var body: some View {
         NavigationStack {
-            VStack {
-                Text("\(viewModel.versionFirebase)")
+            ScrollView {
+                VStack {
+                    Text("ООО «LOVLYKIDS»")
+                    Spacer()
+                    Text("Firebase version: \(viewModel.versionFirebase)")
+                }
             }
+            .navigationTitle("Info")
         }
     }
 }

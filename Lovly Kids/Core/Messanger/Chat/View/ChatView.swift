@@ -6,60 +6,97 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ChatView: View {
     @StateObject var viewModel: ChatViewModel
+    @ObservedObject private var keyboard = KeyboardResponder()
+    @State private var textFieldInput: String = ""
     let user: User
     
     init(user: User) {
         self.user = user
         self._viewModel = StateObject(wrappedValue: ChatViewModel(user: user))
     }
+    
     var body: some View {
-        ScrollView {
-            // header
+        ScrollViewReader { scrollView in
             VStack {
-                CircularProfileImageView(user: user, size: .xLarge)
-                
-                VStack(spacing: 4) {
-                    Text(user.fullname)
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                    Text("Messager")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
+                ScrollView {
+                    VStack(spacing: 8) {
+                        ForEach(viewModel.messages) { message in
+                            ChatMessageView(message: message)
+                                .id(message.id) // Убедитесь, что каждое сообщение имеет уникальный id
+                        }
+                    }
+                    .padding(.bottom, 16)
                 }
-            }
-            // messages
-            
-            ForEach(viewModel.messages) { message in
-                ChatMessageView(message: message)
+                .onChange(of: viewModel.messages) { _ in
+                    scrollToBottom(scrollView)
+                }
+                
+                VStack {
+                    Spacer()
+                    HStack {
+                        
+                        TextField("Message...", text: $viewModel.messageText)
+                            .background(Color.black)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .background(Color(.systemGroupedBackground))
+                            .cornerRadius(20)
+                            .padding(.bottom, keyboard.currentHeight)
+                            .edgesIgnoringSafeArea(.bottom)
+                            .animation(.easeOut(duration: 0.16))
+                        Button(action: {
+                            viewModel.sendMessage()
+                            viewModel.messageText = ""
+                        }, label: {
+                            Text("Send")
+                                .fontWeight(.semibold)
+                        })
+                        .background(Color.gray)
+                        .padding(.trailing, 16)
+                    }
                     
+                
+                }
+                .frame(maxHeight: 150)
+                .padding()
             }
-            
+            .navigationBarTitle(user.fullname, displayMode: .inline)
         }
-        
-        
-        
-        Spacer()
-        ZStack(alignment: .trailing) {
-            TextField("Message..." , text: $viewModel.messageText, axis: .vertical)
-                .padding(12)
-                .padding(.trailing, 48)
-                .background(Color(.systemGroupedBackground))
-                .clipShape(Capsule())
-                .font(.subheadline)
-            Button {
-                viewModel.sendMessage()
-                viewModel.messageText = ""
-            } label: {
-                Text("Send")
-                    .font(.subheadline)
-            }
-            .padding(.horizontal)
+    }
+    
+    private func scrollToBottom(_ scrollView: ScrollViewProxy) {
+        DispatchQueue.main.async {
+            scrollView.scrollTo(viewModel.messages.last?.id, anchor: .bottom)
+        }
+    }
+}
 
+final class KeyboardResponder: ObservableObject {
+    private var notificationCenter: NotificationCenter
+    @Published private(set) var currentHeight: CGFloat = 0
+    
+    init(center: NotificationCenter = .default) {
+        notificationCenter = center
+        notificationCenter.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        notificationCenter.removeObserver(self)
+    }
+    
+    @objc func keyBoardWillShow(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            currentHeight = keyboardSize.height
         }
-        .padding()
+    }
+    
+    @objc func keyBoardWillHide(notification: Notification) {
+        currentHeight = 0
     }
 }
 

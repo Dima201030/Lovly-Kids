@@ -22,20 +22,20 @@ struct ProfileView: View {
                             Circle()
                                 .frame(width: 127, height: 127)
                                 .foregroundColor(profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.gray : Color.black))
-                                
+                            
                             profileImage
                                 .resizable()
                                 .cornerRadius(15)
                                 .scaledToFill()
                                 .clipShape(Circle())
                                 .frame(width: 120, height: 120)
-                                .shadow(color: profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black), radius: 30) // Use average color in shadow
+                                .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black)) : Color.white, radius: 30) // Use average color in shadow
                             
                         }
                     } else {
                         Circle()
                             .frame(width: 120, height: 120)
-                            .foregroundColor(profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black))
+                            .foregroundColor(profileViewModel.averageColor.map { Color($0) } ?? (user.profileColor))
                             .overlay(
                                 // Добавляем случайную букву "P" внутри круга
                                 Text("\(firstWordOfName())")
@@ -57,11 +57,21 @@ struct ProfileView: View {
                         }
                         
                     }
+                    Section {
+                        Button(action: {AuthService.shared.singOut()}) {
+                            Text("Log out")
+                                .foregroundColor(.red)
+                        }
+                    }
                 }
                 .offset(y: 25)
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $showSheet, content: {
+                EditPrivaryInfo(user: user)
+                    .environmentObject(AppData())
+            })
         }
     }
     private func firstWordOfName() -> String {
@@ -73,86 +83,6 @@ struct ProfileView: View {
         return "\(words[0])"
     }
 }
-
-
-//struct ProfileView: View {
-//    @StateObject var profileViewModel = ProfileViewModel()
-//    @Environment (\.colorScheme) var colorScheme
-//    @State private var fullname = ""
-//    @State private var age = ""
-//    @State private var showSheet = false
-//    @EnvironmentObject var appData: AppData
-//    let user: User
-//    var body: some View {
-//        NavigationView {
-//            VStack {
-//                ZStack {
-//                    Circle()
-//                        .frame(width: 127, height: 127)
-//                        .foregroundColor(profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black))
-//
-//                    PhotosPicker(selection: $profileViewModel.selectItme) {
-//                        if let profileImage = profileViewModel.profileImage {
-//                            profileImage
-//                                .resizable()
-//                                .cornerRadius(15)
-//                                .scaledToFill()
-//                                .clipShape(Circle())
-//                                .frame(width: 120, height: 120)
-//                                .shadow(color: profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black), radius: 30) // Use average color in shadow
-//
-//                        } else {
-//                            Image("person.circle")
-//                                .resizable()
-//                                .cornerRadius(15)
-//                                .scaledToFill()
-//                                .clipShape(Circle())
-//                                .frame(width: 120, height: 120)
-//                                .shadow(color: profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black), radius: 30) // Use average color in shadow
-//
-//                        }
-//                    }
-//                }
-//                List {
-//                    Section {
-//                        Button {
-//                            showSheet.toggle()
-//                        } label: {
-//                            Text("Edit Bio")
-//                        }
-//                    }
-//                    Section {
-//                        ForEach(SettingsProfileEnum.allCases){ options in
-//                            NavigationLink {
-//                                PrivacyView()
-//                            } label: {
-//                                HStack {
-//                                    Image(systemName: "\(options.imageUrl)")
-//                                    Text("\(options.title)")
-//                                }
-//                            }
-//                        }
-//
-//                    }
-//                    Section {
-//                        Button(action: {AuthService.shared.deleteUser()}) {
-//                            Text("Delete account")
-//                                .foregroundColor(.red)
-//                        }
-//                    }
-//                }
-//
-//            }
-//            .navigationBarTitleDisplayMode(.inline)
-//            .navigationTitle("Profile")
-//            .sheet(isPresented: $showSheet, content: {
-//                EditPrivaryInfo(user: user)
-//                    .environmentObject(AppData())
-//            })
-//        }
-//    }
-//
-//}
 
 #Preview {
     ProfileView(user: User.MOCK_USER)

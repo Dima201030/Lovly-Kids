@@ -21,7 +21,7 @@ enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
     var icon: String {
         switch self {
         case .Language:
-            return "signature"
+            return "globe"
         case .Appearance:
             return "pencil.and.scribble"
         case .Notification:
@@ -40,5 +40,15 @@ enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
         }
     }
     
+    var backgroundColor: Color {
+        switch self {
+        case .Appearance:
+            Color.green
+        case .Language:
+            Color.yellow
+        case .Notification:
+            Color.red
+        }
+    }
     var id: Int { return self.rawValue }
 }

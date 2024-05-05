@@ -17,11 +17,19 @@ struct SettingsView: View {
         NavigationStack {
             List {
                 if let user = user {
-                    Section(header: Text("Profile settings")) {
+                    Section {
                         
                         NavigationLink(destination: ProfileView(user: user)) {
                             HStack {
-                                Image(systemName: "person.text.rectangle.fill")
+                                ZStack {
+                                    Color.blue
+                                        .cornerRadius(10)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "person.text.rectangle.fill")
+                                        .foregroundColor(.white)
+                                    
+                                }
+                                
                                 Text("Profile")
                             }
                         }
@@ -32,25 +40,83 @@ struct SettingsView: View {
                     ForEach(SettingsOptionsViewModel.allCases, id: \.self) { option in
                         NavigationLink(destination: option.destinationView) {
                             HStack {
-                                Image(systemName: "\(option.icon)")
+                                ZStack {
+                                    option.backgroundColor
+                                        .cornerRadius(10)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "\(option.icon)")
+                                        .foregroundColor(.white)
+                                }
                                 Text(option.title)
                                     .font(.subheadline)
                             }
                         }
                     }
                 }
-                Section(header: Text("Info")) {
-                    HStack {
-                        NavigationLink {
-                            InfoByAppOffical()
-                        } label: {
-                            HStack {
-                                Image(systemName: "info")
-                                Text("Info")
+                
+                Section{
+                    NavigationLink {
+                        EmptyView()
+                    } label: {
+                        HStack{
+                            ZStack {
+                                Color.gray
+                                    .cornerRadius(10)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "macbook.and.iphone")
+                                    .foregroundColor(.white)
                             }
+                            Text("Devices")
                         }
-                        
                     }
+                    
+                }
+                Section{
+                    NavigationLink {
+                        EmptyView()
+                    } label: {
+                        HStack{
+                            ZStack {
+                                Color.orange
+                                    .cornerRadius(10)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "ellipsis.bubble.fill")
+                                    .foregroundColor(.white)
+                            }
+                            Text("Ask a Question")
+                        }
+                    }
+                    NavigationLink {
+                        EmptyView()
+                    } label: {
+                        HStack{
+                            ZStack {
+                                Color.blue
+                                    .cornerRadius(10)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "questionmark.circle.fill")
+                                    .foregroundColor(.white)
+                            }
+                            
+                            Text("Lovly kids FAQ")
+                        }
+                    }
+                    NavigationLink {
+                        InfoByAppOffical()
+                    } label: {
+                        HStack {
+                            ZStack {
+                                Color.red
+                                    .cornerRadius(10)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "info")
+                                    .foregroundColor(.white)
+                            }
+                            
+                            Text("Info")
+                        }
+                    }
+                    
                 }
                 Section {
                     Button(action: {AuthService.shared.singOut()}) {
@@ -63,66 +129,6 @@ struct SettingsView: View {
         }
     }
 }
-
-//struct SettingsView: View {
-//    @StateObject var viewModel = InboxViewModel()
-//    @EnvironmentObject var appData: AppData
-//    private var user: User? {
-//        return viewModel.currentUser
-//    }
-//    var body: some View {
-//        NavigationStack {
-//            VStack {
-//                List {
-//                    Section(header: Text("Profile")) {
-//                        NavigationLink(value: user) {
-//                            HStack {
-//                                Image(systemName: "person.text.rectangle.fill")
-//                                Text("Profile")
-//                            }
-//                        }
-//
-//                    }
-//                    Section {
-//                        ForEach(SettingsOptionsViewModel.allCases, id: \.self) { option in
-//                            NavigationLink(destination: option.destinationView) {
-//                                HStack {
-//                                    Image(systemName: "\(option.icon)")
-//                                    Text(option.title)
-//                                        .font(.subheadline)
-//                                }
-//                            }
-//                        }
-//                    }
-//                    Section(header: Text("Info")) {
-//                        HStack {
-//                            NavigationLink {
-//                                InfoByAppOffical()
-//                            } label: {
-//                                HStack {
-//                                    Image(systemName: "info")
-//                                    Text("Info")
-//                                }
-//                            }
-//
-//                        }
-//                    }
-//                    Section {
-//                        Button(action: {AuthService.shared.singOut()}) {
-//                            Text("Log out")
-//                                .foregroundColor(.red)
-//                        }
-//                    }
-//                }
-//                .navigationTitle("Settings")
-//                .navigationDestination(for: User.self, destination: { user in
-//                    ProfileView(user: user)
-//                })
-//            }
-//        }
-//
-//    }
-//}
 
 #Preview {
     SettingsView()
