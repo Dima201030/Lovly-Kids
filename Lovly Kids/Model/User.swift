@@ -15,7 +15,7 @@ struct User: Codable, Identifiable, Hashable {
     var fullname: String
     let email: String
     var age: Int
-    var profileImageUrl: String?
+    var profileImageUrl: String
     var profileColorString: String // Changed to String
     
     var id: String {
@@ -24,28 +24,6 @@ struct User: Codable, Identifiable, Hashable {
     
     var profileColor: Color { // Convert String color to Color
         return Color(profileColorString)
-    }
-}
-
-class AppData: ObservableObject {
-    @Published var appearance: ColorScheme = .light
-    
-    init() {
-        self.appearance = getColorScheme()
-    }
-    
-    func saveColorScheme() {
-        let defaults = UserDefaults.standard
-        defaults.set(appearance == .dark ? "dark" : "light", forKey: "colorScheme")
-    }
-    
-    private func getColorScheme() -> ColorScheme {
-        let defaults = UserDefaults.standard
-        if let rawValue = defaults.string(forKey: "colorScheme") {
-            return rawValue == "dark" ? .dark : .light
-        } else {
-            return .light
-        }
     }
 }
 

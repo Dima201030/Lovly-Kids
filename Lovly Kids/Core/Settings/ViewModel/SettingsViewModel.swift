@@ -34,7 +34,7 @@ enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
         case .Appearance:
             return AnyView(AppearanceView())
         case .Language:
-            return AnyView(EmptyView())
+            return AnyView(ChangeLaungeView())
         case .Notification:
             return AnyView(EmptyView())
         }

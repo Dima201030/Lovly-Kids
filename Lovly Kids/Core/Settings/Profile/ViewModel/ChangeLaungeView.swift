@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct ChangeLaungeView: View {
+    @EnvironmentObject var appData: AppData
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                Section {
+                    ForEach(ChangeLaungeEnum.allCases, id: \.self){options in
+                        Button {
+                            appData.saveLanguage(launge: "\(options.abbreviation)")
+                        } label: {
+                            Text("\(options.title)")
+                        }
+
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
     ChangeLaungeView()
+        .environmentObject(AppData())
 }

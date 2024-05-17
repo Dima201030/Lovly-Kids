@@ -15,7 +15,7 @@ struct ContentView: View {
                 Group {
                     if viewModel.userSession != nil {
                         TabView {
-                            Text("Main view")
+                            MainView()
                                 .tabItem {
                                     Label("Main",
                                           systemImage: "house")

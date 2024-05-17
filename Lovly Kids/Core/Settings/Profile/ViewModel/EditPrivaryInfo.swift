@@ -113,7 +113,7 @@ struct EditPrivaryInfo: View {
     private func saveDataOfUser(fullname: String, age: String, email: String, profileColor: String){
         Task {
             do {
-                try await AuthService.shared.changeUserData(email: email, fullname: fullname, id: user.uid!, age: Int(age)!, profileColor: profileColor)
+                try await AuthService.shared.changeUserData(email: email, fullname: fullname, id: user.uid!, age: Int(age)!, profileColor: profileColor, profileImageUrl: user.profileImageUrl)
                 try await UserService.shared.fetchCurrentUser() // Обновление данных текущего пользователя
             } catch {
                 print("Failed to save user data with error: \(error.localizedDescription)")

@@ -108,6 +108,7 @@
       }
     },
     "Continue with Facebook" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -187,6 +188,9 @@
         }
       }
     },
+    "Email" : {
+
+    },
     "Enter your age" : {
       "localizations" : {
         "ru" : {
@@ -257,6 +261,15 @@
         }
       }
     },
+    "House" : {
+
+    },
+    "Image not loaded" : {
+
+    },
+    "Image URL: %@" : {
+
+    },
     "Info" : {
       "localizations" : {
         "ru" : {
@@ -297,6 +310,9 @@
         }
       }
     },
+    "Lovely Kids" : {
+
+    },
     "Lovly kids FAQ" : {
       "localizations" : {
         "ru" : {
@@ -318,6 +334,7 @@
       }
     },
     "Main view" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -387,6 +404,9 @@
         }
       }
     },
+    "Password" : {
+
+    },
     "Profile" : {
       "localizations" : {
         "ru" : {
@@ -447,6 +467,12 @@
         }
       }
     },
+    "The often order" : {
+
+    },
+    "There are 31659 nannies in total!" : {
+
+    },
     "To: " : {
       "localizations" : {
         "ru" : {
@@ -467,6 +493,9 @@
         }
       }
     },
+    "Войдите через " : {
+
+    },
     "ООО «LOVLYKIDS»" : {
       "localizations" : {
         "ru" : {
@@ -476,6 +505,9 @@
           }
         }
       }
+    },
+    "Регистрация" : {
+
     }
   },
   "version" : "1.0"

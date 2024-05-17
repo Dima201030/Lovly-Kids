@@ -34,34 +34,30 @@ struct ChatView: View {
                 .onChange(of: viewModel.messages) { _ in
                     scrollToBottom(scrollView)
                 }
-                
-                VStack {
-                    Spacer()
-                    HStack {
-                        
-                        TextField("Message...", text: $viewModel.messageText)
-                            .background(Color.black)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .background(Color(.systemGroupedBackground))
-                            .cornerRadius(20)
-                            .padding(.bottom, keyboard.currentHeight)
-                            .edgesIgnoringSafeArea(.bottom)
-                            .animation(.easeOut(duration: 0.16))
-                        Button(action: {
-                            viewModel.sendMessage()
-                            viewModel.messageText = ""
-                        }, label: {
+                Spacer()
+                HStack() {
+                    TextField("Message..." , text: $viewModel.messageText, axis: .vertical)
+                        .padding(12)
+                        .padding(.trailing, 48)
+                        .background(Color(.systemGroupedBackground))
+                        .font(.subheadline)
+                        .cornerRadius(20)
+                    Button {
+                        viewModel.sendMessage()
+                        viewModel.messageText = ""
+                    } label: {
+                        VStack{
                             Text("Send")
-                                .fontWeight(.semibold)
-                        })
-                        .background(Color.gray)
-                        .padding(.trailing, 16)
+                                .foregroundColor(.black)
+                                .font(.subheadline)
+                                .padding(5)
+                        }
+                        .background(Color(.pink))
+                        .cornerRadius(5)
                     }
+                    .padding(.horizontal)
                     
-                
                 }
-                .frame(maxHeight: 150)
                 .padding()
             }
             .navigationBarTitle(user.fullname, displayMode: .inline)
