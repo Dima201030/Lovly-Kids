@@ -11,6 +11,7 @@
 		81032B112BED24490068FB0D /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81032B102BED24490068FB0D /* AppData.swift */; };
 		81032B132BED248E0068FB0D /* ChangeLaungeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81032B122BED248E0068FB0D /* ChangeLaungeEnum.swift */; };
 		81032B152BED80B80068FB0D /* MonteCarlo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81032B142BED80B80068FB0D /* MonteCarlo-Regular.ttf */; };
+		810E14BD2BFB7B1B0031CC80 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 810E14BC2BFB7B1B0031CC80 /* SDWebImageSwiftUI */; };
 		810FFF392BE3E3EE006E818E /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810FFF382BE3E3EE006E818E /* Gradients.swift */; };
 		810FFF3B2BE40971006E818E /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810FFF3A2BE40971006E818E /* UIExtension.swift */; };
 		810FFF3D2BE40984006E818E /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810FFF3C2BE40984006E818E /* IntExtension.swift */; };
@@ -85,9 +86,25 @@
 		817F7BF22B9C872B0067A24A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F7BF02B9C872B0067A24A /* UserService.swift */; };
 		817F7BF42B9C87370067A24A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F7BF32B9C87370067A24A /* Constants.swift */; };
 		817F7C782B9C99FE0067A24A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F7C772B9C99FE0067A24A /* SettingsView.swift */; };
+		81A797D02BF7A1AD00C10869 /* LoginWithPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A797CF2BF7A1AC00C10869 /* LoginWithPhone.swift */; };
+		81A797D22BF7A1C300C10869 /* LoginWithPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A797D12BF7A1C300C10869 /* LoginWithPhoneViewModel.swift */; };
 		81CB60662BE511AF007BDFEF /* Launch Screen1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81CB60652BE511AF007BDFEF /* Launch Screen1.storyboard */; };
 		81DD85B92BEEBA0F00BC602E /* MainEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD85B82BEEBA0F00BC602E /* MainEnum.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		810E14BE2BFB7B740031CC80 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = file.rcproject;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# rctool\n";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		817F7B1D2B9C7DFF0067A24A /* PBXContainerItemProxy */ = {
@@ -162,6 +179,8 @@
 		817F7BF02B9C872B0067A24A /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		817F7BF32B9C87370067A24A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		817F7C772B9C99FE0067A24A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		81A797CF2BF7A1AC00C10869 /* LoginWithPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhone.swift; sourceTree = "<group>"; };
+		81A797D12BF7A1C300C10869 /* LoginWithPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhoneViewModel.swift; sourceTree = "<group>"; };
 		81CB60652BE511AF007BDFEF /* Launch Screen1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen1.storyboard"; sourceTree = "<group>"; };
 		81DD85B82BEEBA0F00BC602E /* MainEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEnum.swift; sourceTree = "<group>"; };
 		81DD85BA2BEEC64200BC602E /* arial_black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial_black.ttf; sourceTree = "<group>"; };
@@ -172,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				810E14BD2BFB7B1B0031CC80 /* SDWebImageSwiftUI in Frameworks */,
 				812F9E132B9F813800BED361 /* FirebaseDatabase in Frameworks */,
 				812F9E212B9F813800BED361 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				812F9E192B9F813800BED361 /* FirebaseFirestore in Frameworks */,
@@ -409,6 +429,7 @@
 			children = (
 				817F7BA32B9C84150067A24A /* LoginView.swift */,
 				817F7BA42B9C84150067A24A /* RegisterView.swift */,
+				81A797CF2BF7A1AC00C10869 /* LoginWithPhone.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -418,6 +439,7 @@
 			children = (
 				817F7BA72B9C84260067A24A /* LoginViewModel.swift */,
 				817F7BA82B9C84260067A24A /* RegistredViewModel.swift */,
+				81A797D12BF7A1C300C10869 /* LoginWithPhoneViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -663,6 +685,7 @@
 				817F7B0A2B9C7DFD0067A24A /* Resources */,
 			);
 			buildRules = (
+				810E14BE2BFB7B740031CC80 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -695,6 +718,7 @@
 				812F9E302B9F813800BED361 /* FirebaseRemoteConfigSwift */,
 				812F9E322B9F813900BED361 /* FirebaseStorage */,
 				812F9E342B9F813900BED361 /* FirebaseStorageCombine-Community */,
+				810E14BC2BFB7B1B0031CC80 /* SDWebImageSwiftUI */,
 			);
 			productName = "Lovly Kids";
 			productReference = 817F7B0C2B9C7DFD0067A24A /* Lovly Kids.app */;
@@ -771,6 +795,7 @@
 			mainGroup = 817F7B032B9C7DFD0067A24A;
 			packageReferences = (
 				817F7B3B2B9C80B10067A24A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				810E14BB2BFB7B1B0031CC80 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 817F7B0D2B9C7DFD0067A24A /* Products */;
 			projectDirPath = "";
@@ -818,7 +843,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A797D22BF7A1C300C10869 /* LoginWithPhoneViewModel.swift in Sources */,
 				817F7BF12B9C872B0067A24A /* MessageService.swift in Sources */,
+				81A797D02BF7A1AD00C10869 /* LoginWithPhone.swift in Sources */,
 				817F7BE82B9C87150067A24A /* InfoByAppOffical.swift in Sources */,
 				817F7BAC2B9C84630067A24A /* CircleProfileImageView.swift in Sources */,
 				817F7BE42B9C86F70067A24A /* Date.swift in Sources */,
@@ -950,7 +977,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1007,7 +1034,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1029,10 +1056,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Lovly-Kids-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen1.storyboard";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1060,10 +1089,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Lovly-Kids-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen1.storyboard";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1071,6 +1102,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				"MARKETING_VERSION[sdk=iphoneos*]" = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dori.Lovly-Kids";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1201,6 +1233,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		810E14BB2BFB7B1B0031CC80 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.4;
+			};
+		};
 		817F7B3B2B9C80B10067A24A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1212,6 +1252,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		810E14BC2BFB7B1B0031CC80 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 810E14BB2BFB7B1B0031CC80 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		812F9E002B9F813800BED361 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 817F7B3B2B9C80B10067A24A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
