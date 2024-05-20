@@ -10,6 +10,97 @@ import Firebase
 import FirebaseStorage
 import PhotosUI
 struct ProfileView: View {
+    //    let user: User
+    //    @StateObject var profileViewModel = ProfileViewModel()
+    //    @Environment(\.colorScheme) var colorScheme
+    //    @State private var showSheet = false
+    //    @State private var image: UIImage?
+    //    @State private var imageURL: URL?
+    //    @State private var showingImagePicker = false
+    //    @State private var loadedImage: UIImage?
+    //    private let storage = Storage.storage()
+    //    var body: some View {
+    //        NavigationStack {
+    //            VStack {
+    //                if let profileImage = profileViewModel.profileImage {
+    //                    ZStack {
+    //                        Circle()
+    //                            .frame(width: 127, height: 127)
+    //                            .foregroundColor(profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.gray : Color.black))
+    //
+    //                        profileImage
+    //                            .resizable()
+    //                            .cornerRadius(15)
+    //                            .scaledToFill()
+    //                            .clipShape(Circle())
+    //                            .frame(width: 120, height: 120)
+    //                            .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black)) : Color.white, radius: 30) // Use average color in shadow
+    //                    }
+    //                } else {
+    //                    Button("Select Image") {
+    //                        self.showingImagePicker = true
+    //                    }
+    //                    .padding()
+    //                    .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+    //                        ImagePicker(image: self.$image)
+    //                    }
+    //                }
+    //                if let loadedImage = loadedImage {
+    //                    Image(uiImage: loadedImage)
+    //                        .resizable()
+    //                        .cornerRadius(15)
+    //                        .scaledToFill()
+    //                        .clipShape(Circle())
+    //                        .frame(width: 120, height: 120)
+    //                        .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black)) : Color.white, radius: 30) // Use average color in shadow
+    //
+    //                } else {
+    //                    Text("Image not loaded")
+    //                }
+    //
+    //                Button("Load Image") {
+    //                    if let imageURL = imageURL {
+    //                        image(from: imageURL) { image in
+    //                            loadedImage = image
+    //                        }
+    //                    }
+    //                }
+    //
+    //                if let imageURL = imageURL {
+    //                    Text("Image URL: \(imageURL.absoluteString)")
+    //                        .padding()
+    //                }
+    //
+    //                List {
+    //                    Section {
+    //                        Button {
+    //                            showSheet.toggle()
+    //                        } label: {
+    //                            HStack {
+    //                                Image(systemName: "person.text.rectangle")
+    //                                Text("Edit main data")
+    //                            }
+    //                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+    //                        }
+    //
+    //                    }
+    //                    Section {
+    //                        Button(action: {AuthService.shared.singOut()}) {
+    //                            Text("Log out")
+    //                                .foregroundColor(.red)
+    //                        }
+    //                    }
+    //                }
+    //                .offset(y: 25)
+    //            }
+    //            .navigationTitle("Profile")
+    //            .navigationBarTitleDisplayMode(.inline)
+    //            .sheet(isPresented: $showSheet, content: {
+    //                EditPrivaryInfo(user: user)
+    //                    .environmentObject(AppData())
+    //            })
+    //        }
+    //    }
     let user: User
     @StateObject var profileViewModel = ProfileViewModel()
     @Environment(\.colorScheme) var colorScheme
@@ -24,7 +115,7 @@ struct ProfileView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                if user.profileImageUrl == "" {
+                if user.profileImageUrl != "" {
                     
                 } else {
                     Button {
@@ -39,32 +130,36 @@ struct ProfileView: View {
                 }
                 
                 if let loadedImage = loadedImage {
-                    Image(uiImage: loadedImage)
-                        .resizable()
-                        .cornerRadius(15)
-                        .scaledToFill()
-                        .clipShape(Circle())
-                        .frame(width: 120, height: 120)
-                        .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black)) : Color.white, radius: 30) // Use average color in shadow
+                    Button {
+                        self.showingImagePicker = true
+                    } label: {
+                        Image(uiImage: loadedImage)
+                            .resizable()
+                            .cornerRadius(15)
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .frame(width: 120, height: 120)
+                            .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black)) : Color.white, radius: 30) // Use average color in shadow
+                    }
+                    .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                        ImagePicker(image: self.$image)
+                    }
                 } else {
-                    Text("Image not loaded")
-                }
-                
-                //                Button("Load Image") {
-                //                    if let url = user.profileImageUrl {
-                //                        image(from: URL(string: url)!) { loadedImage in // Cannot call value of non-function type 'UIImage?'
-                //                            guard let image = loadedImage else { return }
-                //                            print("DEBUG", image)
-                //                            self.loadedImage = image // Cannot assign value of type '_' to type 'UIImage?'
-                //                        }
-                //                    }
-                //                }
-                
-                
-                
-                if let imageURL = imageURL {
-                    Text("Image URL: \(imageURL.absoluteString)")
-                        .padding()
+                    Button {
+                        self.showingImagePicker = true
+                    } label: {
+                        Image(systemName: "person.circle")
+                            .resizable()
+                            .cornerRadius(15)
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .frame(width: 120, height: 120)
+                            .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black)) : Color.white, radius: 30) // Use average color in shadow
+                            
+                    }
+                    .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                        ImagePicker(image: self.$image)
+                    }
                 }
                 
                 List {
@@ -93,16 +188,22 @@ struct ProfileView: View {
                     Task { try await saveDataOfUser(profileImageUrl: newURL.absoluteString)
                         try await UserService.shared.fetchCurrentUser() }
                     print("DEBUG: TRue \(user.profileImageUrl), \(newURL.absoluteString)")
-                    if let url = user.profileImageUrl {
-                        image(from: URL(string: url)!) { loadedImage in // Cannot call value of non-function type 'UIImage?'
-                            guard let image = loadedImage {
-                            print("DEBUG", image)
-                            loadedImage = image // Cannot assign value of type '_' to type 'UIImage?'
-                        }
-                    }
+                    
                     
                 }
             }
+            .onAppear() {
+                imageURL = URL(string: user.profileImageUrl)
+                
+                if let imageURL = imageURL {
+                    image(from: imageURL) { image in
+                        loadedImage = image
+                    }
+                    
+                }
+                
+            }
+            
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $showSheet, content: {
@@ -138,12 +239,32 @@ struct ProfileView: View {
                     
                     if let url = url {
                         self.imageURL = url
+                        
+                        if let imageURL = imageURL {
+                            image(from: imageURL) { image in
+                                loadedImage = image
+                            }
+                            
+                        }
                     }
                 }
             }
         }
+        
     }
-    
+    func image(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+        }.resume()
+    }
     private func saveDataOfUser(profileImageUrl: String) async throws {
         do {
             try await AuthService.shared.changeUserData(email: user.email, fullname: user.fullname, id: user.uid!, age: user.age, profileColor: user.profileColorString, profileImageUrl: profileImageUrl)
@@ -190,9 +311,16 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
 }
 
-
-#Preview {
-    ProfileView(user: User.MOCK_USER)
-        .environmentObject(AppData())
-    
+func image(from url: URL, completion: @escaping (UIImage?) -> Void) {
+    URLSession.shared.dataTask(with: url) { data, response, error in
+        if let data = data, let image = UIImage(data: data) {
+            DispatchQueue.main.async {
+                completion(image)
+            }
+        } else {
+            DispatchQueue.main.async {
+                completion(nil)
+            }
+        }
+    }.resume()
 }

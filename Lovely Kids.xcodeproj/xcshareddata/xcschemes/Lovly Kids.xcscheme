@@ -25,9 +25,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "817F7B0B2B9C7DFD0067A24A"
-               BuildableName = "Lovly Kids.app"
-               BlueprintName = "Lovly Kids"
-               ReferencedContainer = "container:Lovly Kids.xcodeproj">
+               BuildableName = "Lovely Kids.app"
+               BlueprintName = "Lovely Kids"
+               ReferencedContainer = "container:Lovely Kids.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "817F7B1B2B9C7DFF0067A24A"
-               BuildableName = "Lovly KidsTests.xctest"
-               BlueprintName = "Lovly KidsTests"
-               ReferencedContainer = "container:Lovly Kids.xcodeproj">
+               BuildableName = "Lovely KidsTests.xctest"
+               BlueprintName = "Lovely KidsTests"
+               ReferencedContainer = "container:Lovely Kids.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -56,9 +56,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "817F7B252B9C7DFF0067A24A"
-               BuildableName = "Lovly KidsUITests.xctest"
-               BlueprintName = "Lovly KidsUITests"
-               ReferencedContainer = "container:Lovly Kids.xcodeproj">
+               BuildableName = "Lovely KidsUITests.xctest"
+               BlueprintName = "Lovely KidsUITests"
+               ReferencedContainer = "container:Lovely Kids.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -78,9 +78,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "817F7B0B2B9C7DFD0067A24A"
-            BuildableName = "Lovly Kids.app"
-            BlueprintName = "Lovly Kids"
-            ReferencedContainer = "container:Lovly Kids.xcodeproj">
+            BuildableName = "Lovely Kids.app"
+            BlueprintName = "Lovely Kids"
+            ReferencedContainer = "container:Lovely Kids.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "817F7B0B2B9C7DFD0067A24A"
-            BuildableName = "Lovly Kids.app"
-            BlueprintName = "Lovly Kids"
-            ReferencedContainer = "container:Lovly Kids.xcodeproj">
+            BuildableName = "Lovely Kids.app"
+            BlueprintName = "Lovely Kids"
+            ReferencedContainer = "container:Lovely Kids.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -111,10 +111,10 @@ struct LoginView: View {
                     }
                     .foregroundColor(.gray)
                     Spacer()
-                    Button {
-                        
+                    NavigationLink {
+                        LoginWithPhone()
                     } label: {
-                        Text("Войдите через ")
+                        Text("Log in with phone")
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .foregroundColor(.black)

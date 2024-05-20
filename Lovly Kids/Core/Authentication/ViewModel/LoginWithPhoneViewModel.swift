@@ -6,3 +6,9 @@
 //
 
 import Foundation
+ 
+class LoginWithPhoneViewModel: ObservableObject {
+    @Published var phone = ""
+    @Published var countryNumber = ""
+    @Published var code = ""
+}

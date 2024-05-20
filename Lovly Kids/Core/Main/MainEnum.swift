@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 enum MainEnum: Int, CaseIterable, Identifiable {
+    
+    
     case how
     case you
     case sale

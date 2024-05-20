@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%@" : {
       "localizations" : {
         "en" : {
@@ -13,6 +16,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@"
+          }
+        }
+      }
+    },
+    "1" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1"
           }
         }
       }
@@ -42,7 +55,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Офармление"
+            "value" : "Оформление"
           }
         }
       }
@@ -87,6 +100,16 @@
         }
       }
     },
+    "Code" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Код"
+          }
+        }
+      }
+    },
     "Color" : {
       "localizations" : {
         "ru" : {
@@ -103,17 +126,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "КОНТАКТЫ"
-          }
-        }
-      }
-    },
-    "Continue with Facebook" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Продолжите с Facebook"
           }
         }
       }
@@ -189,7 +201,14 @@
       }
     },
     "Email" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Почта"
+          }
+        }
+      }
     },
     "Enter your age" : {
       "localizations" : {
@@ -262,12 +281,16 @@
       }
     },
     "House" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Главный"
+          }
+        }
+      }
     },
     "Image not loaded" : {
-
-    },
-    "Image URL: %@" : {
 
     },
     "Info" : {
@@ -311,7 +334,14 @@
       }
     },
     "Lovely Kids" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lovely Kids"
+          }
+        }
+      }
     },
     "Lovly kids FAQ" : {
       "localizations" : {
@@ -329,17 +359,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Главный"
-          }
-        }
-      }
-    },
-    "Main view" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Главный экаран"
           }
         }
       }
@@ -394,6 +413,16 @@
         }
       }
     },
+    "number" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Номер"
+          }
+        }
+      }
+    },
     "OR" : {
       "localizations" : {
         "ru" : {
@@ -405,7 +434,34 @@
       }
     },
     "Password" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пароль"
+          }
+        }
+      }
+    },
+    "Please Enter verefy Code" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста введите код"
+          }
+        }
+      }
+    },
+    "Please Enter Your Number To Verefy Your Account" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста введите свой номер для входа"
+          }
+        }
+      }
     },
     "Profile" : {
       "localizations" : {
@@ -468,10 +524,24 @@
       }
     },
     "The often order" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Часто заказывают"
+          }
+        }
+      }
     },
     "There are 31659 nannies in total!" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всего 31659 нянь"
+          }
+        }
+      }
     },
     "To: " : {
       "localizations" : {
@@ -493,8 +563,35 @@
         }
       }
     },
-    "Войдите через " : {
-
+    "Verefi Code" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Код"
+          }
+        }
+      }
+    },
+    "Verefi Your Number" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подтвердите номер"
+          }
+        }
+      }
+    },
+    "Войдите через телефон" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти через телефон"
+          }
+        }
+      }
     },
     "ООО «LOVLYKIDS»" : {
       "localizations" : {
@@ -507,7 +604,14 @@
       }
     },
     "Регистрация" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Регистрация"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

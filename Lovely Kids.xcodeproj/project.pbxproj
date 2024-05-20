@@ -136,12 +136,12 @@
 		812F8E9A2BEE8AF700F93F04 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		81419C7F2BD53F4600656957 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8179B1142BD59784009AED7C /* Lovly_KidsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lovly_KidsApp.swift; path = "../../../../Swift/Lovly Kids/Lovly Kids/App/Lovly_KidsApp.swift"; sourceTree = "<group>"; };
-		817F7B0C2B9C7DFD0067A24A /* Lovly Kids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lovly Kids.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		817F7B0C2B9C7DFD0067A24A /* Lovely Kids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lovely Kids.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		817F7B132B9C7DFF0067A24A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		817F7B162B9C7DFF0067A24A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		817F7B1C2B9C7DFF0067A24A /* Lovly KidsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lovly KidsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		817F7B1C2B9C7DFF0067A24A /* Lovely KidsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lovely KidsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		817F7B202B9C7DFF0067A24A /* Lovly_KidsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lovly_KidsTests.swift; sourceTree = "<group>"; };
-		817F7B262B9C7DFF0067A24A /* Lovly KidsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lovly KidsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		817F7B262B9C7DFF0067A24A /* Lovely KidsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lovely KidsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		817F7B2A2B9C7DFF0067A24A /* Lovly_KidsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lovly_KidsUITests.swift; sourceTree = "<group>"; };
 		817F7B2C2B9C7DFF0067A24A /* Lovly_KidsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lovly_KidsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		817F7BA12B9C840A0067A24A /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -239,6 +239,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		810E14BF2BFB7FE60031CC80 /* Shrifts */ = {
+			isa = PBXGroup;
+			children = (
+				81032B142BED80B80068FB0D /* MonteCarlo-Regular.ttf */,
+				81032B162BED84BF0068FB0D /* Montserrat-Regular.ttf */,
+				81DD85BA2BEEC64200BC602E /* arial_black.ttf */,
+			);
+			path = Shrifts;
+			sourceTree = "<group>";
+		};
 		812F8E982BEE8AE400F93F04 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,9 +288,9 @@
 		817F7B0D2B9C7DFD0067A24A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				817F7B0C2B9C7DFD0067A24A /* Lovly Kids.app */,
-				817F7B1C2B9C7DFF0067A24A /* Lovly KidsTests.xctest */,
-				817F7B262B9C7DFF0067A24A /* Lovly KidsUITests.xctest */,
+				817F7B0C2B9C7DFD0067A24A /* Lovely Kids.app */,
+				817F7B1C2B9C7DFF0067A24A /* Lovely KidsTests.xctest */,
+				817F7B262B9C7DFF0067A24A /* Lovely KidsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -295,11 +305,9 @@
 				817F7B9E2B9C83B00067A24A /* Model */,
 				817F7B9F2B9C83B90067A24A /* Service */,
 				817F7BA02B9C83C80067A24A /* Utils */,
-				817F7B132B9C7DFF0067A24A /* Assets.xcassets */,
-				81032B142BED80B80068FB0D /* MonteCarlo-Regular.ttf */,
-				81032B162BED84BF0068FB0D /* Montserrat-Regular.ttf */,
-				81DD85BA2BEEC64200BC602E /* arial_black.ttf */,
+				810E14BF2BFB7FE60031CC80 /* Shrifts */,
 				817F7B152B9C7DFF0067A24A /* Preview Content */,
+				817F7B132B9C7DFF0067A24A /* Assets.xcassets */,
 			);
 			path = "Lovly Kids";
 			sourceTree = "<group>";
@@ -676,9 +684,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		817F7B0B2B9C7DFD0067A24A /* Lovly Kids */ = {
+		817F7B0B2B9C7DFD0067A24A /* Lovely Kids */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 817F7B302B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovly Kids" */;
+			buildConfigurationList = 817F7B302B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovely Kids" */;
 			buildPhases = (
 				817F7B082B9C7DFD0067A24A /* Sources */,
 				817F7B092B9C7DFD0067A24A /* Frameworks */,
@@ -689,7 +697,7 @@
 			);
 			dependencies = (
 			);
-			name = "Lovly Kids";
+			name = "Lovely Kids";
 			packageProductDependencies = (
 				812F9E002B9F813800BED361 /* FirebaseAnalytics */,
 				812F9E022B9F813800BED361 /* FirebaseAnalyticsOnDeviceConversion */,
@@ -721,12 +729,12 @@
 				810E14BC2BFB7B1B0031CC80 /* SDWebImageSwiftUI */,
 			);
 			productName = "Lovly Kids";
-			productReference = 817F7B0C2B9C7DFD0067A24A /* Lovly Kids.app */;
+			productReference = 817F7B0C2B9C7DFD0067A24A /* Lovely Kids.app */;
 			productType = "com.apple.product-type.application";
 		};
-		817F7B1B2B9C7DFF0067A24A /* Lovly KidsTests */ = {
+		817F7B1B2B9C7DFF0067A24A /* Lovely KidsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 817F7B332B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovly KidsTests" */;
+			buildConfigurationList = 817F7B332B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovely KidsTests" */;
 			buildPhases = (
 				817F7B182B9C7DFF0067A24A /* Sources */,
 				817F7B192B9C7DFF0067A24A /* Frameworks */,
@@ -737,14 +745,14 @@
 			dependencies = (
 				817F7B1E2B9C7DFF0067A24A /* PBXTargetDependency */,
 			);
-			name = "Lovly KidsTests";
+			name = "Lovely KidsTests";
 			productName = "Lovly KidsTests";
-			productReference = 817F7B1C2B9C7DFF0067A24A /* Lovly KidsTests.xctest */;
+			productReference = 817F7B1C2B9C7DFF0067A24A /* Lovely KidsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		817F7B252B9C7DFF0067A24A /* Lovly KidsUITests */ = {
+		817F7B252B9C7DFF0067A24A /* Lovely KidsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 817F7B362B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovly KidsUITests" */;
+			buildConfigurationList = 817F7B362B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovely KidsUITests" */;
 			buildPhases = (
 				817F7B222B9C7DFF0067A24A /* Sources */,
 				817F7B232B9C7DFF0067A24A /* Frameworks */,
@@ -755,9 +763,9 @@
 			dependencies = (
 				817F7B282B9C7DFF0067A24A /* PBXTargetDependency */,
 			);
-			name = "Lovly KidsUITests";
+			name = "Lovely KidsUITests";
 			productName = "Lovly KidsUITests";
-			productReference = 817F7B262B9C7DFF0067A24A /* Lovly KidsUITests.xctest */;
+			productReference = 817F7B262B9C7DFF0067A24A /* Lovely KidsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -783,7 +791,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 817F7B072B9C7DFD0067A24A /* Build configuration list for PBXProject "Lovly Kids" */;
+			buildConfigurationList = 817F7B072B9C7DFD0067A24A /* Build configuration list for PBXProject "Lovely Kids" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -801,9 +809,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				817F7B0B2B9C7DFD0067A24A /* Lovly Kids */,
-				817F7B1B2B9C7DFF0067A24A /* Lovly KidsTests */,
-				817F7B252B9C7DFF0067A24A /* Lovly KidsUITests */,
+				817F7B0B2B9C7DFD0067A24A /* Lovely Kids */,
+				817F7B1B2B9C7DFF0067A24A /* Lovely KidsTests */,
+				817F7B252B9C7DFF0067A24A /* Lovely KidsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -914,12 +922,12 @@
 /* Begin PBXTargetDependency section */
 		817F7B1E2B9C7DFF0067A24A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 817F7B0B2B9C7DFD0067A24A /* Lovly Kids */;
+			target = 817F7B0B2B9C7DFD0067A24A /* Lovely Kids */;
 			targetProxy = 817F7B1D2B9C7DFF0067A24A /* PBXContainerItemProxy */;
 		};
 		817F7B282B9C7DFF0067A24A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 817F7B0B2B9C7DFD0067A24A /* Lovly Kids */;
+			target = 817F7B0B2B9C7DFD0067A24A /* Lovely Kids */;
 			targetProxy = 817F7B272B9C7DFF0067A24A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1127,7 +1135,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lovly Kids.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lovly Kids";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lovely Kids.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lovely Kids";
 			};
 			name = Debug;
 		};
@@ -1147,7 +1155,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lovly Kids.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lovly Kids";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lovely Kids.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lovely Kids";
 			};
 			name = Release;
 		};
@@ -1194,7 +1202,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		817F7B072B9C7DFD0067A24A /* Build configuration list for PBXProject "Lovly Kids" */ = {
+		817F7B072B9C7DFD0067A24A /* Build configuration list for PBXProject "Lovely Kids" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				817F7B2E2B9C7DFF0067A24A /* Debug */,
@@ -1203,7 +1211,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		817F7B302B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovly Kids" */ = {
+		817F7B302B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovely Kids" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				817F7B312B9C7DFF0067A24A /* Debug */,
@@ -1212,7 +1220,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		817F7B332B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovly KidsTests" */ = {
+		817F7B332B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovely KidsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				817F7B342B9C7DFF0067A24A /* Debug */,
@@ -1221,7 +1229,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		817F7B362B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovly KidsUITests" */ = {
+		817F7B362B9C7DFF0067A24A /* Build configuration list for PBXNativeTarget "Lovely KidsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				817F7B372B9C7DFF0067A24A /* Debug */,
