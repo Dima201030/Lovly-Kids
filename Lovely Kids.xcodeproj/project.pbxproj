@@ -12,6 +12,9 @@
 		81032B132BED248E0068FB0D /* ChangeLaungeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81032B122BED248E0068FB0D /* ChangeLaungeEnum.swift */; };
 		81032B152BED80B80068FB0D /* MonteCarlo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81032B142BED80B80068FB0D /* MonteCarlo-Regular.ttf */; };
 		810E14BD2BFB7B1B0031CC80 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 810E14BC2BFB7B1B0031CC80 /* SDWebImageSwiftUI */; };
+		810E14C32BFB82B60031CC80 /* OftenOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E14C22BFB82B60031CC80 /* OftenOrderView.swift */; };
+		810E14C52BFB82EE0031CC80 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E14C42BFB82EE0031CC80 /* AchievementsView.swift */; };
+		810E14C72BFB83090031CC80 /* StorisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E14C62BFB83090031CC80 /* StorisView.swift */; };
 		810FFF392BE3E3EE006E818E /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810FFF382BE3E3EE006E818E /* Gradients.swift */; };
 		810FFF3B2BE40971006E818E /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810FFF3A2BE40971006E818E /* UIExtension.swift */; };
 		810FFF3D2BE40984006E818E /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810FFF3C2BE40984006E818E /* IntExtension.swift */; };
@@ -129,6 +132,9 @@
 		81032B122BED248E0068FB0D /* ChangeLaungeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLaungeEnum.swift; sourceTree = "<group>"; };
 		81032B142BED80B80068FB0D /* MonteCarlo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MonteCarlo-Regular.ttf"; sourceTree = "<group>"; };
 		81032B162BED84BF0068FB0D /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		810E14C22BFB82B60031CC80 /* OftenOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OftenOrderView.swift; sourceTree = "<group>"; };
+		810E14C42BFB82EE0031CC80 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
+		810E14C62BFB83090031CC80 /* StorisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorisView.swift; sourceTree = "<group>"; };
 		810FFF382BE3E3EE006E818E /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		810FFF3A2BE40971006E818E /* UIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
 		810FFF3C2BE40984006E818E /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
@@ -249,11 +255,30 @@
 			path = Shrifts;
 			sourceTree = "<group>";
 		};
+		810E14C02BFB81740031CC80 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				81DD85B82BEEBA0F00BC602E /* MainEnum.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		810E14C12BFB82840031CC80 /* AdditionalView */ = {
+			isa = PBXGroup;
+			children = (
+				810E14C22BFB82B60031CC80 /* OftenOrderView.swift */,
+				810E14C42BFB82EE0031CC80 /* AchievementsView.swift */,
+				810E14C62BFB83090031CC80 /* StorisView.swift */,
+			);
+			path = AdditionalView;
+			sourceTree = "<group>";
+		};
 		812F8E982BEE8AE400F93F04 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				812F8E992BEE8AEC00F93F04 /* View */,
-				81DD85B82BEEBA0F00BC602E /* MainEnum.swift */,
+				810E14C02BFB81740031CC80 /* ViewModel */,
+				810E14C12BFB82840031CC80 /* AdditionalView */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -866,15 +891,18 @@
 				817F7BEA2B9C871B0067A24A /* InfoViewModel.swift in Sources */,
 				817F7BC32B9C85A00067A24A /* InboxView.swift in Sources */,
 				817F7BDE2B9C86B80067A24A /* ContentViewModel.swift in Sources */,
+				810E14C32BFB82B60031CC80 /* OftenOrderView.swift in Sources */,
 				817F7BA52B9C84150067A24A /* LoginView.swift in Sources */,
 				817F7BD92B9C86800067A24A /* ProfileViewModel.swift in Sources */,
 				817F7BBD2B9C85600067A24A /* ChatBubble.swift in Sources */,
 				817F7BD32B9C86440067A24A /* EditPrivaryInfo.swift in Sources */,
 				817F7BA62B9C84150067A24A /* RegisterView.swift in Sources */,
+				810E14C72BFB83090031CC80 /* StorisView.swift in Sources */,
 				817F7BDC2B9C86B40067A24A /* ContentView.swift in Sources */,
 				817F7BB62B9C852F0067A24A /* ChatService.swift in Sources */,
 				817F7BCA2B9C85E20067A24A /* NewMessageView.swift in Sources */,
 				810FFF3D2BE40984006E818E /* IntExtension.swift in Sources */,
+				810E14C52BFB82EE0031CC80 /* AchievementsView.swift in Sources */,
 				817F7BF22B9C872B0067A24A /* UserService.swift in Sources */,
 				817F7BC02B9C85890067A24A /* InboxService.swift in Sources */,
 				817F7BC42B9C85A00067A24A /* InboxRootNew.swift in Sources */,

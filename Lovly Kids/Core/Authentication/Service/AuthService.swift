@@ -29,11 +29,7 @@ class AuthService {
         } catch {
         }
     }
-//    func loginWithPhone(withPhone phone: String, countryNumber: String) {
-//        do {
-//            let result = try awa
-//        }
-//    }
+
     @MainActor
     func createUser(withEmail email: String, password: String, fullname: String, age: Int, profileColor: String) async throws {
         do {

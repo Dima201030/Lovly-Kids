@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
     "%@" : {
       "localizations" : {
         "en" : {
@@ -21,6 +18,7 @@
       }
     },
     "1" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -101,6 +99,7 @@
       }
     },
     "Code" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -290,9 +289,6 @@
         }
       }
     },
-    "Image not loaded" : {
-
-    },
     "Info" : {
       "localizations" : {
         "ru" : {
@@ -312,6 +308,9 @@
           }
         }
       }
+    },
+    "Log in with phone" : {
+
     },
     "Log out" : {
       "localizations" : {
@@ -414,6 +413,7 @@
       }
     },
     "number" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -444,6 +444,7 @@
       }
     },
     "Please Enter verefy Code" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -454,6 +455,7 @@
       }
     },
     "Please Enter Your Number To Verefy Your Account" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -564,6 +566,7 @@
       }
     },
     "Verefi Code" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -574,6 +577,7 @@
       }
     },
     "Verefi Your Number" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -584,6 +588,7 @@
       }
     },
     "Войдите через телефон" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -592,6 +597,9 @@
           }
         }
       }
+    },
+    "Вход" : {
+
     },
     "ООО «LOVLYKIDS»" : {
       "localizations" : {

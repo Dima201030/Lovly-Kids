@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum ProfileImageSize {
+    
     case xxSmall
     case xSmall
     case small
@@ -35,6 +36,7 @@ enum ProfileImageSize {
         }
     }
 }
+
 struct CircularProfileImageView: View {
     var user: User?
     let size: ProfileImageSize

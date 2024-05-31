@@ -19,7 +19,6 @@ struct InboxView: View {
     }
     var body: some View {
         NavigationStack {
-           
             ZStack {
                 Color("F9F6F1")
                     .ignoresSafeArea()
@@ -37,7 +36,10 @@ struct InboxView: View {
                 .listStyle(PlainListStyle())
                 .navigationDestination(isPresented: $showChat, destination: {
                     if let user = selectedUser {
-                        ChatView(user: user)
+                        ChatView(user: user, onDisappear: {
+                            viewModel.loadRecentMessages() // Загрузка данных при закрытии чата
+                            selectedUser = nil // Сброс выбранного пользователя
+                        })
                     }
                 })
                 .onChange(of: selectedUser, perform: { newValue in
@@ -45,7 +47,10 @@ struct InboxView: View {
                 })
                 .navigationDestination(for: Message.self, destination: { message in
                     if let user = message.user {
-                        ChatView(user: user)
+                        ChatView(user: user, onDisappear: {
+                            viewModel.loadRecentMessages() // Загрузка данных при закрытии чата
+                            selectedUser = nil // Сброс выбранного пользователя
+                        })
                     }
                 })
                 .fullScreenCover(isPresented: $showNewMessageView) {
@@ -58,7 +63,6 @@ struct InboxView: View {
                             Text("Chats")
                                 .font(.title)
                                 .fontWeight(.semibold)
-                            
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -72,11 +76,12 @@ struct InboxView: View {
                                 .foregroundStyle(.black, Color(.systemGray5))
                         }
                     }
-            }
+                }
             }
         }
     }
 }
+
 
 #Preview {
     InboxView()

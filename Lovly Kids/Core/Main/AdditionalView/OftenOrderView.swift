@@ -13,13 +13,14 @@ struct OftenOrder: View {
             Color.white
             
             VStack(alignment: .leading) {
+                
                 Text("The often order")
                     .font(.title)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
                     .padding()
+                
                 HStack {
-                    
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack{
                             ForEach(OftenOrderEnum.allCases, id: \.self) { options in

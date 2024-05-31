@@ -13,10 +13,12 @@ struct ChatView: View {
     @ObservedObject private var keyboard = KeyboardResponder()
     @State private var textFieldInput: String = ""
     let user: User
+    let onDisappear: (() -> Void)?
     
-    init(user: User) {
+    init(user: User, onDisappear: (() -> Void)? = nil) {
         self.user = user
         self._viewModel = StateObject(wrappedValue: ChatViewModel(user: user))
+        self.onDisappear = onDisappear
     }
     
     var body: some View {
@@ -26,7 +28,7 @@ struct ChatView: View {
                     VStack(spacing: 8) {
                         ForEach(viewModel.messages) { message in
                             ChatMessageView(message: message)
-                                .id(message.id) // Убедитесь, что каждое сообщение имеет уникальный id
+                                .id(message.id)
                         }
                     }
                     .padding(.bottom, 16)
@@ -36,7 +38,7 @@ struct ChatView: View {
                 }
                 Spacer()
                 HStack() {
-                    TextField("Message..." , text: $viewModel.messageText, axis: .vertical)
+                    TextField("Message...", text: $viewModel.messageText, axis: .vertical)
                         .padding(12)
                         .padding(.trailing, 48)
                         .background(Color(.systemGroupedBackground))
@@ -46,7 +48,7 @@ struct ChatView: View {
                         viewModel.sendMessage()
                         viewModel.messageText = ""
                     } label: {
-                        VStack{
+                        VStack {
                             Text("Send")
                                 .foregroundColor(.black)
                                 .font(.subheadline)
@@ -56,11 +58,13 @@ struct ChatView: View {
                         .cornerRadius(5)
                     }
                     .padding(.horizontal)
-                    
                 }
                 .padding()
             }
             .navigationBarTitle(user.fullname, displayMode: .inline)
+        }
+        .onDisappear {
+            onDisappear?()
         }
     }
     
@@ -70,6 +74,7 @@ struct ChatView: View {
         }
     }
 }
+
 
 final class KeyboardResponder: ObservableObject {
     private var notificationCenter: NotificationCenter

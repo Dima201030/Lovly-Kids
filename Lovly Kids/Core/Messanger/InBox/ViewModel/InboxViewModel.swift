@@ -15,13 +15,18 @@ class InboxViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     private let service = InboxService()
+    private let vieModelChat = ChatViewModel(user: InboxViewModel().currentUser!)
     
     init() {
         settupSubscribers()
         service.observeRecentMessages()
         
     }
-    
+    func loadRecentMessages() {
+        settupSubscribers()
+        service.observeRecentMessages()
+        vieModelChat.observeMessage()
+    }
     private func settupSubscribers() {
         UserService.shared.$currentUser.sink { [weak self] user in
             self?.currentUser = user
