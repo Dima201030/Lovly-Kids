@@ -19,6 +19,7 @@ class InboxViewModel: ObservableObject {
     init() {
         settupSubscribers()
         service.observeRecentMessages()
+        
     }
     
     private func settupSubscribers() {

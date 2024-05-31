@@ -28,6 +28,7 @@ enum MainEnum: Int, CaseIterable, Identifiable {
             return "Специалист"
         }
     }
+    
     var title: String {
         switch self {
         case .how:
@@ -40,6 +41,7 @@ enum MainEnum: Int, CaseIterable, Identifiable {
             return ""
         }
     }
+    
     var backrounColor: Color {
         switch self {
         case .how:
@@ -52,26 +54,17 @@ enum MainEnum: Int, CaseIterable, Identifiable {
             return Color.white
         }
     }
+    
     var id: Int { return self.rawValue }
+    
 }
 enum OftenOrderEnum: Int, CaseIterable, Identifiable {
+    
     case Tanya
     case Maria
     case Katya
     case Lera
     
-//    var imageUrl: String {
-//        switch self {
-//        case .Tanya:
-//
-//        case .Maria:
-//
-//        case .Katya:
-//
-//        case .Lera:
-//
-//        }
-//    }
     var title: String {
         switch self {
         case .Tanya:
@@ -84,6 +77,7 @@ enum OftenOrderEnum: Int, CaseIterable, Identifiable {
             return "Лера Степанова"
         }
     }
+    
     var backrounColor: Color {
         switch self {
         case .Tanya:
@@ -96,5 +90,7 @@ enum OftenOrderEnum: Int, CaseIterable, Identifiable {
             Color("FFF1E6")
         }
     }
+    
     var id: Int { return self.rawValue }
+    
 }
