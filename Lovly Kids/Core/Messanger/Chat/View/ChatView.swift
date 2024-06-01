@@ -33,9 +33,7 @@ struct ChatView: View {
                     }
                     .padding(.bottom, 16)
                 }
-                .onChange(of: viewModel.messages) { _ in
-                    scrollToBottom(scrollView)
-                }
+                
                 Spacer()
                 HStack() {
                     TextField("Message...", text: $viewModel.messageText, axis: .vertical)

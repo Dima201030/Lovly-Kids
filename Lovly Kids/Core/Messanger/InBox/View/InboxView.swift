@@ -37,19 +37,13 @@ struct InboxView: View {
                 .navigationDestination(isPresented: $showChat, destination: {
                     if let user = selectedUser {
                         ChatView(user: user, onDisappear: {
-                            viewModel.loadRecentMessages() // Загрузка данных при закрытии чата
-                            selectedUser = nil // Сброс выбранного пользователя
                         })
                     }
                 })
-                .onChange(of: selectedUser, perform: { newValue in
-                    showChat = newValue != nil
-                })
+                
                 .navigationDestination(for: Message.self, destination: { message in
                     if let user = message.user {
                         ChatView(user: user, onDisappear: {
-                            viewModel.loadRecentMessages() // Загрузка данных при закрытии чата
-                            selectedUser = nil // Сброс выбранного пользователя
                         })
                     }
                 })

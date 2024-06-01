@@ -14,6 +14,7 @@ struct Storis: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack{
+                    
                     ForEach(MainEnum.allCases, id: \.self) { options in
                         ZStack {
                             options.backrounColor

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @StateObject var viewModel = ContentViewModel()
     @EnvironmentObject var appData: AppData
     var body: some View {
