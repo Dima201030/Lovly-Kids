@@ -97,7 +97,7 @@ struct LoginView: View {
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
                     }
-                    .frame(width: 360, height: 44)                                
+                    .frame(width: 360, height: 44)
                     .cornerRadius(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)

@@ -22,9 +22,9 @@ struct MainView: View {
                     VStack {
                         Storis()
                             .cornerRadius(35)
-                            .frame(width: UIScreen.main.bounds.width - 16, height: 200)
+                            .frame(width: UIScreen.main.bounds.width, height: 200)
                             .offset(y: -38)
-                        
+                            
                         Image("emotional-baggage")
                             .resizable()
                             .frame(width: UIScreen.main.bounds.width - 16, height: 350)

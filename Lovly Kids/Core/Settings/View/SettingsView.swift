@@ -59,7 +59,7 @@ struct SettingsView: View {
                     
                     Section{
                         NavigationLink {
-                            EmptyView()
+                            SessionsView()
                         } label: {
                             HStack{
                                 ZStack {

@@ -10,97 +10,7 @@ import Firebase
 import FirebaseStorage
 import PhotosUI
 struct ProfileView: View {
-    //    let user: User
-    //    @StateObject var profileViewModel = ProfileViewModel()
-    //    @Environment(\.colorScheme) var colorScheme
-    //    @State private var showSheet = false
-    //    @State private var image: UIImage?
-    //    @State private var imageURL: URL?
-    //    @State private var showingImagePicker = false
-    //    @State private var loadedImage: UIImage?
-    //    private let storage = Storage.storage()
-    //    var body: some View {
-    //        NavigationStack {
-    //            VStack {
-    //                if let profileImage = profileViewModel.profileImage {
-    //                    ZStack {
-    //                        Circle()
-    //                            .frame(width: 127, height: 127)
-    //                            .foregroundColor(profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.gray : Color.black))
-    //
-    //                        profileImage
-    //                            .resizable()
-    //                            .cornerRadius(15)
-    //                            .scaledToFill()
-    //                            .clipShape(Circle())
-    //                            .frame(width: 120, height: 120)
-    //                            .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black)) : Color.white, radius: 30) // Use average color in shadow
-    //                    }
-    //                } else {
-    //                    Button("Select Image") {
-    //                        self.showingImagePicker = true
-    //                    }
-    //                    .padding()
-    //                    .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-    //                        ImagePicker(image: self.$image)
-    //                    }
-    //                }
-    //                if let loadedImage = loadedImage {
-    //                    Image(uiImage: loadedImage)
-    //                        .resizable()
-    //                        .cornerRadius(15)
-    //                        .scaledToFill()
-    //                        .clipShape(Circle())
-    //                        .frame(width: 120, height: 120)
-    //                        .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black)) : Color.white, radius: 30) // Use average color in shadow
-    //
-    //                } else {
-    //                    Text("Image not loaded")
-    //                }
-    //
-    //                Button("Load Image") {
-    //                    if let imageURL = imageURL {
-    //                        image(from: imageURL) { image in
-    //                            loadedImage = image
-    //                        }
-    //                    }
-    //                }
-    //
-    //                if let imageURL = imageURL {
-    //                    Text("Image URL: \(imageURL.absoluteString)")
-    //                        .padding()
-    //                }
-    //
-    //                List {
-    //                    Section {
-    //                        Button {
-    //                            showSheet.toggle()
-    //                        } label: {
-    //                            HStack {
-    //                                Image(systemName: "person.text.rectangle")
-    //                                Text("Edit main data")
-    //                            }
-    //                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-    //                        }
-    //
-    //                    }
-    //                    Section {
-    //                        Button(action: {AuthService.shared.singOut()}) {
-    //                            Text("Log out")
-    //                                .foregroundColor(.red)
-    //                        }
-    //                    }
-    //                }
-    //                .offset(y: 25)
-    //            }
-    //            .navigationTitle("Profile")
-    //            .navigationBarTitleDisplayMode(.inline)
-    //            .sheet(isPresented: $showSheet, content: {
-    //                EditPrivaryInfo(user: user)
-    //                    .environmentObject(AppData())
-    //            })
-    //        }
-    //    }
+    
     let user: User
     @StateObject var profileViewModel = ProfileViewModel()
     @Environment(\.colorScheme) var colorScheme
@@ -169,7 +79,7 @@ struct ProfileView: View {
                         } label: {
                             HStack {
                                 Image(systemName: "person.text.rectangle")
-                                Text("Edit main data")
+                                Text("Edit profile")
                             }
                             .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                         }
@@ -209,6 +119,7 @@ struct ProfileView: View {
             .sheet(isPresented: $showSheet, content: {
                 EditPrivaryInfo(user: user)
                     .environmentObject(AppData())
+                    .environment(\.colorScheme, .light)
             })
         }
     }

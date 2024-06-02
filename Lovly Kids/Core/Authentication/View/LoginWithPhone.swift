@@ -50,7 +50,7 @@ struct LoginWithPhone: View {
 //                NavigationLink(destination: SecondPage(ID: $ID), isActive: $show){
 //                    Button {
 //                        PhoneAuthProvider.provider().verifyPhoneNumber("+"+viewModel.countryNumber+viewModel.phone, uiDelegate: nil) { (ID, err) in
-//                            
+//
 //                            if err != nil {
 //                                msg = (err?.localizedDescription)!
 //                                alert.toggle()
@@ -62,7 +62,7 @@ struct LoginWithPhone: View {
 //                    } label: {
 //                        Text("Done")
 //                            .frame(width: UIScreen.main.bounds.width - 30, height: 50)
-//                        
+//
 //                    }
 //                }
 //                .foregroundColor(.white)
@@ -89,7 +89,7 @@ struct LoginWithPhone: View {
 //                Text("Please Enter verefy Code")
 //                    .font(.body)
 //                    .foregroundColor(.gray)
-//                
+//
 //                TextField("Code", text: $viewModel.code)
 //                    .padding()
 //                    .background(Color("EED8B7"))
@@ -104,13 +104,13 @@ struct LoginWithPhone: View {
 //                            alert.toggle()
 //                            return
 //                        }
-//                        
+//
 //                    }
 //                    self.userSession = result.user
 //                } label: {
 //                    Text("Done")
 //                        .frame(width: UIScreen.main.bounds.width - 30, height: 50)
-//                    
+//
 //                }
 //                .foregroundColor(.white)
 //                .background(Color.orange)

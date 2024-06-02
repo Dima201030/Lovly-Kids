@@ -48,7 +48,9 @@
 		812F9E332B9F813900BED361 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 812F9E322B9F813900BED361 /* FirebaseStorage */; };
 		812F9E352B9F813900BED361 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 812F9E342B9F813900BED361 /* FirebaseStorageCombine-Community */; };
 		81419C802BD53F4600656957 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81419C7F2BD53F4600656957 /* GoogleService-Info.plist */; };
-		8179B1152BD59784009AED7C /* Lovly_KidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8179B1142BD59784009AED7C /* Lovly_KidsApp.swift */; };
+		81509F332C0BFC3F006FF43A /* SessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81509F322C0BFC3F006FF43A /* SessionsView.swift */; };
+		81509F352C0BFC47006FF43A /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81509F342C0BFC47006FF43A /* SessionService.swift */; };
+		817A08B42C0BFA7300CC8E9D /* Lovly_KidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A08B32C0BFA7300CC8E9D /* Lovly_KidsApp.swift */; };
 		817F7B142B9C7DFF0067A24A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 817F7B132B9C7DFF0067A24A /* Assets.xcassets */; };
 		817F7B172B9C7DFF0067A24A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 817F7B162B9C7DFF0067A24A /* Preview Assets.xcassets */; };
 		817F7B212B9C7DFF0067A24A /* Lovly_KidsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F7B202B9C7DFF0067A24A /* Lovly_KidsTests.swift */; };
@@ -141,7 +143,9 @@
 		810FFF3E2BE41C11006E818E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		812F8E9A2BEE8AF700F93F04 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		81419C7F2BD53F4600656957 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8179B1142BD59784009AED7C /* Lovly_KidsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lovly_KidsApp.swift; path = "../../../../Swift/Lovly Kids/Lovly Kids/App/Lovly_KidsApp.swift"; sourceTree = "<group>"; };
+		81509F322C0BFC3F006FF43A /* SessionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsView.swift; sourceTree = "<group>"; };
+		81509F342C0BFC47006FF43A /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
+		817A08B32C0BFA7300CC8E9D /* Lovly_KidsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lovly_KidsApp.swift; sourceTree = "<group>"; };
 		817F7B0C2B9C7DFD0067A24A /* Lovely Kids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lovely Kids.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		817F7B132B9C7DFF0067A24A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		817F7B162B9C7DFF0067A24A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -372,7 +376,7 @@
 		817F7B812B9C819A0067A24A /* App */ = {
 			isa = PBXGroup;
 			children = (
-				8179B1142BD59784009AED7C /* Lovly_KidsApp.swift */,
+				817A08B32C0BFA7300CC8E9D /* Lovly_KidsApp.swift */,
 				81419C7F2BD53F4600656957 /* GoogleService-Info.plist */,
 				810FFF3E2BE41C11006E818E /* Localizable.xcstrings */,
 			);
@@ -389,7 +393,6 @@
 				817F7B892B9C82180067A24A /* Messanger */,
 				817F7B8B2B9C823C0067A24A /* Root */,
 				817F7B8D2B9C825C0067A24A /* Settings */,
-				817F7B8E2B9C82680067A24A /* Tips */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -448,13 +451,6 @@
 				817F7B9A2B9C83480067A24A /* ViewModel */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		817F7B8E2B9C82680067A24A /* Tips */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tips;
 			sourceTree = "<group>";
 		};
 		817F7B8F2B9C82860067A24A /* View */ = {
@@ -549,6 +545,7 @@
 		817F7B9A2B9C83480067A24A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				81509F342C0BFC47006FF43A /* SessionService.swift */,
 				817F7BDF2B9C86D60067A24A /* SettingsViewModel.swift */,
 				81032B122BED248E0068FB0D /* ChangeLaungeEnum.swift */,
 			);
@@ -559,6 +556,7 @@
 			isa = PBXGroup;
 			children = (
 				817F7C772B9C99FE0067A24A /* SettingsView.swift */,
+				81509F322C0BFC3F006FF43A /* SessionsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -901,6 +899,7 @@
 				817F7BDC2B9C86B40067A24A /* ContentView.swift in Sources */,
 				817F7BB62B9C852F0067A24A /* ChatService.swift in Sources */,
 				817F7BCA2B9C85E20067A24A /* NewMessageView.swift in Sources */,
+				81509F332C0BFC3F006FF43A /* SessionsView.swift in Sources */,
 				810FFF3D2BE40984006E818E /* IntExtension.swift in Sources */,
 				810E14C52BFB82EE0031CC80 /* AchievementsView.swift in Sources */,
 				817F7BF22B9C872B0067A24A /* UserService.swift in Sources */,
@@ -913,15 +912,16 @@
 				817F7BD22B9C86440067A24A /* AppearanceView.swift in Sources */,
 				81032B132BED248E0068FB0D /* ChangeLaungeEnum.swift in Sources */,
 				81DD85B92BEEBA0F00BC602E /* MainEnum.swift in Sources */,
+				817A08B42C0BFA7300CC8E9D /* Lovly_KidsApp.swift in Sources */,
 				817F7BD62B9C86560067A24A /* ProfileView.swift in Sources */,
 				817F7BA92B9C84260067A24A /* LoginViewModel.swift in Sources */,
 				817F7BC82B9C85DB0067A24A /* NewMessangeViewModel.swift in Sources */,
 				817F7BBE2B9C85600067A24A /* ChatMessageCell.swift in Sources */,
 				817F7BB82B9C85450067A24A /* ChatViewModel.swift in Sources */,
 				817F7BA22B9C840A0067A24A /* AuthService.swift in Sources */,
+				81509F352C0BFC47006FF43A /* SessionService.swift in Sources */,
 				817F7BE02B9C86D60067A24A /* SettingsViewModel.swift in Sources */,
 				812F8E9B2BEE8AF700F93F04 /* MainView.swift in Sources */,
-				8179B1152BD59784009AED7C /* Lovly_KidsApp.swift in Sources */,
 				817F7BF42B9C87370067A24A /* Constants.swift in Sources */,
 				81032B0F2BED1F480068FB0D /* ChangeLaungeView.swift in Sources */,
 				817F7BED2B9C87240067A24A /* User.swift in Sources */,

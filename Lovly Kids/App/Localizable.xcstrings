@@ -68,6 +68,9 @@
         }
       }
     },
+    "Block" : {
+
+    },
     "Blue" : {
       "localizations" : {
         "ru" : {
@@ -149,6 +152,9 @@
         }
       }
     },
+    "Date: %@" : {
+
+    },
     "Devices" : {
       "localizations" : {
         "ru" : {
@@ -180,6 +186,7 @@
       }
     },
     "Edit main data" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -188,6 +195,9 @@
           }
         }
       }
+    },
+    "Edit profile" : {
+
     },
     "EditProfile" : {
       "localizations" : {
@@ -298,6 +308,9 @@
           }
         }
       }
+    },
+    "IP: %@" : {
+
     },
     "Language" : {
       "localizations" : {
@@ -495,6 +508,9 @@
         }
       }
     },
+    "Sessions" : {
+
+    },
     "Settings" : {
       "localizations" : {
         "ru" : {
@@ -545,6 +561,9 @@
         }
       }
     },
+    "Time: %@" : {
+
+    },
     "To: " : {
       "localizations" : {
         "ru" : {
@@ -564,6 +583,9 @@
           }
         }
       }
+    },
+    "Unblock" : {
+
     },
     "Verefi Code" : {
       "extractionState" : "stale",
