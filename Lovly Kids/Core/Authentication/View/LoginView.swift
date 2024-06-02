@@ -65,13 +65,18 @@ struct LoginView: View {
                             try await viewModel.login()
                         }
                     }) {
-                        Text("Login")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 360, height: 44)
-                            .background(Color("EED8B7"))
-                            .cornerRadius(10)
+                        if !viewModel.isProcessing {
+                            Text("Login")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                                .frame(width: 360, height: 44)
+                                .background(Color("EED8B7"))
+                                .cornerRadius(10)
+                        } else {
+                            ProgressView()
+                                .frame(width: 360, height: 44)
+                        }
                     }
                     .padding(.vertical)
                     
@@ -121,7 +126,6 @@ struct LoginView: View {
                         }
                         .font(.footnote)
                     }
-                    
                 }
                 .padding(.vertical)
             }

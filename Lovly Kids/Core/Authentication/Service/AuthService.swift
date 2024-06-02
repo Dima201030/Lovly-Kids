@@ -8,12 +8,12 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import SwiftUI
 
 class AuthService {
+    static let shared = AuthService()
     
     @Published var userSession: FirebaseAuth.User?
-    
-    static let shared = AuthService()
     
     init() {
         self.userSession = Auth.auth().currentUser
@@ -33,6 +33,7 @@ class AuthService {
             }
         } catch {
             print("DEBUG: Failed to login with error: \(error.localizedDescription)")
+            throw error
         }
     }
 
@@ -48,9 +49,9 @@ class AuthService {
             if let user = self.userSession {
                 try await createNewSession(for: user.uid)
             }
-            
         } catch {
             print("DEBUG: Failed to create user with error: \(error.localizedDescription)")
+            throw error
         }
     }
     
@@ -77,6 +78,7 @@ class AuthService {
             try await Firestore.firestore().collection("users").document(id).setData(encodedUser)
         } catch {
             print("DEBUG: Failed to change user data with error: \(error.localizedDescription)")
+            throw error
         }
     }
     
