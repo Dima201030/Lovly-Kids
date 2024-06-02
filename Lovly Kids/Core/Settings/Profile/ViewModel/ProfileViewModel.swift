@@ -5,15 +5,18 @@
 //  Created by Дима Кожемякин on 23.02.2024.
 //
 
-import Foundation
 import SwiftUI
 import PhotosUI
 
 class ProfileViewModel: ObservableObject {
-
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
+    
     @Published var selectItme: PhotosPickerItem? {
-        didSet { Task { try await loadImage() } }
+        didSet {
+            Task { 
+                try await loadImage()
+            }
+        }
     }
     
     // Инициализируем profileImage пустым значением

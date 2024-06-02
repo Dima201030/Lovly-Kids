@@ -8,31 +8,28 @@
 import SwiftUI
 
 struct AppearanceView: View {
-    @EnvironmentObject var appData: AppData
+    @EnvironmentObject private var appData: AppData
     @State private var showAlert = false
     
     var body: some View {
         NavigationStack {
             VStack {
-                Toggle(isOn: Binding<Bool>(
+                Toggle("Dark appearance", isOn: Binding<Bool>(
                     get: {
                         return appData.appearance == .dark
-                    },
-                    set: { newValue in
+                    }, set: { newValue in
                         appData.appearance = newValue ? .dark : .light
                         appData.saveColorScheme()
                         showAlert.toggle()
                     }
-                )) {
-                    Text("Dark appearance")
-                }
+                ))
                 .padding()
                 
-                Button(action: {
+                Button {
                     toggleSystemTheme()
-                }, label: {
+                } label: {
                     Text("Toggle System Theme")
-                })
+                }
                 .padding()
                 
                 Text("Current color scheme: \(appData.appearance == .dark ? "Dark" : "Light")")
@@ -43,19 +40,17 @@ struct AppearanceView: View {
     
     private func toggleSystemTheme() {
         // Toggle between light and dark modes
-        let newAppearance = appData.appearance == ColorScheme.dark ? ColorScheme.light : ColorScheme.dark
+        let newAppearance = appData.appearance == .dark ? .light : ColorScheme.dark
         appData.appearance = newAppearance
         appData.saveColorScheme()
         
         // Show alert to restart the app
         showAlert.toggle()
     }
-
+    
 }
 
-struct AppearanceView_Previews: PreviewProvider {
-    static var previews: some View {
-        AppearanceView()
-            .environmentObject(AppData())
-    }
+#Preview {
+    AppearanceView()
+        .environmentObject(AppData())
 }

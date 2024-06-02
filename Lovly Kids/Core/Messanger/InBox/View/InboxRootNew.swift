@@ -9,6 +9,7 @@ import SwiftUI
 
 struct InboxRootNew: View {
     let message: Message
+    
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             CircularProfileImageView(user: message.user, size: .medium)
@@ -25,6 +26,7 @@ struct InboxRootNew: View {
                     .lineLimit(2)
                     .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
             }
+            
             HStack {
                 Text(message.timestampString)
                 

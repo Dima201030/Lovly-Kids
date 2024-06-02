@@ -5,7 +5,6 @@
 //  Created by Дима Кожемякин on 29.02.2024.
 //
 
-import Foundation
 import Firebase
 
 class InboxService {
@@ -20,14 +19,12 @@ class InboxService {
             .collection("recent-messages")
             .order(by: "timestamp", descending: true)
         
-        
         query.addSnapshotListener { snapshot, _ in
             guard let changes = snapshot?.documentChanges.filter({
                 $0.type == .added || $0.type == .modified
             }) else { return }
-            self.documentChanges = changes  
+            
+            self.documentChanges = changes
         }
-        
-        
     }
 }

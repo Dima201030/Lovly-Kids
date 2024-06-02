@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct InfoByAppOffical: View {
-    @StateObject var viewModel = InfoViewModelTexts()
+    @StateObject private var viewModel = InfoViewModelTexts()
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
                     Text("ООО «LOVLYKIDS»")
+                    
                     Spacer()
+                    
                     Text("Firebase version: \(viewModel.versionFirebase)")
                 }
             }

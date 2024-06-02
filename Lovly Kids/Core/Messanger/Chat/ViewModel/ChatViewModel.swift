@@ -29,7 +29,7 @@ class ChatViewModel: ObservableObject {
     func sendMessage() {
         service.sendMessage(messageText)
     }
-
+    
     func clearMessages() {
         self.messages.removeAll()
     }

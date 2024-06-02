@@ -8,31 +8,23 @@
 import SwiftUI
 
 enum ProfileImageSize {
-    
-    case xxSmall
-    case xSmall
-    case small
-    case medium
-    case large
-    case xLarge
-    case max
+    case xxSmall,
+         xSmall,
+         small,
+         medium,
+         large,
+         xLarge,
+         max
     
     var dimension: CGFloat {
         switch self {
-        case .xxSmall:
-            return 28
-        case .xSmall:
-            return 32
-        case .small:
-            return 40
-        case .medium:
-            return 56
-        case .large:
-            return 64
-        case .xLarge:
-            return 80
-        case .max:
-            return 120
+        case .xxSmall: 28
+        case .xSmall: 32
+        case .small: 40
+        case .medium: 56
+        case .large: 64
+        case .xLarge: 80
+        case .max: 120
         }
     }
 }
@@ -40,6 +32,7 @@ enum ProfileImageSize {
 struct CircularProfileImageView: View {
     var user: User?
     let size: ProfileImageSize
+    
     var body: some View {
         if let imageUrl = user?.profileImageUrl {
             Image(imageUrl)
@@ -56,8 +49,6 @@ struct CircularProfileImageView: View {
     }
 }
 
-struct CircularProfileImageView_Preview: PreviewProvider {
-    static var previews: some View {
-        CircularProfileImageView(user: User.MOCK_USER, size: .max)
-    }
+#Preview {
+    CircularProfileImageView(user: User.MOCK_USER, size: .max)
 }

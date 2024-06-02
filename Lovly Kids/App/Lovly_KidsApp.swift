@@ -11,11 +11,11 @@ import FirebaseCore
 @main
 struct YourApp: App {
     // Register app delegate for Firebase setup
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @EnvironmentObject var viewModelChat: ChatViewModel
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var delegate
+    @EnvironmentObject private var viewModelChat: ChatViewModel
 
     // Create an instance of AppData
-    let appData = AppData()
+    private let appData = AppData()
     
     var body: some Scene {
         WindowGroup {

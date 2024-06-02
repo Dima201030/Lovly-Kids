@@ -5,10 +5,8 @@
 //  Created by Дима Кожемякин on 23.02.2024.
 //
 
-import Foundation
-import Firebase
-import FirebaseFirestoreSwift
 import SwiftUI
+import Firebase
 
 class AuthService {
     static let shared = AuthService()
@@ -36,7 +34,7 @@ class AuthService {
             throw error
         }
     }
-
+    
     @MainActor
     func createUser(withEmail email: String, password: String, fullname: String, age: Int, profileColor: String) async throws {
         do {
@@ -88,18 +86,19 @@ class AuthService {
     
     func deleteUser() {
         let user = Auth.auth().currentUser
-
+        
         user?.delete { error in
-          if let error = error {
-              self.singOut()
-          } else {
-              self.singOut()
-          }
+            if let error {
+                self.singOut()
+            } else {
+                self.singOut()
+            }
         }
     }
     
     private func createNewSession(for userId: String) async throws {
         let sessionId = UUID().uuidString
+        
         let sessionData: [String: Any] = [
             "date": Timestamp(date: Date()),
             "ip": getCurrentIPAddress(),
@@ -135,6 +134,6 @@ class AuthService {
     private func getCurrentIPAddress() -> String {
         // Здесь можно использовать подходящий метод для получения текущего IP-адреса
         // Пример: return "192.168.1.1"
-        return "\(Int.random(in: 0...200))"
+        "\(Int.random(in: 0...200))"
     }
 }

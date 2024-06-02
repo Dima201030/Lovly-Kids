@@ -7,27 +7,26 @@
 
 import Foundation
 
-class SettignsProfileViewModel: ObservableObject {
-    
-}
+//class SettignsProfileViewModel: ObservableObject {
+//    
+//}
 
-enum SettingsProfileEnum: Int, CaseIterable, Identifiable {
-    
+enum SettingsProfileEnum: Int {
     case privacy
     
     var title: String {
         switch self {
-        case .privacy:
-            return "Privacy"
+        case .privacy: "Privacy"
         }
     }
     
     var imageUrl: String {
         switch self {
-        case .privacy:
-            return "lock.fill"
+        case .privacy: "lock.fill"
         }
     }
-    var id: Int { return self.rawValue }
-
+    
+    var id: Int {
+        self.rawValue
+    }
 }

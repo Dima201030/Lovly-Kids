@@ -9,9 +9,11 @@ import SwiftUI
 import Combine
 
 struct ChatView: View {
-    @StateObject var viewModel: ChatViewModel
+    @StateObject private var viewModel: ChatViewModel
     @ObservedObject private var keyboard = KeyboardResponder()
-    @State private var textFieldInput: String = ""
+    
+    @State private var textFieldInput = ""
+    
     let user: User
     let onDisappear: (() -> Void)?
     
@@ -35,13 +37,15 @@ struct ChatView: View {
                 }
                 
                 Spacer()
-                HStack() {
+                
+                HStack {
                     TextField("Message...", text: $viewModel.messageText, axis: .vertical)
                         .padding(12)
                         .padding(.trailing, 48)
                         .background(Color(.systemGroupedBackground))
                         .font(.subheadline)
                         .cornerRadius(20)
+                    
                     Button {
                         viewModel.sendMessage()
                         viewModel.messageText = ""
@@ -52,7 +56,7 @@ struct ChatView: View {
                                 .font(.subheadline)
                                 .padding(5)
                         }
-                        .background(Color(.pink))
+                        .background(.pink)
                         .cornerRadius(5)
                     }
                     .padding(.horizontal)
@@ -76,11 +80,13 @@ struct ChatView: View {
 
 final class KeyboardResponder: ObservableObject {
     private var notificationCenter: NotificationCenter
-    @Published private(set) var currentHeight: CGFloat = 0
+    @Published private(set) var currentHeight = 0.0
     
     init(center: NotificationCenter = .default) {
         notificationCenter = center
+        
         notificationCenter.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
         notificationCenter.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     

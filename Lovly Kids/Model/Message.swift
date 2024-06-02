@@ -5,7 +5,6 @@
 //  Created by Дима Кожемякин on 29.02.2024.
 //
 
-import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
@@ -20,18 +19,18 @@ struct Message: Identifiable, Codable, Hashable {
     var user: User?
     
     var id: String {
-        return messageId ?? NSUUID().uuidString
+        messageId ?? NSUUID().uuidString
     }
     
     var chatPartnerId: String {
-        return fromId == Auth.auth().currentUser?.uid ? toId : fromId
+        fromId == Auth.auth().currentUser?.uid ? toId : fromId
     }
     
     var isFromCurrentUser: Bool {
-        return fromId == Auth.auth().currentUser?.uid
+        fromId == Auth.auth().currentUser?.uid
     }
     
     var timestampString: String {
-        return timestamp.dateValue().timestampString()
+        timestamp.dateValue().timestampString()
     }
 }

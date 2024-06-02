@@ -5,9 +5,8 @@
 //  Created by Дима Кожемякин on 23.02.2024.
 //
 
-import Foundation
-import FirebaseFirestoreSwift
 import SwiftUI
+import FirebaseFirestoreSwift
 
 struct User: Codable, Identifiable, Hashable {
     
@@ -19,11 +18,11 @@ struct User: Codable, Identifiable, Hashable {
     var profileColorString: String // Changed to String
     
     var id: String {
-        return uid ?? NSUUID().uuidString
+        uid ?? NSUUID().uuidString
     }
     
     var profileColor: Color { // Convert String color to Color
-        return Color(profileColorString)
+        Color(profileColorString)
     }
 }
 

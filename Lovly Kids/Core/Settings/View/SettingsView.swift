@@ -8,37 +8,38 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @StateObject var viewModel = InboxViewModel()
-    @EnvironmentObject var appData: AppData
+    @StateObject private var viewModel = InboxViewModel()
+    @EnvironmentObject private var appData: AppData
+    
     private var user: User? {
-        return viewModel.currentUser
+        viewModel.currentUser
     }
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 Color("F9F6F1")
+                
                 List {
-                    
-                    if let user = user {
+                    if let user {
                         Section {
-                            
                             NavigationLink(destination: ProfileView(user: user)) {
                                 HStack {
                                     ZStack {
                                         Color.blue
                                             .cornerRadius(10)
                                             .frame(width: 30, height: 30)
+                                        
                                         Image(systemName: "person.text.rectangle.fill")
                                             .foregroundColor(.white)
-                                        
                                     }
                                     
                                     Text("Profile")
                                 }
                             }
-                            
                         }
                     }
+                    
                     Section {
                         ForEach(SettingsOptionsViewModel.allCases, id: \.self) { option in
                             NavigationLink(destination: option.destinationView) {
@@ -47,9 +48,11 @@ struct SettingsView: View {
                                         option.backgroundColor
                                             .cornerRadius(10)
                                             .frame(width: 30, height: 30)
-                                        Image(systemName: "\(option.icon)")
+                                        
+                                        Image(systemName: option.icon)
                                             .foregroundColor(.white)
                                     }
+                                    
                                     Text(option.title)
                                         .font(.subheadline)
                                 }
@@ -57,24 +60,26 @@ struct SettingsView: View {
                         }
                     }
                     
-                    Section{
+                    Section {
                         NavigationLink {
                             SessionsView()
                         } label: {
-                            HStack{
+                            HStack {
                                 ZStack {
                                     Color.gray
                                         .cornerRadius(10)
                                         .frame(width: 30, height: 30)
+                                    
                                     Image(systemName: "macbook.and.iphone")
                                         .foregroundColor(.white)
                                 }
+                                
                                 Text("Devices")
                             }
                         }
                         
                     }
-                    Section{
+                    Section {
                         NavigationLink {
                             EmptyView()
                         } label: {
@@ -83,20 +88,23 @@ struct SettingsView: View {
                                     Color.orange
                                         .cornerRadius(10)
                                         .frame(width: 30, height: 30)
+                                    
                                     Image(systemName: "ellipsis.bubble.fill")
                                         .foregroundColor(.white)
                                 }
                                 Text("Ask a Question")
                             }
                         }
+                        
                         NavigationLink {
                             EmptyView()
                         } label: {
-                            HStack{
+                            HStack {
                                 ZStack {
                                     Color.blue
                                         .cornerRadius(10)
                                         .frame(width: 30, height: 30)
+                                    
                                     Image(systemName: "questionmark.circle.fill")
                                         .foregroundColor(.white)
                                 }
@@ -104,6 +112,7 @@ struct SettingsView: View {
                                 Text("Lovly kids FAQ")
                             }
                         }
+                        
                         NavigationLink {
                             InfoByAppOffical()
                         } label: {
@@ -112,6 +121,7 @@ struct SettingsView: View {
                                     Color.red
                                         .cornerRadius(10)
                                         .frame(width: 30, height: 30)
+                                    
                                     Image(systemName: "info")
                                         .foregroundColor(.white)
                                 }
@@ -119,13 +129,13 @@ struct SettingsView: View {
                                 Text("Info")
                             }
                         }
-                        
                     }
+                    
                     Section {
-                        Button(action: {AuthService.shared.singOut()}) {
-                            Text("Log out")
-                                .foregroundColor(.red)
+                        Button("Log out") {
+                            AuthService.shared.singOut()
                         }
+                        .foregroundColor(.red)
                     }
                 }
                 .navigationTitle("Settings")

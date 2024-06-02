@@ -13,15 +13,15 @@ struct Storis: View {
             Color.white
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack{
-                    
+                HStack {
                     ForEach(MainEnum.allCases, id: \.self) { options in
                         ZStack {
                             options.backrounColor
-                            Image("\(options.imageUrl)")
+                            
+                            Image(options.imageUrl)
                                 .resizable()
                             
-                            Text("\(options.title)")
+                            Text(options.title)
                                 .multilineTextAlignment(.center)
                             
                         }
@@ -29,7 +29,6 @@ struct Storis: View {
                         .frame(width: 100, height: 100)
                         .padding(8)
                     }
-                    
                 }
             }
         }

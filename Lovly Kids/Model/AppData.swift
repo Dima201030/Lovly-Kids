@@ -10,6 +10,7 @@ import SwiftUI
 class AppData: ObservableObject {
     @Published var appearance: ColorScheme = .light
     @Published var language: Locale = .autoupdatingCurrent
+    
     init() {
         self.appearance = getColorScheme()
         self.language = getLanguage()
@@ -19,8 +20,10 @@ class AppData: ObservableObject {
         let defaluts = UserDefaults.standard
         defaluts.set(language == .autoupdatingCurrent ? "automatic" : "en", forKey: "language")
     }
+    
     func getLanguage() -> Locale {
         let defaluts = UserDefaults.standard
+        
         if let rawValue = defaluts.string(forKey: "language") {
             print("DEBUG: \(rawValue)")
             return rawValue == "automatic" ? .init(identifier: "\(rawValue)") : .autoupdatingCurrent
@@ -30,6 +33,7 @@ class AppData: ObservableObject {
             return .autoupdatingCurrent
         }
     }
+    
     func saveColorScheme() {
         let defaults = UserDefaults.standard
         defaults.set(appearance == .dark ? "dark" : "light", forKey: "colorScheme")
@@ -37,6 +41,7 @@ class AppData: ObservableObject {
     
     private func getColorScheme() -> ColorScheme {
         let defaults = UserDefaults.standard
+        
         if let rawValue = defaults.string(forKey: "colorScheme") {
             return rawValue == "dark" ? .dark : .light
         } else {

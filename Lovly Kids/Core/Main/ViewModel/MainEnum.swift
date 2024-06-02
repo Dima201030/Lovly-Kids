@@ -5,12 +5,9 @@
 //  Created by Дима Кожемякин on 10.05.2024.
 //
 
-import Foundation
 import SwiftUI
 
 enum MainEnum: Int, CaseIterable, Identifiable {
-    
-    
     case how
     case you
     case sale
@@ -18,63 +15,49 @@ enum MainEnum: Int, CaseIterable, Identifiable {
     
     var imageUrl: String {
         switch self {
-        case .how:
-            return ""
-        case .you:
-            return "Ты это важно"
-        case .sale:
-            return "Скидки"
-        case .podbor:
-            return "Специалист"
+        case .how: ""
+        case .you: "Ты это важно"
+        case .sale: "Скидки"
+        case .podbor: "Специалист"
         }
     }
     
     var title: String {
         switch self {
-        case .how:
-            return "Как кошки влияют на детей 🤔"
-        case .you:
-            return ""
-        case .sale:
-            return ""
-        case .podbor:
-            return ""
+        case .how: "Как кошки влияют на детей 🤔"
+        case .you: ""
+        case .sale: ""
+        case .podbor: ""
         }
     }
     
     var backrounColor: Color {
         switch self {
-        case .how:
-            return Color("D3A58C")
-        case .you:
-            return Color.white
-        case .sale:
-            return Color.white
-        case .podbor:
-            return Color.white
+        case .how: Color("D3A58C")
+        case .you: .white
+        case .sale: .white
+        case .podbor: .white
         }
     }
     
-    var id: Int { return self.rawValue }
+    var id: Int {
+        self.rawValue
+    }
     
 }
+
 enum OftenOrderEnum: Int, CaseIterable, Identifiable {
-    
-    case Tanya
-    case Maria
-    case Katya
-    case Lera
+    case Tanya,
+         Maria,
+         Katya,
+         Lera
     
     var title: String {
         switch self {
-        case .Tanya:
-            return "Татьяна Теришкова"
-        case .Maria:
-            return "Мария Переносова"
-        case .Katya:
-            return "Катя Простосёлова"
-        case .Lera:
-            return "Лера Степанова"
+        case .Tanya: "Татьяна Теришкова"
+        case .Maria: "Мария Переносова"
+        case .Katya: "Катя Простосёлова"
+        case .Lera: "Лера Степанова"
         }
     }
     
@@ -82,15 +65,19 @@ enum OftenOrderEnum: Int, CaseIterable, Identifiable {
         switch self {
         case .Tanya:
             Color("EED8B7")
+            
         case .Maria:
             Color("D3A58C")
+            
         case .Katya:
             Color("F9F6F1")
+            
         case .Lera:
             Color("FFF1E6")
         }
     }
     
-    var id: Int { return self.rawValue }
-    
+    var id: Int {
+        self.rawValue
+    }
 }

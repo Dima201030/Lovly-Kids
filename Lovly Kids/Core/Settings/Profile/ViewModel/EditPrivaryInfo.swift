@@ -9,13 +9,16 @@ import SwiftUI
 import PhotosUI
 
 struct EditPrivaryInfo: View {
-    @Environment (\.colorScheme) var colorScheme
-    @StateObject var profileViewModel = ProfileViewModel()
+    @StateObject private var profileViewModel = ProfileViewModel()
+    @Environment (\.colorScheme) private var colorScheme
+    @Environment(\.dismiss) private var dissmis
+    
     @State private var fullname = ""
     @State private var age = ""
-    @Environment(\.dismiss) var dissmis
     @State private var selectColor = 1
+    
     var user: User
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -25,7 +28,7 @@ struct EditPrivaryInfo: View {
                             ZStack {
                                 Circle()
                                     .frame(width: 127, height: 127)
-                                    .foregroundColor(profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.gray : Color.black))
+                                    .foregroundColor(profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? .gray : .black))
                                 
                                 profileImage
                                     .resizable()
@@ -33,7 +36,7 @@ struct EditPrivaryInfo: View {
                                     .scaledToFill()
                                     .clipShape(Circle())
                                     .frame(width: 120, height: 120)
-                                    .shadow(color: profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? Color.white : Color.black), radius: 30) // Use average color in shadow
+                                    .shadow(color: profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? .white : .black), radius: 30) // Use average color in shadow
                                 
                             }
                         } else {
@@ -60,7 +63,7 @@ struct EditPrivaryInfo: View {
                             .multilineTextAlignment(.center)
                         
                         TextField("Age", text: $age)
-                            
+                        
                             .font(.subheadline)
                             .fontWeight(.light)
                             .multilineTextAlignment(.center)
@@ -95,7 +98,7 @@ struct EditPrivaryInfo: View {
                 } label: {
                     Text("Done")
                 }
-
+                
                 
             })
         }
@@ -107,6 +110,7 @@ struct EditPrivaryInfo: View {
         for i in user.fullname {
             words.append(i)
         }
+        
         return "\(words[0])"
     }
     
@@ -121,15 +125,12 @@ struct EditPrivaryInfo: View {
         }
         dissmis()
     }
-
+    
     private func selectToColor(select: Int) -> String {
         switch select {
-        case 1:
-            return "red"
-        case 2:
-            return "blue"
-        default:
-            return "gray"
+        case 1: "red"
+        case 2: "blue"
+        default: "gray"
         }
     }
 }

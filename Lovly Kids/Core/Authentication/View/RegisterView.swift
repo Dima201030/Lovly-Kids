@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    @StateObject var viewModel = RegistredViewModel()
-    @Environment(\.dismiss) var dissmis
+    @StateObject private var viewModel = RegistredViewModel()
+    @Environment(\.dismiss) private var dissmis
+    
     @State private var age = ""
+    
     var body: some View {
         VStack {
             Spacer()
@@ -28,8 +30,8 @@ struct RegistrationView: View {
                 .frame(width: 160, height: 160)
             
             Text("Регистрация")
-              .font(Font.custom("Montserrat-Regular", size: 20))
-              .foregroundColor(.black)
+                .font(Font.custom("Montserrat-Regular", size: 20))
+                .foregroundColor(.black)
             
             VStack {
                 TextField("Enter your email", text: $viewModel.email)
@@ -66,12 +68,13 @@ struct RegistrationView: View {
             }
             
             
-            Button(action: {
-                
+            Button {
                 viewModel.age = Int(age) ?? 0
                 
-                Task { try await viewModel.createUser() }
-            } ) {
+                Task {
+                    try await viewModel.createUser()
+                }
+            } label: {
                 Text("Sign In")
                     .font(.subheadline)
                     .fontWeight(.semibold)
@@ -79,11 +82,12 @@ struct RegistrationView: View {
                     .frame(width: 360, height: 44)
                     .background(Color("EED8B7"))
                     .cornerRadius(10)
-                
             }
-            .alert(isPresented: $viewModel.showAlert, content: {
-                Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage))
-            })
+            .alert(viewModel.alertTitle, isPresented: $viewModel.showAlert) {
+                
+            } message: {
+                Text(viewModel.alertMessage)
+            }
             .padding(.vertical)
             
             Spacer()
@@ -93,7 +97,7 @@ struct RegistrationView: View {
             Button {
                 dissmis()
             } label: {
-                HStack (spacing: 3) {
+                HStack(spacing: 3) {
                     Text("Already have an account ?")
                     
                     Text("Sign In")

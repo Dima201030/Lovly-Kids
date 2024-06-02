@@ -24,7 +24,7 @@
 //        let db = Firestore.firestore()
 //        let userUID = "qJYK4Ob7JlU8dW0D8P4qO6ABwaq1"
 //        db.collection("sessions").whereField("userUID", isEqualTo: userUID).getDocuments { (querySnapshot, error) in
-//            if let error = error {
+//            if let error {
 //                print("Error getting documents: \(error)")
 //            } else {
 //                self.sessions = querySnapshot?.documents.compactMap { document in
@@ -39,7 +39,7 @@
 //    // MARK: - UITableViewDataSource
 //
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return sessions.count
+//        sessions.count
 //    }
 //
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -13,14 +13,16 @@ struct Achievements: View {
             Color.white
             
             VStack {
-                HStack{
+                HStack {
                     Text("There are 31659 nannies in total!")
                         .font(.title)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.leading)
                         .padding()
+                    
                     Spacer()
                 }
+                
                 Spacer()
             }
         }

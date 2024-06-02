@@ -1,54 +1,46 @@
-import Foundation
 import SwiftUI
 
 enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
-    
-    case Appearance
-    case Language
-    case Notification
+    case Appearance,
+         Language,
+         Notification
     
     var title: String {
         switch self {
-        case .Language:
-            return NSLocalizedString("Language", comment: "")
-        case .Appearance:
-            return NSLocalizedString("Appearance", comment: "")
-        case .Notification:
-            return NSLocalizedString("Notification", comment: "")
+        case .Language: NSLocalizedString("Language", comment: "")
+        case .Appearance: NSLocalizedString("Appearance", comment: "")
+        case .Notification: NSLocalizedString("Notification", comment: "")
         }
     }
     
     var icon: String {
         switch self {
-        case .Language:
-            return "globe"
-        case .Appearance:
-            return "pencil.and.scribble"
-        case .Notification:
-            return "message.fill"
+        case .Language: "globe"
+        case .Appearance: "pencil.and.scribble"
+        case .Notification: "message.fill"
         }
     }
     
     var destinationView: some View {
         switch self {
         case .Appearance:
-            return AnyView(AppearanceView())
+            AnyView(AppearanceView())
         case .Language:
-            return AnyView(ChangeLaungeView())
+            AnyView(ChangeLaungeView())
         case .Notification:
-            return AnyView(EmptyView())
+            AnyView(EmptyView())
         }
     }
     
     var backgroundColor: Color {
         switch self {
         case .Appearance:
-            Color.green
+                .green
         case .Language:
-            Color.yellow
+                .yellow
         case .Notification:
-            Color.red
+                .red
         }
     }
-    var id: Int { return self.rawValue }
+    var id: Int { self.rawValue }
 }

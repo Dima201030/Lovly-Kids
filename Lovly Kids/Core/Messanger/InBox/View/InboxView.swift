@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct InboxView: View {
+    @StateObject private var viewModel = InboxViewModel()
+    @EnvironmentObject private var appData: AppData
+    
     @State private var showNewMessageView = false
-    @StateObject var viewModel = InboxViewModel()
     @State private var selectedUser: User?
     @State private var showChat = false
-    @EnvironmentObject var appData: AppData
     
     private var user: User? {
-        return viewModel.currentUser
+        viewModel.currentUser
     }
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 Color("F9F6F1")
                     .ignoresSafeArea()
+                
                 List {
                     ForEach(viewModel.recentMessages) { message in
                         ZStack {
@@ -34,19 +37,20 @@ struct InboxView: View {
                     }
                 }
                 .listStyle(PlainListStyle())
-                .navigationDestination(isPresented: $showChat, destination: {
-                    if let user = selectedUser {
-                        ChatView(user: user, onDisappear: {
-                        })
+                .navigationDestination(isPresented: $showChat) {
+                    if let selectedUser {
+                        ChatView(user: selectedUser) {
+                            
+                        }
                     }
-                })
-                
-                .navigationDestination(for: Message.self, destination: { message in
+                }
+                .navigationDestination(for: Message.self) { message in
                     if let user = message.user {
-                        ChatView(user: user, onDisappear: {
-                        })
+                        ChatView(user: user) {
+                            
+                        }
                     }
-                })
+                }
                 .fullScreenCover(isPresented: $showNewMessageView) {
                     NewMessageView(selectedUser: $selectedUser)
                         .environment(\.colorScheme, appData.appearance)
@@ -59,6 +63,7 @@ struct InboxView: View {
                                 .fontWeight(.semibold)
                         }
                     }
+                    
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             showNewMessageView.toggle()
@@ -75,7 +80,6 @@ struct InboxView: View {
         }
     }
 }
-
 
 #Preview {
     InboxView()

@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
-    
-
     var body: some View {
         NavigationStack {
             ZStack {
-                
                 Color("F9F6F1")
                     .ignoresSafeArea(edges: .bottom)
                 
@@ -24,7 +21,7 @@ struct MainView: View {
                             .cornerRadius(35)
                             .frame(width: UIScreen.main.bounds.width, height: 200)
                             .offset(y: -38)
-                            
+                        
                         Image("emotional-baggage")
                             .resizable()
                             .frame(width: UIScreen.main.bounds.width - 16, height: 350)
@@ -39,7 +36,6 @@ struct MainView: View {
                             .frame(width: UIScreen.main.bounds.width - 16, height: 300)
                             .padding()
                     }
-                    
                 }
             }
             .refreshable {

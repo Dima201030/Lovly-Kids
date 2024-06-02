@@ -10,9 +10,9 @@ import FirebaseAuth
 import Firebase
 
 struct LoginWithPhone: View {
-//    @StateObject var viewModel = LoginWithPhoneViewModel()
+    //    @StateObject private var viewModel = LoginWithPhoneViewModel()
     var body: some View {
-//        FirstPage()
+        //        FirstPage()
         VStack {
             
         }
@@ -24,7 +24,8 @@ struct LoginWithPhone: View {
 //    @State private var msg = ""
 //    @State private var alert = false
 //    @State private var ID = ""
-//    @StateObject var viewModel = LoginWithPhoneViewModel()
+//    @StateObject private var viewModel = LoginWithPhoneViewModel()
+//
 //    var body: some View {
 //        NavigationStack {
 //            VStack(spacing: 20) {
@@ -66,7 +67,7 @@ struct LoginWithPhone: View {
 //                    }
 //                }
 //                .foregroundColor(.white)
-//                .background(Color.orange)
+//                .background(.orange)
 //                .cornerRadius(10)
 //            }
 //            .padding()
@@ -79,7 +80,8 @@ struct LoginWithPhone: View {
 //    @State private var msg = ""
 //    @State private var alert = false
 //    @Binding var ID: String
-//    @StateObject var viewModel = LoginWithPhoneViewModel()
+//    @StateObject private var viewModel = LoginWithPhoneViewModel()
+//
 //    var body: some View {
 //        NavigationStack {
 //            VStack(spacing: 20) {
@@ -96,6 +98,7 @@ struct LoginWithPhone: View {
 //                    .clipShape(RoundedRectangle(cornerRadius: 10))
 //                    .keyboardType(.phonePad)
 //                    .padding(.top, 15)
+//
 //                Button {
 //                    let credential = PhoneAuthProvider.provider().credential(withVerificationID: ID, verificationCode: viewModel.code)
 //                    let result = Auth.auth().signIn(with: credential) { (res, err) in
@@ -110,10 +113,9 @@ struct LoginWithPhone: View {
 //                } label: {
 //                    Text("Done")
 //                        .frame(width: UIScreen.main.bounds.width - 30, height: 50)
-//
 //                }
 //                .foregroundColor(.white)
-//                .background(Color.orange)
+//                .background(.orange)
 //                .cornerRadius(10)
 //            }
 //            .navigationBarHidden(true)

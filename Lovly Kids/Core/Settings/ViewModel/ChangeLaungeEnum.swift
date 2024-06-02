@@ -6,25 +6,25 @@
 //
 
 import Foundation
+
 enum ChangeLaungeEnum: Int, CaseIterable, Identifiable {
     case en
     case ru
     
     var title: String {
         switch self {
-        case .en:
-            return "English"
-        case .ru:
-            return "Russian"
+        case .en: "English"
+        case .ru: "Russian"
         }
     }
     var abbreviation: String {
         switch self {
-        case .en:
-            return "en"
-        case .ru:
-            return "ru"
+        case .en: "en"
+        case .ru: "ru"
         }
     }
-    var id: Int { return self.rawValue }
+    
+    var id: Int {
+        self.rawValue
+    }
 }

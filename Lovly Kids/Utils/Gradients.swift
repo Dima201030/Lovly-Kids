@@ -5,11 +5,10 @@
 //  Created by Дима Кожемякин on 14.03.2024.
 //
 
-import Foundation
 import SwiftUI
 
 struct AnimatedRadialGradient: View {
-    @State private var yOffset: CGFloat = -100
+    @State private var yOffset = -100.0
     
     let colors: [Color]
     let startPoint: UnitPoint
@@ -18,7 +17,7 @@ struct AnimatedRadialGradient: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(Color.clear)
+                .fill(.clear)
                 .onAppear {
                     self.yOffset = 300
                 }

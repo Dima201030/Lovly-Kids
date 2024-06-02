@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModelSessions = SessionsViewModel()
-    @StateObject var viewModel = ContentViewModel()
-    @EnvironmentObject var appData: AppData
+    @StateObject private var viewModel = ContentViewModel()
+    @EnvironmentObject private var appData: AppData
     
     var body: some View {
         VStack {
@@ -22,12 +22,14 @@ struct ContentView: View {
                                 Label("Main",
                                       systemImage: "house")
                             }
+                        
                         InboxView()
                             .tabItem {
                                 Label("Messenger",
                                       systemImage: "message"
                                 )
                             }
+                        
                         NavigationStack {
                             SettingsView()
                         }
@@ -57,10 +59,9 @@ struct ContentView: View {
         }
     }
     
-    
     // Пример функции проверки на блокировку (здесь может быть ваша реализация)
     private func isBlocked() -> Bool {
-//        viewModelSessions.sessions[0].id
-        return false // Заглушка, замените на вашу реализацию
+        //        viewModelSessions.sessions[0].id
+        false // Заглушка, замените на вашу реализацию
     }
 }

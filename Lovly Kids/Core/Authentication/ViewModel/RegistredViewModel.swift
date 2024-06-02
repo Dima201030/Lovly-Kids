@@ -18,7 +18,6 @@ class RegistredViewModel: ObservableObject {
     @Published var alertTitle = "Error"
     @Published var alertMessage = "Error text"
     
-    
     func createUser() async throws {
         isAnimation.toggle()
         
@@ -29,6 +28,7 @@ class RegistredViewModel: ObservableObject {
             isAnimation.toggle()
             return
         }
+        
         guard email != "", password != "", fullName != "" else {
             alertTitle = "Error"
             alertMessage = "Not all fields are filled in"

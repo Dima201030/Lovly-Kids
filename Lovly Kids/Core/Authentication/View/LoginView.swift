@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @Environment(\.colorScheme) var colorScheme
-    @StateObject var viewModel = LoginViewModel()
+    @StateObject private var viewModel = LoginViewModel()
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         NavigationStack {
@@ -27,11 +27,11 @@ struct LoginView: View {
                         .font(.custom("MonteCarlo-Regular", size: 36))
                         .foregroundColor(Color(red: 0.47, green: 0.35, blue: 0.30))
                         .frame(width: 160, height: 160)
-
+                    
                     Text("Вход")
-                      .font(Font.custom("Montserrat-Regular", size: 20))
-                      .foregroundColor(.black)
-
+                        .font(Font.custom("Montserrat-Regular", size: 20))
+                        .foregroundColor(.black)
+                    
                     VStack {
                         TextField(NSLocalizedString("Email", comment: ""), text: $viewModel.email)
                             .font(.subheadline)
@@ -93,7 +93,9 @@ struct LoginView: View {
                             .foregroundColor(.black)
                     }
                     .foregroundColor(.gray)
+                    
                     Spacer()
+                    
                     NavigationLink {
                         LoginWithPhone()
                     } label: {
@@ -108,18 +110,20 @@ struct LoginView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color("D3A58C"), lineWidth: 2)
                     )
-                    .foregroundColor(Color.clear)
+                    .foregroundColor(.clear)
                     
                     Spacer()
                     
                     Divider()
+                    
                     NavigationLink {
                         RegistrationView()
                             .navigationBarBackButtonHidden()
                     } label: {
-                        HStack (spacing: 3) {
+                        HStack(spacing: 3) {
                             Text("Don't have an account ?")
                                 .foregroundColor(.black)
+                            
                             Text("Sign Up")
                                 .fontWeight(.semibold)
                                 .foregroundColor(.black)
