@@ -56,7 +56,7 @@ struct NewMessageView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancle") {
+                    Button("Cancel") {
                         dismiss()
                     }
                 }

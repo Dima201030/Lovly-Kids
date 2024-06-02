@@ -29,7 +29,7 @@ struct LoginView: View {
                         .frame(width: 160, height: 160)
                     
                     Text("Вход")
-                        .font(Font.custom("Montserrat-Regular", size: 20))
+                        .font(.custom("Montserrat-Regular", size: 20))
                         .foregroundColor(.black)
                     
                     VStack {

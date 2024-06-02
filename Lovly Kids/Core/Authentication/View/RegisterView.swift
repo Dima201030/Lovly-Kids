@@ -30,7 +30,7 @@ struct RegistrationView: View {
                 .frame(width: 160, height: 160)
             
             Text("Регистрация")
-                .font(Font.custom("Montserrat-Regular", size: 20))
+                .font(.custom("Montserrat-Regular", size: 20))
                 .foregroundColor(.black)
             
             VStack {
@@ -41,6 +41,8 @@ struct RegistrationView: View {
                     .cornerRadius(10)
                     .padding(.horizontal, 24)
                     .keyboardType(.emailAddress)
+                    .textContentType(.emailAddress)
+                    .textInputAutocapitalization(.never)
                 
                 SecureField("Enter your password", text: $viewModel.password)
                     .font(.subheadline)
@@ -49,6 +51,7 @@ struct RegistrationView: View {
                     .cornerRadius(10)
                     .padding(.horizontal, 24)
                     .keyboardType(.default)
+                    .textContentType(.newPassword)
                 
                 TextField("Enter your Fullname", text: $viewModel.fullName)
                     .font(.subheadline)
@@ -57,6 +60,7 @@ struct RegistrationView: View {
                     .cornerRadius(10)
                     .padding(.horizontal, 24)
                     .keyboardType(.default)
+                    .textContentType(.name)
                 
                 TextField("Enter your age", text: $age)
                     .font(.subheadline)
@@ -67,7 +71,6 @@ struct RegistrationView: View {
                     .keyboardType(.numberPad)
             }
             
-            
             Button {
                 viewModel.age = Int(age) ?? 0
                 
@@ -75,7 +78,7 @@ struct RegistrationView: View {
                     try await viewModel.createUser()
                 }
             } label: {
-                Text("Sign In")
+                Text("Sign Up")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
@@ -108,7 +111,6 @@ struct RegistrationView: View {
             .padding(.vertical)
         }
     }
-    
 }
 
 #Preview {

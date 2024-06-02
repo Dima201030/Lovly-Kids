@@ -85,21 +85,15 @@ struct EditPrivaryInfo: View {
                 age = String(user.age)
             }
             .navigationBarItems(leading: HStack {
-                Button {
+                Button("Cancel") {
                     dissmis()
-                } label: {
-                    Text("Cancle")
-                        .fontWeight(.bold)
                 }
+                .fontWeight(.bold)
             }, trailing: HStack {
-                Button {
+                Button("Done") {
                     let selectedColor = selectToColor(select: selectColor)
                     saveDataOfUser(fullname: fullname, age: age, email: user.email, profileColor: selectedColor)
-                } label: {
-                    Text("Done")
                 }
-                
-                
             })
         }
         

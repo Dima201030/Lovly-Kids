@@ -81,15 +81,8 @@
         }
       }
     },
-    "Cancle" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Отмена"
-          }
-        }
-      }
+    "Cancel" : {
+
     },
     "Chats" : {
       "localizations" : {
