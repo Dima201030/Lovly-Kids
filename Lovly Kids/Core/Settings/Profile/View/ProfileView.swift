@@ -120,7 +120,7 @@ struct ProfileView: View {
             .sheet(isPresented: $showSheet) {
                 EditPrivaryInfo(user: user)
                     .environmentObject(AppData())
-                    .environment(\.colorScheme, .light)
+//                    .environment(\.colorScheme, .light)
             }
         }
     }

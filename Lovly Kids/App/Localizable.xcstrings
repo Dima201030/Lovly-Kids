@@ -84,6 +84,9 @@
     "Cancel" : {
 
     },
+    "Cancle" : {
+
+    },
     "Chats" : {
       "localizations" : {
         "ru" : {
@@ -283,6 +286,7 @@
       }
     },
     "House" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

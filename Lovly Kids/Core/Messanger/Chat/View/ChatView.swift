@@ -9,18 +9,14 @@ import SwiftUI
 import Combine
 
 struct ChatView: View {
-    @StateObject private var viewModel: ChatViewModel
+    @StateObject var viewModel: ChatViewModel
     @ObservedObject private var keyboard = KeyboardResponder()
-    
-    @State private var textFieldInput = ""
-    
+    @State private var textFieldInput: String = ""
     let user: User
-    let onDisappear: (() -> Void)?
     
-    init(user: User, onDisappear: (() -> Void)? = nil) {
+    init(user: User) {
         self.user = user
         self._viewModel = StateObject(wrappedValue: ChatViewModel(user: user))
-        self.onDisappear = onDisappear
     }
     
     var body: some View {
@@ -30,43 +26,45 @@ struct ChatView: View {
                     VStack(spacing: 8) {
                         ForEach(viewModel.messages) { message in
                             ChatMessageView(message: message)
-                                .id(message.id)
+                                .id(message.id) // Убедитесь, что каждое сообщение имеет уникальный id
                         }
                     }
                     .padding(.bottom, 16)
                 }
-                
-                Spacer()
-                
-                HStack {
-                    TextField("Message...", text: $viewModel.messageText, axis: .vertical)
-                        .padding(12)
-                        .padding(.trailing, 48)
-                        .background(Color(.systemGroupedBackground))
-                        .font(.subheadline)
-                        .cornerRadius(20)
-                    
-                    Button {
-                        viewModel.sendMessage()
-                        viewModel.messageText = ""
-                    } label: {
-                        VStack {
-                            Text("Send")
-                                .foregroundColor(.black)
-                                .font(.subheadline)
-                                .padding(5)
-                        }
-                        .background(.pink)
-                        .cornerRadius(5)
-                    }
-                    .padding(.horizontal)
+                .onChange(of: viewModel.messages) { _ in
+                    scrollToBottom(scrollView)
                 }
+                
+                VStack {
+                    Spacer()
+                    HStack {
+                        
+                        TextField("Message...", text: $viewModel.messageText)
+                            .background(Color.black)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .background(Color(.systemGroupedBackground))
+                            .cornerRadius(20)
+                            .padding(.bottom, keyboard.currentHeight)
+                            .edgesIgnoringSafeArea(.bottom)
+                            .animation(.easeOut(duration: 0.16))
+                        Button(action: {
+                            viewModel.sendMessage()
+                            viewModel.messageText = ""
+                        }, label: {
+                            Text("Send")
+                                .fontWeight(.semibold)
+                        })
+                        .background(Color.gray)
+                        .padding(.trailing, 16)
+                    }
+                    
+                
+                }
+                .frame(maxHeight: 150)
                 .padding()
             }
             .navigationBarTitle(user.fullname, displayMode: .inline)
-        }
-        .onDisappear {
-            onDisappear?()
         }
     }
     
@@ -77,16 +75,13 @@ struct ChatView: View {
     }
 }
 
-
 final class KeyboardResponder: ObservableObject {
     private var notificationCenter: NotificationCenter
-    @Published private(set) var currentHeight = 0.0
+    @Published private(set) var currentHeight: CGFloat = 0
     
     init(center: NotificationCenter = .default) {
         notificationCenter = center
-        
         notificationCenter.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
         notificationCenter.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     

@@ -13,11 +13,10 @@ class ChatViewModel: ObservableObject {
     
     let service: ChatService
     
-    init(user: User) {
+    init(user: User){
         self.service = ChatService(chatPartner: user)
         observeMessage()
     }
-    
     func observeMessage() {
         service.observeMessage() { messages in
             DispatchQueue.main.async {
@@ -25,12 +24,6 @@ class ChatViewModel: ObservableObject {
             }
         }
     }
-    
     func sendMessage() {
-        service.sendMessage(messageText)
-    }
-    
-    func clearMessages() {
-        self.messages.removeAll()
-    }
+        service.sendMessage(messageText)    }
 }

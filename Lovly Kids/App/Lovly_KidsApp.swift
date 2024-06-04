@@ -23,7 +23,7 @@ struct YourApp: App {
             ContentView()
                 .environment(\.locale, appData.language)
                 .environmentObject(appData)
-                .environment(\.colorScheme, .light)
+                .environment(\.colorScheme, .dark)
         }
     }
 }

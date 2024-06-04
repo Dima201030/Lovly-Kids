@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct MainView: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     var body: some View {
         NavigationStack {
             ZStack {
-                Color("F9F6F1")
-                    .ignoresSafeArea(edges: .bottom)
+                if colorScheme == .dark {
+                    Color.black
+                } else {
+                    Color("F9F6F1")
+                        .ignoresSafeArea(edges: .bottom)
+                }
+                
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     
@@ -20,12 +27,19 @@ struct MainView: View {
                         Storis()
                             .cornerRadius(35)
                             .frame(width: UIScreen.main.bounds.width, height: 200)
-                            .offset(y: -38)
+                            .offset(y: colorScheme == .dark ? CGFloat(0) : -38)
                         
-                        Image("emotional-baggage")
-                            .resizable()
-                            .frame(width: UIScreen.main.bounds.width - 16, height: 350)
-                            .offset(y: 0)
+                        if colorScheme == .dark {
+                            Image("mama-pervoe-slovo-in")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.width - 16, height: 200)
+//                                .offset(y: -5)
+                        } else {
+                            Image("emotional-baggage")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.width - 16, height: 350)
+//                                .offset(y: 0)
+                        }
                         
                         OftenOrder()
                             .cornerRadius(35)
@@ -43,7 +57,6 @@ struct MainView: View {
                     print("Refresh")
                 }
             }
-            .navigationTitle("House")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
@@ -51,4 +64,9 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .colorScheme(.light)
+}
+#Preview {
+    MainView()
+        .colorScheme(.dark)
 }

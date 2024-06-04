@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct Achievements: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     var body: some View {
         ZStack {
-            Color.white
+            if colorScheme == .dark {
+                Color(.systemGray6)
+            } else {
+                Color.white
+            }
             
             VStack {
                 HStack {

@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct OftenOrder: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     var body: some View {
         ZStack {
-            Color.white
+            if colorScheme == .dark {
+                Color(.systemGray6)
+            } else {
+                Color.white
+            }
             
             VStack(alignment: .leading) {
                 
@@ -28,7 +34,7 @@ struct OftenOrder: View {
                                     options.backrounColor
                                     VStack {
                                         Text("\(options.title)")
-                                        
+                                            .foregroundColor(.black)
                                             .fontWeight(.medium)
                                             .multilineTextAlignment(.center)
                                         Spacer()
@@ -38,7 +44,7 @@ struct OftenOrder: View {
                                 
                                 .frame(width: 100, height: 120)
                                 .cornerRadius(25)
-                                .padding(2)
+                                .padding(10)
                             }
                         }
                     }

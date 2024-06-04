@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct NewMessageView: View {
-    @StateObject private var viewModel = NewMessangeViewModel()
-    @EnvironmentObject private var appData: AppData
-    @Environment(\.dismiss) private var dismiss
-    
-    @Binding var selectedUser: User?
-    
     @State private var searchText = ""
-    
+    @StateObject private var viewModel = NewMessangeViewModel()
+    @Binding var selectedUser: User?
+    @EnvironmentObject var appData: AppData
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationStack{
             ScrollView {
@@ -23,7 +20,6 @@ struct NewMessageView: View {
                     .frame(height: 44)
                     .padding(.leading)
                     .background(Color(.systemGroupedBackground))
-                
                 Text("CONTACTS")
                     .foregroundColor(.gray)
                     .font(.footnote)
@@ -42,7 +38,6 @@ struct NewMessageView: View {
                             Spacer()
                         }
                         .padding(.leading)
-                        
                         Divider()
                             .padding(.leading, 40)
                     }
@@ -56,16 +51,19 @@ struct NewMessageView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
+                    Button("Cancle") {
                         dismiss()
                     }
                 }
             }
+            
         }
+        
     }
 }
 
 #Preview {
     NewMessageView(selectedUser: .constant(User.MOCK_USER))
         .environmentObject(AppData())
+        
 }

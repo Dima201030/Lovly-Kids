@@ -11,9 +11,8 @@ struct ChatMessageView: View {
     let message: Message
     
     private var isFromCurrnetUser: Bool {
-        message.isFromCurrentUser
+        return message.isFromCurrentUser
     }
-    
     var body: some View {
         HStack {
             if isFromCurrnetUser {
@@ -22,22 +21,21 @@ struct ChatMessageView: View {
                 Text(message.messageText)
                     .font(.subheadline)
                     .padding()
-                    .background(.bardo)
+                    .background(Color(.systemBlue))
                     .foregroundColor(.white)
                     .clipShape(ChatBubble(isFromCurrentUser: isFromCurrnetUser))
                     .frame(maxWidth: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
             } else {
                 HStack(alignment: .bottom, spacing: 8) {
                     CircularProfileImageView(user: User.MOCK_USER, size: .xxSmall)
-                    
                     Text(message.messageText)
                         .font(.subheadline)
                         .padding()
-                        .background(Color(.pink))
+                        .background(Color(.systemGray))
                         .foregroundColor(.black)
                         .clipShape(ChatBubble(isFromCurrentUser: isFromCurrnetUser))
                         .frame(maxWidth: UIScreen.main.bounds.width / 1.75, alignment: .leading)
-                    
+
                     Spacer()
                 }
             }
