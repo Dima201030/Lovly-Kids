@@ -10,7 +10,9 @@ import TipKit
 
 
 struct SettingsView: View {
-    private let hintTip = HintTipSettings()
+    private let hintTipProfile = HintTipSettigns(titleWeite: "Look at that!", messageWrite: "See what your profile looks like and how others see it", imageString: "person.crop.rectangle")
+    private let hintTipLanguage = HintTipSettigns(titleWeite: "And here...", messageWrite: "And here you can change the language", imageString: "globe")
+    private let hintTipProfileDevice = HintTipSettigns(titleWeite: "Look at that!", messageWrite: "See what your profile looks like and how others see it", imageString: "person.crop.rectangle")
     @StateObject private var viewModel = InboxViewModel()
     @EnvironmentObject private var appData: AppData
     @State private var isTipVisible = true
@@ -41,7 +43,7 @@ struct SettingsView: View {
                                     Text("Profile")
                                 }
                             }
-                            .conditionalPopoverTip(hintTip, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
+                            .conditionalPopoverTip(hintTipProfile, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
                         }
                     }
                     
@@ -62,6 +64,7 @@ struct SettingsView: View {
                                         .font(.subheadline)
                                 }
                             }
+                            .conditionalPopoverTip(option.tip, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
                         }
                     }
                     
@@ -154,32 +157,20 @@ struct SettingsView: View {
         .environmentObject(AppData())
 }
 
-struct HintTipSettings: Tip {
-    var title: Text {
-        Text("Edit your profile for yourself")
-    }
-    
-    var message: Text? {
-        Text("In this tab, you can edit your profile for yourself. Everyone will see it.")
-    }
-    
-    var image: Image? {
-        Image(systemName: "person.text.rectangle")
-    }
-}
-
-
 struct HintTipSettigns: Tip {
+    let titleWeite: String
+    let messageWrite: String
+    let imageString: String
     var title: Text {
-        Text("Edit your profile for yourself")
+        Text("\(titleWeite)")
     }
     
     var message: Text? {
-        Text("In this tab, you can edit your profile for yourself. Everyone will see it.")
+        Text("\(messageWrite)")
     }
     
     var image: Image? {
-        Image(systemName: "person.text.rectangle")
+        Image(systemName: "\(imageString)")
     }
 }
 

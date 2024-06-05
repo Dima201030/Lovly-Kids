@@ -1,46 +1,58 @@
 import SwiftUI
+import TipKit
 
 enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
-    case Appearance,
-         Language,
-         Notification
+    case Appearance, Language, Notification
     
     var title: Text {
         switch self {
-        case .Language: Text("Language")
-        case .Appearance: Text("Appearance")
-        case .Notification: Text("Notification")
+        case .Language: return Text("Language")
+        case .Appearance: return Text("Appearance")
+        case .Notification: return Text("Notification")
         }
     }
     
     var icon: String {
         switch self {
-        case .Language: "globe"
-        case .Appearance: "pencil.and.scribble"
-        case .Notification: "message.fill"
+        case .Language: return "globe"
+        case .Appearance: return "pencil.and.scribble"
+        case .Notification: return "message.fill"
         }
     }
     
     var destinationView: some View {
         switch self {
         case .Appearance:
-            AnyView(AppearanceView())
+            return AnyView(AppearanceView())
         case .Language:
-            AnyView(ChangeLaungeView())
+            return AnyView(ChangeLaungeView())
         case .Notification:
-            AnyView(EmptyView())
+            return AnyView(EmptyView())
         }
     }
     
     var backgroundColor: Color {
         switch self {
         case .Appearance:
-                .green
+            return .green
         case .Language:
-                .yellow
+            return .yellow
         case .Notification:
-                .red
+            return .red
         }
     }
+    
+    var tip: HintTipSettigns {
+        switch self {
+        case .Appearance:
+            return HintTipSettigns(titleWeite: "Here's another one...", messageWrite: "And here you can customize the application for yourself", imageString: "pencil.and.scribble")
+        case .Language:
+            return HintTipSettigns(titleWeite: "And here...", messageWrite: "And here you can change the language", imageString: "globe")
+        case .Notification:
+            return HintTipSettigns(titleWeite: "When is when???", messageWrite: "To avoid being disturbed by trifles, set up notifications as well", imageString: "message.fill")
+        }
+    }
+    
     var id: Int { self.rawValue }
 }
+
