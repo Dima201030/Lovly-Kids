@@ -13,7 +13,7 @@ class InboxViewModel: ObservableObject {
     @Published var currentUser: User?
     @Published var recentMessages = [Message]()
     
-    private var cancellables = Set<AnyCancellable>()
+    private var canclelables = Set<AnyCancellable>()
     private let service = InboxService()
     
     init() {
@@ -24,10 +24,10 @@ class InboxViewModel: ObservableObject {
     private func settupSubscribers() {
         UserService.shared.$currentUser.sink { [weak self] user in
             self?.currentUser = user
-        }.store(in: &cancellables)
+        }.store(in: &canclelables)
         service.$documentChanges.sink{ [weak self] changes in
             self?.loadInitialMessage(fromChanes: changes)
-        }.store(in: &cancellables)
+        }.store(in: &canclelables)
     }
     private func loadInitialMessage(fromChanes chanes: [DocumentChange]) {
         var messages = chanes.compactMap({ try? $0.document.data(as: Message.self)})

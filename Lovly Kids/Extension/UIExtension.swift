@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 extension UIImage {
     func cropToCenter(square: CGFloat) -> UIImage {
@@ -33,5 +34,24 @@ extension UIImage {
         CIContext().render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(origin: .zero, size: CGSize(width: 1, height: 1)), format: .RGBA8, colorSpace: nil)
         
         return UIColor(red: CGFloat(bitmap[0]) / 255.0, green: CGFloat(bitmap[1]) / 255.0, blue: CGFloat(bitmap[2]) / 255.0, alpha: CGFloat(bitmap[3]) / 255.0)
+    }
+}
+
+struct PopoverTipModifier<TipType: Tip>: ViewModifier {
+    let tip: TipType?
+    @Binding var isTipVisible: Bool
+    
+    func body(content: Content) -> some View {
+        if let tip = tip, isTipVisible {
+            content.popoverTip(tip)
+        } else {
+            content
+        }
+    }
+}
+
+extension View {
+    func conditionalPopoverTip<TipType: Tip>(_ tip: TipType?, isTipVisible: Binding<Bool>) -> some View {
+        self.modifier(PopoverTipModifier(tip: tip, isTipVisible: isTipVisible))
     }
 }

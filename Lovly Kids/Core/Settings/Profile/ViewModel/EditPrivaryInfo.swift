@@ -85,7 +85,7 @@ struct EditPrivaryInfo: View {
                 age = String(user.age)
             }
             .navigationBarItems(leading: HStack {
-                Button("Cancel") {
+                Button("Cancle") {
                     dissmis()
                 }
                 .fontWeight(.bold)

@@ -5,11 +5,11 @@ enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
          Language,
          Notification
     
-    var title: String {
+    var title: Text {
         switch self {
-        case .Language: NSLocalizedString("Language", comment: "")
-        case .Appearance: NSLocalizedString("Appearance", comment: "")
-        case .Notification: NSLocalizedString("Notification", comment: "")
+        case .Language: Text("Language")
+        case .Appearance: Text("Appearance")
+        case .Notification: Text("Notification")
         }
     }
     

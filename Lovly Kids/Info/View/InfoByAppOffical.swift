@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct InfoByAppOffical: View {
     @StateObject private var viewModel = InfoViewModelTexts()
@@ -19,6 +20,8 @@ struct InfoByAppOffical: View {
                     Spacer()
                     
                     Text("Firebase version: \(viewModel.versionFirebase)")
+                    
+
                 }
             }
             .navigationTitle("Info")

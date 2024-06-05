@@ -16,7 +16,7 @@ struct ChangeLaungeView: View {
                 Section {
                     ForEach(ChangeLaungeEnum.allCases, id: \.self) { options in
                         Button(options.title) {
-                            appData.saveLanguage(launge: options.abbreviation)
+                            appData.saveLanguage(language: options.abbreviation)
                         }
                     }
                 }

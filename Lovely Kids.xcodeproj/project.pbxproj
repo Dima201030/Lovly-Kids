@@ -94,6 +94,7 @@
 		81A797D22BF7A1C300C10869 /* LoginWithPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A797D12BF7A1C300C10869 /* LoginWithPhoneViewModel.swift */; };
 		81CB60662BE511AF007BDFEF /* Launch Screen1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81CB60652BE511AF007BDFEF /* Launch Screen1.storyboard */; };
 		81DD85B92BEEBA0F00BC602E /* MainEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD85B82BEEBA0F00BC602E /* MainEnum.swift */; };
+		81F3DF812C10E27C0011489A /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3DF802C10E27C0011489A /* Tips.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -192,6 +193,7 @@
 		81CB60652BE511AF007BDFEF /* Launch Screen1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen1.storyboard"; sourceTree = "<group>"; };
 		81DD85B82BEEBA0F00BC602E /* MainEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEnum.swift; sourceTree = "<group>"; };
 		81DD85BA2BEEC64200BC602E /* arial_black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial_black.ttf; sourceTree = "<group>"; };
+		81F3DF802C10E27C0011489A /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +384,7 @@
 				817F7B892B9C82180067A24A /* Messanger */,
 				817F7B8B2B9C823C0067A24A /* Root */,
 				817F7B8D2B9C825C0067A24A /* Settings */,
+				81F3DF7F2C10E26C0011489A /* Tips */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -693,6 +696,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		81F3DF7F2C10E26C0011489A /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				81F3DF802C10E27C0011489A /* Tips.swift */,
+			);
+			path = Tips;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -911,6 +922,7 @@
 				817F7BE02B9C86D60067A24A /* SettingsViewModel.swift in Sources */,
 				812F8E9B2BEE8AF700F93F04 /* MainView.swift in Sources */,
 				817F7BF42B9C87370067A24A /* Constants.swift in Sources */,
+				81F3DF812C10E27C0011489A /* Tips.swift in Sources */,
 				81032B0F2BED1F480068FB0D /* ChangeLaungeView.swift in Sources */,
 				817F7BED2B9C87240067A24A /* User.swift in Sources */,
 			);

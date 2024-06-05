@@ -15,10 +15,9 @@ struct InboxRootNew: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            // CircularProfileImageView(user: message.user, size: .medium)
             if message.user?.profileImageUrl == "" {
                 Circle()
-                    .background(message.user?.profileColor)
+                    .foregroundColor(message.user?.profileColor)
                     .frame(width: 56, height: 56)
                     .overlay(
                         Text(firstNameLetter)
@@ -35,7 +34,7 @@ struct InboxRootNew: View {
                         .frame(width: 56, height: 56)
                 } else {
                     Circle()
-                        .background(message.user?.profileColor)
+                        .foregroundColor(message.user?.profileColor)
                         .frame(width: 56, height: 56)
                         .overlay(
                             Text(firstNameLetter)

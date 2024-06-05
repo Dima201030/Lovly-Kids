@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import TipKit
+
 
 struct SettingsView: View {
+    private let hintTip = HintTipSettings()
     @StateObject private var viewModel = InboxViewModel()
     @EnvironmentObject private var appData: AppData
+    @State private var isTipVisible = true
     
     private var user: User? {
         viewModel.currentUser
@@ -37,6 +41,7 @@ struct SettingsView: View {
                                     Text("Profile")
                                 }
                             }
+                            .conditionalPopoverTip(hintTip, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
                         }
                     }
                     
@@ -53,7 +58,7 @@ struct SettingsView: View {
                                             .foregroundColor(.white)
                                     }
                                     
-                                    Text(option.title)
+                                    option.title
                                         .font(.subheadline)
                                 }
                             }
@@ -77,13 +82,13 @@ struct SettingsView: View {
                                 Text("Devices")
                             }
                         }
-                        
                     }
+                    
                     Section {
                         NavigationLink {
                             EmptyView()
                         } label: {
-                            HStack{
+                            HStack {
                                 ZStack {
                                     Color.orange
                                         .cornerRadius(10)
@@ -148,3 +153,34 @@ struct SettingsView: View {
     SettingsView()
         .environmentObject(AppData())
 }
+
+struct HintTipSettings: Tip {
+    var title: Text {
+        Text("Edit your profile for yourself")
+    }
+    
+    var message: Text? {
+        Text("In this tab, you can edit your profile for yourself. Everyone will see it.")
+    }
+    
+    var image: Image? {
+        Image(systemName: "person.text.rectangle")
+    }
+}
+
+
+struct HintTipSettigns: Tip {
+    var title: Text {
+        Text("Edit your profile for yourself")
+    }
+    
+    var message: Text? {
+        Text("In this tab, you can edit your profile for yourself. Everyone will see it.")
+    }
+    
+    var image: Image? {
+        Image(systemName: "person.text.rectangle")
+    }
+}
+
+

@@ -7,23 +7,38 @@
 
 import SwiftUI
 import FirebaseCore
+import UIKit
+import TipKit
 
 @main
-struct YourApp: App {
-    // Register app delegate for Firebase setup
+struct LovelyKids: App {
+    @AppStorage("shouldResetTips")
+    var shouldResetTips: Bool = true
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var delegate
     @EnvironmentObject private var viewModelChat: ChatViewModel
-
-    // Create an instance of AppData
-    private let appData = AppData()
     
+    private let appData = AppData()
+    init() {
+        try? Tips.configure()
+    }
     var body: some Scene {
         WindowGroup {
-            // Pass the appData instance to ContentView
             ContentView()
+                .task {
+                    if shouldResetTips {
+                        try? Tips.resetDatastore()
+                        try? Tips.showAllTipsForTesting()
+                    }
+                    
+                    
+                    try? Tips.configure([
+                        .displayFrequency(.immediate),
+                        .datastoreLocation(.applicationDefault)
+                    ])
+                }
                 .environment(\.locale, appData.language)
                 .environmentObject(appData)
-                .environment(\.colorScheme, .dark)
         }
     }
 }
@@ -32,24 +47,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        
         return true
     }
 }
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        // Создание экземпляра AppData
         let appData = AppData()
-        
-        // Создание корневого представления
         let contentView = ContentView().environmentObject(appData)
-
-        // Инициализация окна
+        
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: contentView)

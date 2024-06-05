@@ -9,13 +9,16 @@ import SwiftUI
 import Firebase
 import FirebaseStorage
 import PhotosUI
+import TipKit
+
 
 struct ProfileView: View {
+    private let tip = HintTipProfile()
+    @State private var isTipVisible = true
     @StateObject private var profileViewModel = ProfileViewModel()
     @Environment(\.colorScheme) private var colorScheme
-    
+    @State private var firstNameLetter = ""
     let user: User
-    
     @State private var showSheet = false
     @State private var image: UIImage?
     @State private var imageURL: URL?
@@ -61,13 +64,21 @@ struct ProfileView: View {
                     Button {
                         showingImagePicker = true
                     } label: {
-                        Image(systemName: "person.circle")
-                            .resizable()
-                            .cornerRadius(15)
-                            .scaledToFill()
-                            .clipShape(.circle)
+                        Circle()
+                            .foregroundColor(user.profileColor)
                             .frame(width: 120, height: 120)
-                            .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? .white : .black)) : .white, radius: 30) // Use average color in shadow
+                            .overlay(
+                                Text(firstNameLetter)
+                                    .foregroundColor(.black)
+                                    .font(.title)
+                            )
+                        //                        Image(systemName: "person.circle")
+                        //                            .resizable()
+                        //                            .cornerRadius(15)
+                        //                            .scaledToFill()
+                        //                            .clipShape(.circle)
+                        //                            .frame(width: 120, height: 120)
+                        //                            .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? .white : .black)) : .white, radius: 30) // Use average color in shadow
                     }
                     .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                         ImagePicker(image: $image)
@@ -87,6 +98,7 @@ struct ProfileView: View {
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
+                    .conditionalPopoverTip(tip, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
                     Section {
                         Button(action: {AuthService.shared.singOut()}) {
                             Text("Log out")
@@ -107,6 +119,10 @@ struct ProfileView: View {
                 }
             }
             .onAppear() {
+                
+                firstNameLetter = String(user.fullname.prefix(1))
+                
+                
                 imageURL = URL(string: user.profileImageUrl)
                 
                 if let imageURL {
@@ -120,8 +136,9 @@ struct ProfileView: View {
             .sheet(isPresented: $showSheet) {
                 EditPrivaryInfo(user: user)
                     .environmentObject(AppData())
-//                    .environment(\.colorScheme, .light)
+                //                    .environment(\.colorScheme, .light)
             }
+            
         }
     }
     
@@ -240,4 +257,17 @@ func image(from url: URL, completion: @escaping (UIImage?) -> Void) {
         }
     }
     .resume()
+}
+struct HintTipProfile: Tip {
+    var title: Text {
+        Text("Edit your profile for yourself")
+    }
+    
+    var message: Text? {
+        Text("In this tab, you can edit your profile for yourself. Everyone will see it.")
+    }
+    
+    var image: Image? {
+        Image(systemName: "person.text.rectangle")
+    }
 }

@@ -16,20 +16,19 @@ class AppData: ObservableObject {
         self.language = getLanguage()
     }
     
-    func saveLanguage(launge: String) {
-        let defaluts = UserDefaults.standard
-        defaluts.set(language == .autoupdatingCurrent ? "automatic" : "en", forKey: "language")
+    func saveLanguage(language: String) {
+        let defaults = UserDefaults.standard
+        defaults.set(language, forKey: "language")
+        self.language = Locale(identifier: language)
     }
     
     func getLanguage() -> Locale {
-        let defaluts = UserDefaults.standard
+        let defaults = UserDefaults.standard
         
-        if let rawValue = defaluts.string(forKey: "language") {
+        if let rawValue = defaults.string(forKey: "language") {
             print("DEBUG: \(rawValue)")
-            return rawValue == "automatic" ? .init(identifier: "\(rawValue)") : .autoupdatingCurrent
+            return Locale(identifier: rawValue)
         } else {
-            let rawValue = defaluts.string(forKey: "language")
-            print("DEBUG: \(rawValue)")
             return .autoupdatingCurrent
         }
     }

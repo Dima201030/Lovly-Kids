@@ -28,7 +28,7 @@ struct LoginView: View {
                         .foregroundColor(Color(red: 0.47, green: 0.35, blue: 0.30))
                         .frame(width: 160, height: 160)
                     
-                    Text("Вход")
+                    Text("Log in")
                         .font(.custom("Montserrat-Regular", size: 20))
                         .foregroundColor(.black)
                     

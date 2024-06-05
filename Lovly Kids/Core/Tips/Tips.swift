@@ -1,8 +1,24 @@
+////
+////  Tips.swift
+////  Lovely Kids
+////
+////  Created by Дима Кожемякин on 05.06.2024.
+////
 //
-//  Tips.swift
-//  Lovely Kids
+//import Foundation
+//import TipKit
 //
-//  Created by Дима Кожемякин on 05.06.2024.
+//struct FavoritesTip: Tip {
+//    var title: Text {
+//        Text("Add to Favorite")
+//    }
 //
-
-import Foundation
+//    var message: Text? {
+//        Text("This user will be added to your favorites folder.")
+//    }
+//
+//    var image: Image? {
+//        Image(systemName: "heart")
+//    }
+//}
+//
