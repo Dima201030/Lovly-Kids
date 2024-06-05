@@ -40,10 +40,9 @@ struct ChatView: View {
                     HStack {
                         
                         TextField("Message...", text: $viewModel.messageText)
-                            .background(Color.black)
                             .padding(.vertical, 8)
                             .padding(.horizontal, 16)
-                            .background(Color(.systemGroupedBackground))
+                            .background(Color(.gray))
                             .cornerRadius(20)
                             .padding(.bottom, keyboard.currentHeight)
                             .edgesIgnoringSafeArea(.bottom)
@@ -55,7 +54,6 @@ struct ChatView: View {
                             Text("Send")
                                 .fontWeight(.semibold)
                         })
-                        .background(Color.gray)
                         .padding(.trailing, 16)
                     }
                     
