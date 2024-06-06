@@ -26,12 +26,12 @@ struct LovelyKids: App {
         WindowGroup {
             ContentView()
                 .task {
-                    if shouldResetTips {
-                        try? Tips.resetDatastore()
-                        try? Tips.showAllTipsForTesting()
-                    }
-                    
-                    
+//                    if shouldResetTips {
+//                        try? Tips.resetDatastore()
+//                        try? Tips.showAllTipsForTesting()
+//                    }
+//                    
+//                    
                     try? Tips.configure([
                         .displayFrequency(.immediate),
                         .datastoreLocation(.applicationDefault)
@@ -39,6 +39,7 @@ struct LovelyKids: App {
                 }
                 .environment(\.locale, appData.language)
                 .environmentObject(appData)
+//                .environment(\.colorScheme, .dark)
         }
     }
 }

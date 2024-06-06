@@ -31,61 +31,51 @@ struct ProfileView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                if user.profileImageUrl != "" {
-                    
-                } else {
-                    Button {
-                        showingImagePicker = true
-                    } label: {
-                        Image(systemName: "person.circle")
-                    }
-                    .padding()
-                    .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                        ImagePicker(image: $image)
-                    }
-                }
                 
                 if let loadedImage {
-                    Button {
-                        showingImagePicker = true
-                    } label: {
-                        Image(uiImage: loadedImage)
-                            .resizable()
-                            .cornerRadius(15)
-                            .scaledToFill()
-                            .clipShape(.circle)
-                            .frame(width: 120, height: 120)
-                            .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? .white : .black)) : .white, radius: 30) // Use average color in shadow
-                    }
-                    .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                        ImagePicker(image: $image)
-                    }
+                    
+                    Image(uiImage: loadedImage)
+                        .resizable()
+                        .cornerRadius(15)
+                        .scaledToFill()
+                        .clipShape(.circle)
+                        .frame(width: 120, height: 120)
+                        .shadow(color: user.profileColor, radius: 30)
+//                        .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? .white : .black)) : .white, radius: 30) // Use average color in shadow
+                        .offset(y: 30)
+                    
                 } else {
-                    Button {
-                        showingImagePicker = true
-                    } label: {
-                        Circle()
-                            .foregroundColor(user.profileColor)
-                            .frame(width: 120, height: 120)
-                            .overlay(
-                                Text(firstNameLetter)
-                                    .foregroundColor(.black)
-                                    .font(.title)
-                            )
-                        //                        Image(systemName: "person.circle")
-                        //                            .resizable()
-                        //                            .cornerRadius(15)
-                        //                            .scaledToFill()
-                        //                            .clipShape(.circle)
-                        //                            .frame(width: 120, height: 120)
-                        //                            .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? .white : .black)) : .white, radius: 30) // Use average color in shadow
-                    }
-                    .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                        ImagePicker(image: $image)
-                    }
+                    Circle()
+                        .foregroundColor(user.profileColor)
+                        .frame(width: 120, height: 120)
+                        .shadow(color: user.profileColor, radius: 30)
+                        .overlay(
+                            Text(firstNameLetter)
+                                .foregroundColor(.black)
+                                .font(.title)
+                        )
+                        .offset(y: 30)
+                    
                 }
-                
+                    
                 List {
+                    Section {
+                        HStack {
+                            Spacer()
+                            Button {
+                                showingImagePicker = true
+                            } label: {
+                                Text("Select image")
+                                    .multilineTextAlignment(.center)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                            }
+                            .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                                ImagePicker(image: $image)
+                            }
+                            Spacer()
+                        }
+                    }
                     Section {
                         Button {
                             showSheet.toggle()
@@ -106,7 +96,7 @@ struct ProfileView: View {
                         }
                     }
                 }
-                .offset(y: 25)
+                .offset(y: 75)
             }
             .onChange(of: imageURL) { _, newValue in
                 if let newValue {
@@ -136,7 +126,6 @@ struct ProfileView: View {
             .sheet(isPresented: $showSheet) {
                 EditPrivaryInfo(user: user)
                     .environmentObject(AppData())
-                //                    .environment(\.colorScheme, .light)
             }
             
         }

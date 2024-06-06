@@ -54,7 +54,7 @@ struct MainView: View {
             }
             .refreshable {
                 do {
-                    print("Refresh")
+
                 }
             }
             .navigationBarTitleDisplayMode(.inline)

@@ -10,6 +10,7 @@ import SwiftUI
 struct RegistrationView: View {
     @StateObject private var viewModel = RegistredViewModel()
     @Environment(\.dismiss) private var dissmis
+    @Environment(\.colorScheme) private var colorScheme
     
     @State private var age = ""
     
@@ -23,18 +24,21 @@ struct RegistrationView: View {
                 .scaledToFit()
                 .shadow(radius: 10)
                 .padding()
+                .frame(maxWidth: 200, maxHeight: 200)
             
             Text("Lovely Kids")
                 .font(.custom("MonteCarlo-Regular", size: 36))
                 .foregroundColor(Color(red: 0.47, green: 0.35, blue: 0.30))
-                .frame(width: 160, height: 160)
             
             Text("Sig in")
-                .font(.custom("Montserrat-Regular", size: 20))
-                .foregroundColor(.black)
-            
+                .font(.title)
+                .fontWeight(.bold)
             VStack {
-                TextField("Enter your email", text: $viewModel.email)
+                TextField("", text: $viewModel.email, prompt: Text("Email")
+                    .font(.subheadline)
+                    .fontWeight(.regular)
+                    .foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)
+                                    ))
                     .font(.subheadline)
                     .padding(12)
                     .background(Color("EED8B7"))
@@ -44,7 +48,11 @@ struct RegistrationView: View {
                     .textContentType(.emailAddress)
                     .textInputAutocapitalization(.never)
                 
-                SecureField("Enter your password", text: $viewModel.password)
+                SecureField("", text: $viewModel.password, prompt: Text("Password")
+                    .font(.subheadline)
+                    .fontWeight(.regular)
+                    .foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)
+                                    ))
                     .font(.subheadline)
                     .padding(12)
                     .background(Color("EED8B7"))
@@ -53,7 +61,11 @@ struct RegistrationView: View {
                     .keyboardType(.default)
                     .textContentType(.newPassword)
                 
-                TextField("Enter your Fullname", text: $viewModel.fullName)
+                TextField("", text: $viewModel.fullName, prompt: Text("Your name")
+                    .font(.subheadline)
+                    .fontWeight(.regular)
+                    .foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)
+                                    ))
                     .font(.subheadline)
                     .padding(12)
                     .background(Color("EED8B7"))
@@ -62,7 +74,11 @@ struct RegistrationView: View {
                     .keyboardType(.default)
                     .textContentType(.name)
                 
-                TextField("Enter your age", text: $age)
+                TextField("", text: $age, prompt: Text("Age")
+                    .font(.subheadline)
+                    .fontWeight(.regular)
+                    .foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)
+                                    ))
                     .font(.subheadline)
                     .padding(12)
                     .background(Color("EED8B7"))
@@ -81,7 +97,7 @@ struct RegistrationView: View {
                 Text("Sign Up")
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundColor(.white)
+                    .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
                     .frame(width: 360, height: 44)
                     .background(Color("EED8B7"))
                     .cornerRadius(10)
@@ -102,9 +118,10 @@ struct RegistrationView: View {
             } label: {
                 HStack(spacing: 3) {
                     Text("Already have an account ?")
-                    
+                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     Text("Sign In")
                         .fontWeight(.semibold)
+                        .foregroundColor(.blue)
                 }
                 .font(.footnote)
             }

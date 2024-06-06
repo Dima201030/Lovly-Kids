@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import TipKit
 
 class AuthService {
     static let shared = AuthService()
@@ -58,6 +59,8 @@ class AuthService {
             try Auth.auth().signOut()
             self.userSession = nil
             UserService.shared.currentUser = nil
+            try? Tips.resetDatastore()
+            try? Tips.showAllTipsForTesting()
         } catch {
             print("DEBUG: Failed to sign out with error: \(error.localizedDescription)")
         }

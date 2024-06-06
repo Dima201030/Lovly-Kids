@@ -22,32 +22,37 @@ struct LoginView: View {
                         .scaledToFit()
                         .shadow(radius: 10)
                         .padding()
+                        .frame(maxWidth: 200, maxHeight: 200)
                     
                     Text("Lovely Kids")
                         .font(.custom("MonteCarlo-Regular", size: 36))
                         .foregroundColor(Color(red: 0.47, green: 0.35, blue: 0.30))
-                        .frame(width: 160, height: 160)
+                    
                     
                     Text("Log in")
-                        .font(.custom("Montserrat-Regular", size: 20))
-                        .foregroundColor(.black)
+                        .font(.title)
+                        .fontWeight(.bold)
                     
                     VStack {
-                        TextField(NSLocalizedString("Email", comment: ""), text: $viewModel.email)
-                            .font(.subheadline)
-                            .padding(12)
-                            .background(Color("EED8B7"))
-                            .cornerRadius(10)
-                            .padding(.horizontal, 24)
-                            .keyboardType(.emailAddress)
                         
-                        SecureField("Password", text: $viewModel.password)
-                            .font(.subheadline)
-                            .padding(12)
-                            .background(Color("EED8B7"))
-                            .cornerRadius(10)
-                            .padding(.horizontal, 24)
-                            .keyboardType(.default)
+                        TextField("", text: $viewModel.email, prompt: Text("Email").font(.subheadline).fontWeight(.regular).foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583))
+                        )
+                        .padding(12)
+                        .background(Color("EED8B7"))
+                        .cornerRadius(10)
+                        .padding(.horizontal, 24)
+                        .keyboardType(.emailAddress)
+                        .foregroundColor(.black)
+                        
+                        SecureField("", text: $viewModel.password, prompt: Text("Password").font(.subheadline).fontWeight(.regular).foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583))
+                        )
+                        .font(.subheadline)
+                        .padding(12)
+                        .background(Color("EED8B7"))
+                        .cornerRadius(10)
+                        .padding(.horizontal, 24)
+                        .keyboardType(.default)
+                        .foregroundColor(.black)
                     }
                     
                     Button(action: { /*isAnimation.toggle()*/} ) {
@@ -69,7 +74,7 @@ struct LoginView: View {
                             Text("Login")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .frame(width: 360, height: 44)
                                 .background(Color("EED8B7"))
                                 .cornerRadius(10)
@@ -83,14 +88,14 @@ struct LoginView: View {
                     HStack {
                         Rectangle()
                             .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                         Text("OR")
                             .font(.footnote)
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                             .fontWeight(.semibold)
                         Rectangle()
                             .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     }
                     .foregroundColor(.gray)
                     
@@ -102,7 +107,7 @@ struct LoginView: View {
                         Text("Log in with phone")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     }
                     .frame(width: 360, height: 44)
                     .cornerRadius(10)
@@ -122,11 +127,11 @@ struct LoginView: View {
                     } label: {
                         HStack(spacing: 3) {
                             Text("Don't have an account ?")
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                             
                             Text("Sign Up")
                                 .fontWeight(.semibold)
-                                .foregroundColor(.black)
+                                .foregroundColor(Color.blue)
                         }
                         .font(.footnote)
                     }
