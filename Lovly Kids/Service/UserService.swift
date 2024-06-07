@@ -26,9 +26,12 @@ class UserService {
         }
     }
     
-    static func fetchAllUser() async throws -> [User] {
-        let snapshot = try await Firestore.firestore().collection("users").getDocuments()
-        
+    static func fetchUserAllPartners(for userId: String) async throws -> [User] {
+        Task {
+            try await AuthService.shared.createNewPartner(for: userId, currentUserID: "S55Rysh3kBdcmn3KIvpMEFzveXf1")
+        }
+        let snapshot = try await Firestore.firestore().collection("users").document(userId).collection("partners").getDocuments()
+        print("DEBUG: \(snapshot)")
         return snapshot.documents.compactMap {
             try? $0.data(as: User.self)
         }

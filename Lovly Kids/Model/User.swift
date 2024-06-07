@@ -15,7 +15,7 @@ struct User: Codable, Identifiable, Hashable {
     let email: String
     var age: Int
     var profileImageUrl: String
-    var profileColorString: String // Changed to String
+    var profileColorString: String 
     
     var id: String {
         uid ?? NSUUID().uuidString

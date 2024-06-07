@@ -25,5 +25,6 @@ class ChatViewModel: ObservableObject {
         }
     }
     func sendMessage() {
-        service.sendMessage(messageText)    }
+        service.sendMessage(messageText, keyShifr: 3)
+    }
 }

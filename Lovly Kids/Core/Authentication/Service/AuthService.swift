@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import TipKit
+import FirebaseFirestore
 
 class AuthService {
     static let shared = AuthService()
@@ -30,6 +31,8 @@ class AuthService {
             if let user = self.userSession {
                 try await checkAndUpdateSession(for: user.uid)
             }
+            
+            
         } catch {
             print("DEBUG: Failed to login with error: \(error.localizedDescription)")
             throw error
@@ -48,12 +51,37 @@ class AuthService {
             if let user = self.userSession {
                 try await createNewSession(for: user.uid)
             }
+            
         } catch {
             print("DEBUG: Failed to create user with error: \(error.localizedDescription)")
             throw error
         }
     }
-    
+    func createNewPartner(for partnerId: String, currentUserID: String) async throws {
+        do {
+            let partnerData = try await Firestore.firestore().collection("users").document(partnerId).getDocument()
+            let user = try partnerData.data(as: User.self)
+            print(user)
+            guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
+            let newPartnerRef = Firestore.firestore()
+                .collection("users")
+                .document(currentUserID)
+                .collection("partners")
+                .document(partnerId)
+            
+            try await newPartnerRef.setData(encodedUser)
+        } catch {
+            print("DEBUG: \(error.localizedDescription)")
+        }
+//        let partnerData = ["partnerId": partnerId]
+//        let newPartnerRef = Firestore.firestore()
+//            .collection("users")
+//            .document(currentUserID)
+//            .collection("partners")
+//            .document(partnerId) // Создаем новый документ с уникальным ID
+//
+//        try await newPartnerRef.setData(partnerData)
+    }
     func singOut() {
         do {
             try Auth.auth().signOut()
@@ -111,7 +139,9 @@ class AuthService {
         
         try await Firestore.firestore().collection("users").document(userId).collection("sessions").document(sessionId).setData(sessionData)
     }
+
     
+
     private func checkAndUpdateSession(for userId: String) async throws {
         let currentIP = getCurrentIPAddress()
         let sessionsRef = Firestore.firestore().collection("users").document(userId).collection("sessions")

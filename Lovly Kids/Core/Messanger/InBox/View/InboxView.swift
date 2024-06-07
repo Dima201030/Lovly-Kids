@@ -13,13 +13,16 @@ struct InboxView: View {
     @State private var selectedUser: User?
     @State private var showChat = false
     @EnvironmentObject var appData: AppData
+    @State private var count = 0
     
     private var user: User? {
         return viewModel.currentUser
     }
+    
+    
+    
     var body: some View {
         NavigationStack {
-           
             List {
                 ForEach(viewModel.recentMessages) { message in
                     ZStack {
@@ -30,6 +33,9 @@ struct InboxView: View {
                         InboxRootNew(message: message)
                     }
                 }
+            }
+            .refreshable {
+                await viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных
             }
             .listStyle(PlainListStyle())
             .navigationDestination(isPresented: $showChat, destination: {
@@ -49,13 +55,22 @@ struct InboxView: View {
                 NewMessageView(selectedUser: $selectedUser)
                     .environment(\.colorScheme, appData.appearance)
             }
+            
+            .onAppear {
+                if count != 0 {
+                    Task {
+                        await viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных при появлении вида
+                    }
+                } else {
+                    count = count + 1
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
                         Text("Chats")
                             .font(.title)
                             .fontWeight(.semibold)
-                        
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {

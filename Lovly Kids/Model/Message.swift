@@ -13,8 +13,9 @@ struct Message: Identifiable, Codable, Hashable {
     
     let fromId: String
     let toId: String
-    let messageText: String
+    var messageText: String
     let timestamp: Timestamp
+    let keyShifr: Int
     
     var user: User?
     
