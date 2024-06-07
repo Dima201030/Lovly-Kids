@@ -34,7 +34,7 @@ struct LoginView: View {
                         .fontWeight(.bold)
                     
                     VStack {
-                        TextField("", text: $viewModel.email, prompt: Text("Email").font(.subheadline).fontWeight(.regular).foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)))
+                        TextField("", text: $viewModel.email, prompt: Text("Email").font(.subheadline).fontWeight(.regular).foregroundColor( Color(red: 0.724, green: 0.665, blue: 0.583)))
                         .padding(12)
                         .background(Color("EED8B7"))
                         .cornerRadius(10)
