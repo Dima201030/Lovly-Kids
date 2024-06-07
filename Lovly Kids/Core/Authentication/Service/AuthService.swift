@@ -27,14 +27,12 @@ class AuthService {
             self.userSession = result.user
             loadCurrentUserData()
             
-            // Проверка и обновление сессии
+           
             if let user = self.userSession {
                 try await checkAndUpdateSession(for: user.uid)
             }
             
-            
         } catch {
-            print("DEBUG: Failed to login with error: \(error.localizedDescription)")
             throw error
         }
     }
@@ -47,13 +45,12 @@ class AuthService {
             try await self.uploadUserData(email: email, fullname: fullname, id: result.user.uid, age: age, profileColor: profileColor)
             loadCurrentUserData()
             
-            // Создание новой сессии
             if let user = self.userSession {
                 try await createNewSession(for: user.uid)
             }
             
         } catch {
-            print("DEBUG: Failed to create user with error: \(error.localizedDescription)")
+        
             throw error
         }
     }
@@ -61,7 +58,6 @@ class AuthService {
         do {
             let partnerData = try await Firestore.firestore().collection("users").document(partnerId).getDocument()
             let user = try partnerData.data(as: User.self)
-            print(user)
             guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
             let newPartnerRef = Firestore.firestore()
                 .collection("users")
@@ -70,17 +66,7 @@ class AuthService {
                 .document(partnerId)
             
             try await newPartnerRef.setData(encodedUser)
-        } catch {
-            print("DEBUG: \(error.localizedDescription)")
-        }
-//        let partnerData = ["partnerId": partnerId]
-//        let newPartnerRef = Firestore.firestore()
-//            .collection("users")
-//            .document(currentUserID)
-//            .collection("partners")
-//            .document(partnerId) // Создаем новый документ с уникальным ID
-//
-//        try await newPartnerRef.setData(partnerData)
+        } 
     }
     func singOut() {
         do {
@@ -89,9 +75,7 @@ class AuthService {
             UserService.shared.currentUser = nil
             try? Tips.resetDatastore()
             try? Tips.showAllTipsForTesting()
-        } catch {
-            print("DEBUG: Failed to sign out with error: \(error.localizedDescription)")
-        }
+        } 
     }
     
     private func uploadUserData(email: String, fullname: String, id: String, age: Int, profileColor: String) async throws {
@@ -106,7 +90,6 @@ class AuthService {
             guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
             try await Firestore.firestore().collection("users").document(id).setData(encodedUser)
         } catch {
-            print("DEBUG: Failed to change user data with error: \(error.localizedDescription)")
             throw error
         }
     }
@@ -149,7 +132,6 @@ class AuthService {
         let querySnapshot = try await sessionsRef.whereField("ip", isEqualTo: currentIP).getDocuments()
         
         if let session = querySnapshot.documents.first {
-            // Обновление существующей сессии
             let sessionId = session.documentID
             let sessionData: [String: Any] = [
                 "date": Timestamp(date: Date()),
@@ -159,14 +141,11 @@ class AuthService {
             
             try await sessionsRef.document(sessionId).updateData(sessionData)
         } else {
-            // Создание новой сессии
             try await createNewSession(for: userId)
         }
     }
     
     private func getCurrentIPAddress() -> String {
-        // Здесь можно использовать подходящий метод для получения текущего IP-адреса
-        // Пример: return "192.168.1.1"
         "\(Int.random(in: 0...200))"
     }
 }
