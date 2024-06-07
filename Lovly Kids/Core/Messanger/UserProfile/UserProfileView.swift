@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct UserProfileView: View {
+    @EnvironmentObject var viewModel: UserProfileViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("\(viewModel.userFullname)")
+        Text("\(viewModel.userAge)")
+        Text("\(viewModel.userUid)")
+        Text("\(viewModel.userProfileUrl)")
+        Text("\(viewModel.userProfileColor)")
     }
 }
 
 #Preview {
     UserProfileView()
+        .environmentObject(UserProfileViewModel())
 }

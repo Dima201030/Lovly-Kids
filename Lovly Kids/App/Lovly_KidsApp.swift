@@ -16,30 +16,31 @@ struct LovelyKids: App {
     var shouldResetTips: Bool = true
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var delegate
-    @EnvironmentObject private var viewModelChat: ChatViewModel
     
     private let appData = AppData()
+    private let viewModelUserProfile = UserProfileViewModel()
+    
     init() {
         try? Tips.configure()
     }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .task {
-//                    if shouldResetTips {
-//                        try? Tips.resetDatastore()
-//                        try? Tips.showAllTipsForTesting()
-//                    }
-//                    
-//                    
+                    if shouldResetTips {
+                        try? Tips.resetDatastore()
+                        try? Tips.showAllTipsForTesting()
+                    }
+                    
                     try? Tips.configure([
                         .displayFrequency(.immediate),
                         .datastoreLocation(.applicationDefault)
                     ])
                 }
-                .environment(\.locale, appData.language)
+                .environmentObject(viewModelUserProfile)
                 .environmentObject(appData)
-//                .environment(\.colorScheme, .dark)
+                .environment(\.locale, appData.language)
         }
     }
 }
@@ -59,7 +60,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         let appData = AppData()
-        let contentView = ContentView().environmentObject(appData)
+        let viewModelUserProfile = UserProfileViewModel()
+        
+        let contentView = ContentView()
+            .environmentObject(appData)
+            .environmentObject(viewModelUserProfile)
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

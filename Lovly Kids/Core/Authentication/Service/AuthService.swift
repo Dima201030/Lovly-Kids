@@ -27,7 +27,7 @@ class AuthService {
             self.userSession = result.user
             loadCurrentUserData()
             
-           
+            
             if let user = self.userSession {
                 try await checkAndUpdateSession(for: user.uid)
             }
@@ -50,7 +50,7 @@ class AuthService {
             }
             
         } catch {
-        
+            
             throw error
         }
     }
@@ -66,7 +66,7 @@ class AuthService {
                 .document(partnerId)
             
             try await newPartnerRef.setData(encodedUser)
-        } 
+        }
     }
     func singOut() {
         do {
@@ -75,7 +75,9 @@ class AuthService {
             UserService.shared.currentUser = nil
             try? Tips.resetDatastore()
             try? Tips.showAllTipsForTesting()
-        } 
+        } catch {
+            print("DEBUG: Failed to sign out with error: \(error.localizedDescription)")
+        }
     }
     
     private func uploadUserData(email: String, fullname: String, id: String, age: Int, profileColor: String) async throws {
@@ -122,9 +124,9 @@ class AuthService {
         
         try await Firestore.firestore().collection("users").document(userId).collection("sessions").document(sessionId).setData(sessionData)
     }
-
     
-
+    
+    
     private func checkAndUpdateSession(for userId: String) async throws {
         let currentIP = getCurrentIPAddress()
         let sessionsRef = Firestore.firestore().collection("users").document(userId).collection("sessions")

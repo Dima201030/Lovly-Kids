@@ -92,6 +92,8 @@
 		817F7C782B9C99FE0067A24A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F7C772B9C99FE0067A24A /* SettingsView.swift */; };
 		81A797D02BF7A1AD00C10869 /* LoginWithPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A797CF2BF7A1AC00C10869 /* LoginWithPhone.swift */; };
 		81A797D22BF7A1C300C10869 /* LoginWithPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A797D12BF7A1C300C10869 /* LoginWithPhoneViewModel.swift */; };
+		81C0973E2C13A82300CB9D09 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0973D2C13A82300CB9D09 /* UserProfileView.swift */; };
+		81C097402C13A83300CB9D09 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0973F2C13A83300CB9D09 /* UserProfileViewModel.swift */; };
 		81CB60662BE511AF007BDFEF /* Launch Screen1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81CB60652BE511AF007BDFEF /* Launch Screen1.storyboard */; };
 		81DD85B92BEEBA0F00BC602E /* MainEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD85B82BEEBA0F00BC602E /* MainEnum.swift */; };
 		81F3DF812C10E27C0011489A /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3DF802C10E27C0011489A /* Tips.swift */; };
@@ -190,6 +192,8 @@
 		817F7C772B9C99FE0067A24A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		81A797CF2BF7A1AC00C10869 /* LoginWithPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhone.swift; sourceTree = "<group>"; };
 		81A797D12BF7A1C300C10869 /* LoginWithPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhoneViewModel.swift; sourceTree = "<group>"; };
+		81C0973D2C13A82300CB9D09 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		81C0973F2C13A83300CB9D09 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		81CB60652BE511AF007BDFEF /* Launch Screen1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen1.storyboard"; sourceTree = "<group>"; };
 		81DD85B82BEEBA0F00BC602E /* MainEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEnum.swift; sourceTree = "<group>"; };
 		81DD85BA2BEEC64200BC602E /* arial_black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial_black.ttf; sourceTree = "<group>"; };
@@ -293,6 +297,15 @@
 				812F8E9A2BEE8AF700F93F04 /* MainView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		813FE2752C13A7DC00AD51AB /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				81C0973D2C13A82300CB9D09 /* UserProfileView.swift */,
+				81C0973F2C13A83300CB9D09 /* UserProfileViewModel.swift */,
+			);
+			path = UserProfile;
 			sourceTree = "<group>";
 		};
 		814B50032BE511810057AB65 /* LaunchScreen */ = {
@@ -410,6 +423,7 @@
 		817F7B892B9C82180067A24A /* Messanger */ = {
 			isa = PBXGroup;
 			children = (
+				813FE2752C13A7DC00AD51AB /* UserProfile */,
 				817F7B932B9C82C00067A24A /* Chat */,
 				817F7B922B9C82B80067A24A /* InBox */,
 				817F7B942B9C82D10067A24A /* NewMessage */,
@@ -883,6 +897,7 @@
 				817F7BAA2B9C84260067A24A /* RegistredViewModel.swift in Sources */,
 				817F7C782B9C99FE0067A24A /* SettingsView.swift in Sources */,
 				817F7BBC2B9C85600067A24A /* ChatView.swift in Sources */,
+				81C0973E2C13A82300CB9D09 /* UserProfileView.swift in Sources */,
 				81032B112BED24490068FB0D /* AppData.swift in Sources */,
 				810FFF392BE3E3EE006E818E /* Gradients.swift in Sources */,
 				817F7BEA2B9C871B0067A24A /* InfoViewModel.swift in Sources */,
@@ -907,6 +922,7 @@
 				810FFF3B2BE40971006E818E /* UIExtension.swift in Sources */,
 				817F7BC62B9C85AE0067A24A /* InboxViewModel.swift in Sources */,
 				817F7BD42B9C86440067A24A /* PrivacyView.swift in Sources */,
+				81C097402C13A83300CB9D09 /* UserProfileViewModel.swift in Sources */,
 				817F7BDA2B9C86800067A24A /* SettignsProfileViewModel.swift in Sources */,
 				817F7BD22B9C86440067A24A /* AppearanceView.swift in Sources */,
 				81032B132BED248E0068FB0D /* ChangeLaungeEnum.swift in Sources */,

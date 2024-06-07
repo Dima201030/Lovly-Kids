@@ -13,7 +13,7 @@ struct ChatView: View {
     @ObservedObject private var keyboard = KeyboardResponder()
     @State private var textFieldInput: String = ""
     let user: User
-    
+    @EnvironmentObject private var viewModelUserProfile: UserProfileViewModel
     init(user: User) {
         self.user = user
         self._viewModel = StateObject(wrappedValue: ChatViewModel(user: user))
@@ -24,6 +24,12 @@ struct ChatView: View {
             VStack {
                 ScrollView {
                     VStack(spacing: 8) {
+                        NavigationLink {
+                            UserProfileView()
+                        } label: {
+                            Text("Profile")
+                        }
+
                         ForEach(viewModel.messages) { message in
                             ChatMessageView(message: message)
                                 .id(message.id) // Убедитесь, что каждое сообщение имеет уникальный id
@@ -52,6 +58,14 @@ struct ChatView: View {
                     
                 }
                 .padding()
+            }
+            .onAppear() {
+                viewModelUserProfile.userFullname = user.fullname
+                viewModelUserProfile.userUid = "\(user.uid ?? "")"
+                viewModelUserProfile.userProfileUrl = user.profileImageUrl
+                viewModelUserProfile.userProfileColor = user.profileColor
+                viewModelUserProfile.userAge = user.age
+                
             }
             .navigationBarTitle(user.fullname, displayMode: .inline)
         }
@@ -91,4 +105,5 @@ final class KeyboardResponder: ObservableObject {
 
 #Preview {
     ChatView(user: User.MOCK_USER)
+        .environmentObject(UserProfileViewModel())
 }
