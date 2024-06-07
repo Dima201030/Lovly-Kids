@@ -11,6 +11,7 @@ struct InboxRootNew: View {
     @State private var imageURL: URL?
     @State private var loadedImage: UIImage?
     @State private var firstNameLetter = ""
+    @State private var text = ""
     let message: Message
     
     var body: some View {
@@ -50,7 +51,7 @@ struct InboxRootNew: View {
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 
-                Text(message.messageText)
+                Text(text)
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .lineLimit(2)
@@ -78,8 +79,15 @@ struct InboxRootNew: View {
             }
         }
         .frame(height: 72)
+        .onAppear() {
+            text = decrypt(text: message.messageText, with: 3)
+        }
     }
-    
+    func decrypt(text: String, with key: Int) -> String {
+        return String(text.unicodeScalars.map {
+            Character(UnicodeScalar(UInt32($0.value) - UInt32(key))!)
+        })
+    }
     func image(from url: URL, completion: @escaping (UIImage?) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let data, let image = UIImage(data: data) {

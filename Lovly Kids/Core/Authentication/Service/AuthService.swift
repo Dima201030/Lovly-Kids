@@ -57,7 +57,7 @@ class AuthService {
             throw error
         }
     }
-    func createNewPartner(for partnerId: String, currentUserID: String) async throws {
+    func createNewPartner(partnerId: String, currentUserID: String) async throws {
         do {
             let partnerData = try await Firestore.firestore().collection("users").document(partnerId).getDocument()
             let user = try partnerData.data(as: User.self)
