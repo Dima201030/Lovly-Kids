@@ -20,7 +20,7 @@ struct LoginView: View {
                         .resizable()
                         .cornerRadius(15)
                         .scaledToFit()
-                        .shadow(radius: 10)
+                        .shadow(radius: 30)
                         .padding()
                         .frame(maxWidth: 200, maxHeight: 200)
                     
@@ -34,9 +34,7 @@ struct LoginView: View {
                         .fontWeight(.bold)
                     
                     VStack {
-                        
-                        TextField("", text: $viewModel.email, prompt: Text("Email").font(.subheadline).fontWeight(.regular).foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583))
-                        )
+                        TextField("", text: $viewModel.email, prompt: Text("Email").font(.subheadline).fontWeight(.regular).foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)))
                         .padding(12)
                         .background(Color("EED8B7"))
                         .cornerRadius(10)
@@ -44,8 +42,7 @@ struct LoginView: View {
                         .keyboardType(.emailAddress)
                         .foregroundColor(.black)
                         
-                        SecureField("", text: $viewModel.password, prompt: Text("Password").font(.subheadline).fontWeight(.regular).foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583))
-                        )
+                        SecureField("", text: $viewModel.password, prompt: Text("Password").font(.subheadline).fontWeight(.regular).foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)))
                         .font(.subheadline)
                         .padding(12)
                         .background(Color("EED8B7"))
