@@ -498,6 +498,7 @@
 
     },
     "Send" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

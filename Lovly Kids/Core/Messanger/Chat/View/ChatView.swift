@@ -35,31 +35,22 @@ struct ChatView: View {
                     scrollToBottom(scrollView)
                 }
                 
-                VStack {
-                    Spacer()
-                    HStack {
-                        
-                        TextField("Message...", text: $viewModel.messageText)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .background(Color(.gray))
-                            .cornerRadius(20)
-                            .padding(.bottom, keyboard.currentHeight)
-                            .edgesIgnoringSafeArea(.bottom)
-                            .animation(.easeOut(duration: 0.16))
-                        Button(action: {
-                            viewModel.sendMessage()
-                            viewModel.messageText = ""
-                        }, label: {
-                            Text("Send")
-                                .fontWeight(.semibold)
-                        })
-                        .padding(.trailing, 16)
+                ZStack(alignment: .trailing) {
+                    TextField("Message..." , text: $viewModel.messageText, axis: .vertical)
+                        .padding(12)
+                        .padding(.trailing, 48)
+                        .background(Color(.systemGroupedBackground))
+                        .cornerRadius(15)
+                        .font(.subheadline)
+                    Button {
+                        viewModel.sendMessage()
+                        viewModel.messageText = ""
+                    } label: {
+                        Image(systemName: "paperplane")
                     }
+                    .padding(.horizontal)
                     
-                
                 }
-                .frame(maxHeight: 150)
                 .padding()
             }
             .navigationBarTitle(user.fullname, displayMode: .inline)
