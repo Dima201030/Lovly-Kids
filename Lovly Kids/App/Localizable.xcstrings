@@ -20,9 +20,6 @@
         }
       }
     },
-    "%lld" : {
-
-    },
     "Age" : {
       "localizations" : {
         "ru" : {
@@ -122,6 +119,9 @@
           }
         }
       }
+    },
+    "Copy to Clipboard" : {
+
     },
     "Current color scheme: %@" : {
       "localizations" : {
@@ -427,6 +427,9 @@
         }
       }
     },
+    "Mute" : {
+
+    },
     "Name" : {
       "localizations" : {
         "ru" : {
@@ -530,6 +533,9 @@
           }
         }
       }
+    },
+    "Show id" : {
+
     },
     "Sig in" : {
       "localizations" : {
