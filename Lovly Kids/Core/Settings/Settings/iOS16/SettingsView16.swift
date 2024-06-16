@@ -8,11 +8,8 @@
 import SwiftUI
 import TipKit
 
-
-struct SettingsView: View {
-    private let hintTipProfile = HintTipSettigns(titleWeite: "Look at that!", messageWrite: "See what your profile looks like and how others see it", imageString: "person.crop.rectangle")
-    private let hintTipLanguage = HintTipSettigns(titleWeite: "And here...", messageWrite: "And here you can change the language", imageString: "globe")
-    private let hintTipProfileDevice = HintTipSettigns(titleWeite: "Look at that!", messageWrite: "See what your profile looks like and how others see it", imageString: "person.crop.rectangle")
+@available(iOS 16, *)
+struct SettingsView16: View {
     @StateObject private var viewModel = InboxViewModel()
     @EnvironmentObject private var appData: AppData
     @State private var isTipVisible = true
@@ -29,21 +26,37 @@ struct SettingsView: View {
                 List {
                     if let user {
                         Section {
-                            NavigationLink(destination: ProfileView(user: user)) {
-                                HStack {
-                                    ZStack {
-                                        Color.blue
-                                            .cornerRadius(10)
-                                            .frame(width: 30, height: 30)
+                            if #available(iOS 17, *){
+                                NavigationLink(destination: ProfileView(user: user)) {
+                                    HStack {
+                                        ZStack {
+                                            Color.blue
+                                                .cornerRadius(10)
+                                                .frame(width: 30, height: 30)
+                                            
+                                            Image(systemName: "person.text.rectangle.fill")
+                                                .foregroundColor(.white)
+                                        }
                                         
-                                        Image(systemName: "person.text.rectangle.fill")
-                                            .foregroundColor(.white)
+                                        Text("Profile")
                                     }
-                                    
-                                    Text("Profile")
+                                }
+                            } else if #available(iOS 15.0, *){
+                                NavigationLink(destination: ProfileView15(user: user)) {
+                                    HStack {
+                                        ZStack {
+                                            Color.blue
+                                                .cornerRadius(10)
+                                                .frame(width: 30, height: 30)
+                                            
+                                            Image(systemName: "person.text.rectangle.fill")
+                                                .foregroundColor(.white)
+                                        }
+                                        
+                                        Text("Profile")
+                                    }
                                 }
                             }
-                            .conditionalPopoverTip(hintTipProfile, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
                         }
                     }
                     
@@ -64,7 +77,6 @@ struct SettingsView: View {
                                         .font(.subheadline)
                                 }
                             }
-                            .conditionalPopoverTip(option.tip, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
                         }
                     }
                     
@@ -152,26 +164,5 @@ struct SettingsView: View {
     }
 }
 
-#Preview {
-    SettingsView()
-        .environmentObject(AppData())
-}
-
-struct HintTipSettigns: Tip {
-    let titleWeite: String
-    let messageWrite: String
-    let imageString: String
-    var title: Text {
-        Text("\(titleWeite)")
-    }
-    
-    var message: Text? {
-        Text("\(messageWrite)")
-    }
-    
-    var image: Image? {
-        Image(systemName: "\(imageString)")
-    }
-}
 
 

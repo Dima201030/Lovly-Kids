@@ -27,11 +27,9 @@ class AuthService {
             self.userSession = result.user
             loadCurrentUserData()
             
-            
             if let user = self.userSession {
                 try await checkAndUpdateSession(for: user.uid)
             }
-            
         } catch {
             throw error
         }
@@ -54,6 +52,19 @@ class AuthService {
             throw error
         }
     }
+    
+    func sendVerificationCode() {
+        Auth.auth().languageCode = "en"  // Укажите нужный вам язык
+        Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+            if let error = error {
+//                message = "Error: \(error.localizedDescription)"
+            } else {
+//                message = "Verification email sent."
+            }
+        })
+        
+    }
+
     func createNewPartner(partnerId: String, currentUserID: String) async throws {
         do {
             let partnerData = try await Firestore.firestore().collection("users").document(partnerId).getDocument()
@@ -73,8 +84,13 @@ class AuthService {
             try Auth.auth().signOut()
             self.userSession = nil
             UserService.shared.currentUser = nil
-            try? Tips.resetDatastore()
-            try? Tips.showAllTipsForTesting()
+            if #available(iOS 17.0, *) {
+                try? Tips.resetDatastore()
+                try? Tips.showAllTipsForTesting()
+            } else {
+                // Fallback on earlier versions
+            }
+            
         } catch {
             print("DEBUG: Failed to sign out with error: \(error.localizedDescription)")
         }

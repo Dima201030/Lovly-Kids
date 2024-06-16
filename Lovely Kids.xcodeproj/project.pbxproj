@@ -92,6 +92,12 @@
 		817F7C782B9C99FE0067A24A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F7C772B9C99FE0067A24A /* SettingsView.swift */; };
 		81A797D02BF7A1AD00C10869 /* LoginWithPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A797CF2BF7A1AC00C10869 /* LoginWithPhone.swift */; };
 		81A797D22BF7A1C300C10869 /* LoginWithPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A797D12BF7A1C300C10869 /* LoginWithPhoneViewModel.swift */; };
+		81BC9DCB2C1C39F600EFC260 /* ProfileView15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BC9DCA2C1C39F600EFC260 /* ProfileView15.swift */; };
+		81BC9DCD2C1C3C9500EFC260 /* ProfileViewModel15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BC9DCC2C1C3C9500EFC260 /* ProfileViewModel15.swift */; };
+		81BC9DD12C1C492100EFC260 /* SettingsView15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BC9DD02C1C492100EFC260 /* SettingsView15.swift */; };
+		81BC9DD42C1C499600EFC260 /* SettingsView17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BC9DD32C1C499600EFC260 /* SettingsView17.swift */; };
+		81BC9DD62C1C4F1A00EFC260 /* SettingsView16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BC9DD52C1C4F1A00EFC260 /* SettingsView16.swift */; };
+		81BC9DD92C1C50FF00EFC260 /* ProfileView17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BC9DD82C1C50FF00EFC260 /* ProfileView17.swift */; };
 		81C0973E2C13A82300CB9D09 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0973D2C13A82300CB9D09 /* UserProfileView.swift */; };
 		81C097402C13A83300CB9D09 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0973F2C13A83300CB9D09 /* UserProfileViewModel.swift */; };
 		81CB60662BE511AF007BDFEF /* Launch Screen1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81CB60652BE511AF007BDFEF /* Launch Screen1.storyboard */; };
@@ -192,6 +198,12 @@
 		817F7C772B9C99FE0067A24A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		81A797CF2BF7A1AC00C10869 /* LoginWithPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhone.swift; sourceTree = "<group>"; };
 		81A797D12BF7A1C300C10869 /* LoginWithPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhoneViewModel.swift; sourceTree = "<group>"; };
+		81BC9DCA2C1C39F600EFC260 /* ProfileView15.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView15.swift; sourceTree = "<group>"; };
+		81BC9DCC2C1C3C9500EFC260 /* ProfileViewModel15.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel15.swift; sourceTree = "<group>"; };
+		81BC9DD02C1C492100EFC260 /* SettingsView15.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView15.swift; sourceTree = "<group>"; };
+		81BC9DD32C1C499600EFC260 /* SettingsView17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView17.swift; sourceTree = "<group>"; };
+		81BC9DD52C1C4F1A00EFC260 /* SettingsView16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView16.swift; sourceTree = "<group>"; };
+		81BC9DD82C1C50FF00EFC260 /* ProfileView17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView17.swift; sourceTree = "<group>"; };
 		81C0973D2C13A82300CB9D09 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		81C0973F2C13A83300CB9D09 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		81CB60652BE511AF007BDFEF /* Launch Screen1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen1.storyboard"; sourceTree = "<group>"; };
@@ -436,6 +448,9 @@
 			children = (
 				817F7B972B9C82FB0067A24A /* View */,
 				817F7B962B9C82F40067A24A /* ViewModel */,
+				81BC9DC72C1C38F200EFC260 /* IOS17 */,
+				81BC9DC62C1C38E300EFC260 /* IOS16 */,
+				81BC9DC52C1C38CA00EFC260 /* IOS15 */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -452,9 +467,8 @@
 		817F7B8D2B9C825C0067A24A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				81BC9DCE2C1C48EC00EFC260 /* Settings */,
 				817F7B8A2B9C82300067A24A /* Profile */,
-				817F7B9B2B9C83520067A24A /* View */,
-				817F7B9A2B9C83480067A24A /* ViewModel */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -519,7 +533,7 @@
 		817F7B962B9C82F40067A24A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				817F7BCC2B9C86150067A24A /* ProfileSettingsView */,
+				817F7BD72B9C86800067A24A /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -681,17 +695,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		817F7BCC2B9C86150067A24A /* ProfileSettingsView */ = {
+		817F7BCC2B9C86150067A24A /* AdditionalView */ = {
 			isa = PBXGroup;
 			children = (
-				817F7BD72B9C86800067A24A /* ProfileViewModel.swift */,
 				817F7BD82B9C86800067A24A /* SettignsProfileViewModel.swift */,
 				817F7BD02B9C86440067A24A /* AppearanceView.swift */,
 				817F7BD12B9C86440067A24A /* EditPrivaryInfo.swift */,
 				817F7BCF2B9C86440067A24A /* PrivacyView.swift */,
 				81032B0E2BED1F480068FB0D /* ChangeLaungeView.swift */,
 			);
-			name = ProfileSettingsView;
+			name = AdditionalView;
 			sourceTree = "<group>";
 		};
 		817F7BE52B9C86FF0067A24A /* View */ = {
@@ -708,6 +721,83 @@
 				817F7BE92B9C871B0067A24A /* InfoViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		81BC9DC52C1C38CA00EFC260 /* IOS15 */ = {
+			isa = PBXGroup;
+			children = (
+				81BC9DCA2C1C39F600EFC260 /* ProfileView15.swift */,
+				81BC9DCC2C1C3C9500EFC260 /* ProfileViewModel15.swift */,
+			);
+			path = IOS15;
+			sourceTree = "<group>";
+		};
+		81BC9DC62C1C38E300EFC260 /* IOS16 */ = {
+			isa = PBXGroup;
+			children = (
+				81BC9DC92C1C392A00EFC260 /* ViewModel */,
+				81BC9DC82C1C391B00EFC260 /* View */,
+			);
+			path = IOS16;
+			sourceTree = "<group>";
+		};
+		81BC9DC72C1C38F200EFC260 /* IOS17 */ = {
+			isa = PBXGroup;
+			children = (
+				81BC9DD82C1C50FF00EFC260 /* ProfileView17.swift */,
+			);
+			path = IOS17;
+			sourceTree = "<group>";
+		};
+		81BC9DC82C1C391B00EFC260 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		81BC9DC92C1C392A00EFC260 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		81BC9DCE2C1C48EC00EFC260 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				817F7BCC2B9C86150067A24A /* AdditionalView */,
+				81BC9DD72C1C4F1E00EFC260 /* iOS16 */,
+				81BC9DD22C1C498000EFC260 /* iOS17 */,
+				81BC9DCF2C1C490000EFC260 /* iOS 15 */,
+				817F7B9B2B9C83520067A24A /* View */,
+				817F7B9A2B9C83480067A24A /* ViewModel */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		81BC9DCF2C1C490000EFC260 /* iOS 15 */ = {
+			isa = PBXGroup;
+			children = (
+				81BC9DD02C1C492100EFC260 /* SettingsView15.swift */,
+			);
+			path = "iOS 15";
+			sourceTree = "<group>";
+		};
+		81BC9DD22C1C498000EFC260 /* iOS17 */ = {
+			isa = PBXGroup;
+			children = (
+				81BC9DD32C1C499600EFC260 /* SettingsView17.swift */,
+			);
+			path = iOS17;
+			sourceTree = "<group>";
+		};
+		81BC9DD72C1C4F1E00EFC260 /* iOS16 */ = {
+			isa = PBXGroup;
+			children = (
+				81BC9DD52C1C4F1A00EFC260 /* SettingsView16.swift */,
+			);
+			path = iOS16;
 			sourceTree = "<group>";
 		};
 		81F3DF7F2C10E26C0011489A /* Tips */ = {
@@ -895,12 +985,15 @@
 				817F7BE42B9C86F70067A24A /* Date.swift in Sources */,
 				817F7BEE2B9C87240067A24A /* Message.swift in Sources */,
 				817F7BAA2B9C84260067A24A /* RegistredViewModel.swift in Sources */,
+				81BC9DCB2C1C39F600EFC260 /* ProfileView15.swift in Sources */,
+				81BC9DD62C1C4F1A00EFC260 /* SettingsView16.swift in Sources */,
 				817F7C782B9C99FE0067A24A /* SettingsView.swift in Sources */,
 				817F7BBC2B9C85600067A24A /* ChatView.swift in Sources */,
 				81C0973E2C13A82300CB9D09 /* UserProfileView.swift in Sources */,
 				81032B112BED24490068FB0D /* AppData.swift in Sources */,
 				810FFF392BE3E3EE006E818E /* Gradients.swift in Sources */,
 				817F7BEA2B9C871B0067A24A /* InfoViewModel.swift in Sources */,
+				81BC9DD42C1C499600EFC260 /* SettingsView17.swift in Sources */,
 				817F7BC32B9C85A00067A24A /* InboxView.swift in Sources */,
 				817F7BDE2B9C86B80067A24A /* ContentViewModel.swift in Sources */,
 				810E14C32BFB82B60031CC80 /* OftenOrderView.swift in Sources */,
@@ -908,14 +1001,17 @@
 				817F7BD92B9C86800067A24A /* ProfileViewModel.swift in Sources */,
 				817F7BBD2B9C85600067A24A /* ChatBubble.swift in Sources */,
 				817F7BD32B9C86440067A24A /* EditPrivaryInfo.swift in Sources */,
+				81BC9DCD2C1C3C9500EFC260 /* ProfileViewModel15.swift in Sources */,
 				817F7BA62B9C84150067A24A /* RegisterView.swift in Sources */,
 				810E14C72BFB83090031CC80 /* StorisView.swift in Sources */,
 				817F7BDC2B9C86B40067A24A /* ContentView.swift in Sources */,
 				817F7BB62B9C852F0067A24A /* ChatService.swift in Sources */,
 				817F7BCA2B9C85E20067A24A /* NewMessageView.swift in Sources */,
 				81509F332C0BFC3F006FF43A /* SessionsView.swift in Sources */,
+				81BC9DD12C1C492100EFC260 /* SettingsView15.swift in Sources */,
 				810FFF3D2BE40984006E818E /* IntExtension.swift in Sources */,
 				810E14C52BFB82EE0031CC80 /* AchievementsView.swift in Sources */,
+				81BC9DD92C1C50FF00EFC260 /* ProfileView17.swift in Sources */,
 				817F7BF22B9C872B0067A24A /* UserService.swift in Sources */,
 				817F7BC02B9C85890067A24A /* InboxService.swift in Sources */,
 				817F7BC42B9C85A00067A24A /* InboxRootNew.swift in Sources */,
@@ -1116,7 +1212,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1150,7 +1246,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

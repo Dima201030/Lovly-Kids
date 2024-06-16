@@ -14,7 +14,6 @@ struct NewMessageView: View {
     @EnvironmentObject var appData: AppData
     @Environment(\.dismiss) var dismiss
     var body: some View {
-        NavigationStack{
             ScrollView {
                 TextField("To: ", text: $searchText)
                     .frame(height: 44)
@@ -57,7 +56,7 @@ struct NewMessageView: View {
                 }
             }
             
-        }
+        
         
     }
 }

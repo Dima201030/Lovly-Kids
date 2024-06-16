@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
     @StateObject private var viewModelSessions = SessionsViewModel()
     @StateObject private var viewModel = ContentViewModel()
     @EnvironmentObject private var appData: AppData
+    @State private var isVerified = false
     
     var body: some View {
         VStack {
@@ -30,8 +32,12 @@ struct ContentView: View {
                                 )
                             }
                         
-                        NavigationStack {
-                            SettingsView()
+                        NavigationView {
+                            if #available(iOS 17.0, *) {
+                                SettingsView()
+                            } else {
+                                // Fallback on earlier versions
+                            }
                         }
                         .tabItem {
                             Label("Settings",
@@ -44,12 +50,25 @@ struct ContentView: View {
             }
             .edgesIgnoringSafeArea(.all)
         }
+        .sheet(isPresented: $isVerified) {
+            Verefi()
+            .interactiveDismissDisabled(true)
+        }
         .onAppear {
-            // Проверка на блокировку при появлении ContentView
+            checkVerificationStatus()
             checkForBlock()
         }
     }
-    
+    func checkVerificationStatus() {
+        Auth.auth().currentUser?.reload(completion: { error in
+            if let user = Auth.auth().currentUser {
+                if user.isEmailVerified {
+                } else {
+                    isVerified.toggle()
+                }
+            }
+        })
+    }
     // Проверка на блокировку
     private func checkForBlock() {
         // Проверяем, заблокирован ли пользователь

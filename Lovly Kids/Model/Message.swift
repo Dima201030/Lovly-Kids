@@ -16,6 +16,7 @@ struct Message: Identifiable, Codable, Hashable {
     var messageText: String
     let timestamp: Timestamp
     let keyShifr: Int
+    var read: Bool
     
     var user: User?
     

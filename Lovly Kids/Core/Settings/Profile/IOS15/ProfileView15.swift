@@ -1,9 +1,10 @@
 //
-//  ProfileView.swift
-//  Manager
+//  ProfileView15.swift
+//  Lovely Kids
 //
-//  Created by Дима Кожемякин on 23.02.2024.
+//  Created by Дима Кожемякин on 14.06.2024.
 //
+
 
 import SwiftUI
 import Firebase
@@ -11,13 +12,78 @@ import FirebaseStorage
 import PhotosUI
 import TipKit
 
+//struct ImagePicker: UIViewControllerRepresentable {
+//    @Binding var image: UIImage?
+//    @Environment(\.presentationMode) private var presentationMode
+//    
+//    func makeUIViewController(context: Context) -> UIImagePickerController {
+//        let picker = UIImagePickerController()
+//        picker.delegate = context.coordinator
+//        picker.allowsEditing = true
+//        return picker
+//    }
+//    
+//    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+//        
+//    }
+//    
+//    func makeCoordinator() -> Coordinator {
+//        Coordinator(self)
+//    }
+//    
+//    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+//        let parent: ImagePicker
+//        
+//        init(_ parent: ImagePicker) {
+//            self.parent = parent
+//        }
+//        
+//        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+//            if let image = info[.editedImage] as? UIImage {
+//                parent.image = image
+//            } else if let image = info[.originalImage] as? UIImage {
+//                parent.image = image
+//            }
+//            
+//            parent.presentationMode.wrappedValue.dismiss()
+//        }
+//    }
+//}
+//
+//func image(from url: URL, completion: @escaping (UIImage?) -> Void) {
+//    URLSession.shared.dataTask(with: url) { data, response, error in
+//        if let data, let image = UIImage(data: data) {
+//            DispatchQueue.main.async {
+//                completion(image)
+//            }
+//        } else {
+//            DispatchQueue.main.async {
+//                completion(nil)
+//            }
+//        }
+//    }
+//    .resume()
+//}
+//@available(iOS 17.0, *)
+//struct HintTipProfile: Tip {
+//    var title: Text {
+//        Text("Edit your profile for yourself")
+//    }
+//    
+//    var message: Text? {
+//        Text("In this tab, you can edit your profile for yourself. Everyone will see it.")
+//    }
+//    
+//    var image: Image? {
+//        Image(systemName: "person.text.rectangle")
+//    }
+//}
 
-@available(iOS 17.0, *)
-struct ProfileView17: View {
+import SwiftUI
+
+struct ProfileView15: View {
     
-    private let tip = HintTipProfile()
     @State private var isTipVisible = true
-    @StateObject private var profileViewModel = ProfileViewModel()
     @Environment(\.colorScheme) private var colorScheme
     @State private var firstNameLetter = ""
     let user: User
@@ -31,7 +97,6 @@ struct ProfileView17: View {
     private let storage = Storage.storage()
     
     var body: some View {
-        NavigationStack {
             VStack {
                 
                 if let loadedImage {
@@ -43,7 +108,6 @@ struct ProfileView17: View {
                         .clipShape(.circle)
                         .frame(width: 120, height: 120)
                         .shadow(color: user.profileColor, radius: 30)
-//                        .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? .white : .black)) : .white, radius: 30) // Use average color in shadow
                         .offset(y: 30)
                     
                 } else {
@@ -69,7 +133,7 @@ struct ProfileView17: View {
                             } label: {
                                 Text("Select image")
                                     .multilineTextAlignment(.center)
-                                    .fontWeight(.bold)
+//                                    .fontWeight(.bold)
                                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                             }
                             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
@@ -90,7 +154,6 @@ struct ProfileView17: View {
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
-                    .conditionalPopoverTip(tip, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
                     Section {
                         Button(action: {AuthService.shared.singOut()}) {
                             Text("Log out")
@@ -100,16 +163,7 @@ struct ProfileView17: View {
                 }
                 .offset(y: 75)
             }
-            .onChange(of: imageURL) { _, newValue in
-                if let newValue {
-                    Task {
-                        try await saveDataOfUser(profileImageUrl: newValue.absoluteString)
-                        try await UserService.shared.fetchCurrentUser()
-                    }
-                    
-                    print("DEBUG: TRue \(user.profileImageUrl), \(newValue.absoluteString)")
-                }
-            }
+            
             .onAppear() {
                 
                 firstNameLetter = String(user.fullname.prefix(1))
@@ -122,13 +176,29 @@ struct ProfileView17: View {
                         loadedImage = image
                     }
                 }
+                if let imageURL = imageURL {
+                    Task {
+                        do {
+                            try await saveDataOfUser(profileImageUrl: imageURL.absoluteString)
+                            try await UserService.shared.fetchCurrentUser()
+                        } catch {
+                            print("Failed to save data: \(error)")
+                        }
+                    }
+
+                    print("DEBUG: True \(user.profileImageUrl), \(imageURL.absoluteString)")
+                }
             }
-            .navigationTitle("Profile")
+            .navigationTitle("Profile15")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $showSheet) {
-                EditPrivaryInfo(user: user)
-                    .environmentObject(AppData())
-            }
+                if #available(iOS 17, *) {
+                    EditPrivaryInfo(user: user)
+                        .environmentObject(AppData())
+                } else {
+                    // Fallback on earlier versions
+                }
+            
             
         }
     }
@@ -195,71 +265,6 @@ struct ProfileView17: View {
         }
     }
 }
-
-
-struct ImagePicker: UIViewControllerRepresentable {
-    @Binding var image: UIImage?
-    @Environment(\.presentationMode) private var presentationMode
-    
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let picker = UIImagePickerController()
-        picker.delegate = context.coordinator
-        picker.allowsEditing = true
-        return picker
-    }
-    
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
-        
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        let parent: ImagePicker
-        
-        init(_ parent: ImagePicker) {
-            self.parent = parent
-        }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-            if let image = info[.editedImage] as? UIImage {
-                parent.image = image
-            } else if let image = info[.originalImage] as? UIImage {
-                parent.image = image
-            }
-            
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-    }
-}
-
-func image(from url: URL, completion: @escaping (UIImage?) -> Void) {
-    URLSession.shared.dataTask(with: url) { data, response, error in
-        if let data, let image = UIImage(data: data) {
-            DispatchQueue.main.async {
-                completion(image)
-            }
-        } else {
-            DispatchQueue.main.async {
-                completion(nil)
-            }
-        }
-    }
-    .resume()
-}
-@available(iOS 17.0, *)
-struct HintTipProfile: Tip {
-    var title: Text {
-        Text("Edit your profile for yourself")
-    }
-    
-    var message: Text? {
-        Text("In this tab, you can edit your profile for yourself. Everyone will see it.")
-    }
-    
-    var image: Image? {
-        Image(systemName: "person.text.rectangle")
-    }
-}
+//#Preview {
+//    ProfileView15()
+//}

@@ -8,8 +8,10 @@
 import SwiftUI
 import PhotosUI
 
+@available(iOS 17.0, *)
 class ProfileViewModel: ObservableObject {
     @Environment(\.colorScheme) private var colorScheme
+    
     
     @Published var selectItme: PhotosPickerItem? {
         didSet {

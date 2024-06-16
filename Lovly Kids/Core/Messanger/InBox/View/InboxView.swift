@@ -22,70 +22,79 @@ struct InboxView: View {
     
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(viewModel.recentMessages) { message in
-                    ZStack {
-                        NavigationLink(value: message) {
-                            EmptyView()
-                        }.opacity(0.0)
-                        
-                        InboxRootNew(message: message)
+        if #available(iOS 16.0, *) {
+            NavigationStack {
+                List {
+                    ForEach(viewModel.recentMessages) { message in
+                        ZStack {
+                            if #available(iOS 16.0, *) {
+                                NavigationLink(value: message) {
+                                    EmptyView()
+                                }.opacity(0.0)
+                            } else {
+                                // Fallback on earlier versions
+                            }
+                            
+                            InboxRootNew(message: message)
+                        }
+                    }
+                }
+                .refreshable {
+                    await viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных
+                }
+                .listStyle(PlainListStyle())
+                .navigationDestination(isPresented: $showChat, destination: {
+                    if let user = selectedUser {
+                        ChatView(user: user)
+                    }
+                })
+                .onChange(of: selectedUser, perform: { newValue in
+                    showChat = newValue != nil
+                })
+                .navigationDestination(for: Message.self, destination: { message in
+                    if let user = message.user {
+                        ChatView(user: user)
+                    }
+                })
+                .fullScreenCover(isPresented: $showNewMessageView) {
+                    NewMessageView(selectedUser: $selectedUser)
+                        .environment(\.colorScheme, appData.appearance)
+                }
+                
+                .onAppear {
+                    if count != 0 {
+                        Task {
+                            await viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных при появлении вида
+                        }
+                    } else {
+                        count = count + 1
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        HStack {
+                            Text("Chats")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showNewMessageView.toggle()
+                            self.selectedUser = nil
+                        } label: {
+                            Image(systemName: "square.and.pencil.circle.fill")
+                                .resizable()
+                                .frame(width: 32, height: 32)
+                                .foregroundStyle(.black, Color(.systemGray5))
+                        }
                     }
                 }
             }
-            .refreshable {
-                await viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных
-            }
-            .listStyle(PlainListStyle())
-            .navigationDestination(isPresented: $showChat, destination: {
-                if let user = selectedUser {
-                    ChatView(user: user)
-                }
-            })
-            .onChange(of: selectedUser, perform: { newValue in
-                showChat = newValue != nil
-            })
-            .navigationDestination(for: Message.self, destination: { message in
-                if let user = message.user {
-                    ChatView(user: user)
-                }
-            })
-            .fullScreenCover(isPresented: $showNewMessageView) {
-                NewMessageView(selectedUser: $selectedUser)
-                    .environment(\.colorScheme, appData.appearance)
-            }
-            
-            .onAppear {
-                if count != 0 {
-                    Task {
-                        await viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных при появлении вида
-                    }
-                } else {
-                    count = count + 1
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    HStack {
-                        Text("Chats")
-                            .font(.title)
-                            .fontWeight(.semibold)
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showNewMessageView.toggle()
-                        self.selectedUser = nil
-                    } label: {
-                        Image(systemName: "square.and.pencil.circle.fill")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                            .foregroundStyle(.black, Color(.systemGray5))
-                    }
-                }
-            }
+        } else {
+            // Fallback on earlier versions
         }
+            
     }
 }
 

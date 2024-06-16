@@ -42,6 +42,8 @@ enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
         }
     }
     
+    
+    @available(iOS 17.0, *)
     var tip: HintTipSettigns {
         switch self {
         case .Appearance:

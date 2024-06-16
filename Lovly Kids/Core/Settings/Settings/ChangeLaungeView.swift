@@ -11,13 +11,11 @@ struct ChangeLaungeView: View {
     @EnvironmentObject private var appData: AppData
     
     var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    ForEach(ChangeLaungeEnum.allCases, id: \.self) { options in
-                        Button(options.title) {
-                            appData.saveLanguage(language: options.abbreviation)
-                        }
+        List {
+            Section {
+                ForEach(ChangeLaungeEnum.allCases, id: \.self) { options in
+                    Button(options.title) {
+                        appData.saveLanguage(language: options.abbreviation)
                     }
                 }
             }

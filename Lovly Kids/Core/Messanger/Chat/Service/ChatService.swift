@@ -32,7 +32,8 @@ struct ChatService {
             toId: chatPartnerId,
             messageText: textShifr,
             timestamp: Timestamp(),
-            keyShifr: keyShifr
+            keyShifr: keyShifr, 
+            read: false
         )
         
         guard let messageData = try? Firestore.Encoder().encode(message) else { return }

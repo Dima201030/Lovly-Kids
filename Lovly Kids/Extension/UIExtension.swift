@@ -36,7 +36,7 @@ extension UIImage {
         return UIColor(red: CGFloat(bitmap[0]) / 255.0, green: CGFloat(bitmap[1]) / 255.0, blue: CGFloat(bitmap[2]) / 255.0, alpha: CGFloat(bitmap[3]) / 255.0)
     }
 }
-
+@available(iOS 17.0, *)
 struct PopoverTipModifier<TipType: Tip>: ViewModifier {
     let tip: TipType?
     @Binding var isTipVisible: Bool
@@ -49,7 +49,7 @@ struct PopoverTipModifier<TipType: Tip>: ViewModifier {
         }
     }
 }
-
+@available(iOS 17.0, *)
 extension View {
     func conditionalPopoverTip<TipType: Tip>(_ tip: TipType?, isTipVisible: Binding<Bool>) -> some View {
         self.modifier(PopoverTipModifier(tip: tip, isTipVisible: isTipVisible))

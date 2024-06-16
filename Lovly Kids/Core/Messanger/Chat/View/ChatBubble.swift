@@ -15,7 +15,7 @@ struct ChatBubble: Shape {
             .topRight,
             isFromCurrentUser ? .bottomLeft : .bottomRight
             
-        ], cornerRadii: CGSize(width: 16, height: 16))
+        ], cornerRadii: CGSize(width: 20, height: 20))
         return Path(path.cgPath)
         
     }

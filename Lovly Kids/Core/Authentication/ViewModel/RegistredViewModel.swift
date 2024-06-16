@@ -16,14 +16,14 @@ class RegistredViewModel: ObservableObject {
     
     @Published var showAlert = false
     @Published var alertTitle = "Error"
-    @Published var alertMessage = "Error text"
+    @Published var alertMessage = Text("Error text")
     
     func createUser() async throws {
         isAnimation.toggle()
         
         if age <= 14 {
             alertTitle = "Error"
-            alertMessage = "You're too small for this app."
+            alertMessage = Text("You're too small for this app.")
             showAlert.toggle()
             isAnimation.toggle()
             return
@@ -31,13 +31,24 @@ class RegistredViewModel: ObservableObject {
         
         guard email != "", password != "", fullName != "" else {
             alertTitle = "Error"
-            alertMessage = "Not all fields are filled in"
+            alertMessage = Text("Not all fields are filled in")
             showAlert.toggle()
             isAnimation.toggle()
             return
         }
         
-        try await AuthService.shared.createUser(withEmail: email, password: password, fullname: fullName, age: age, profileColor: "gray")
+        do {
+            try await AuthService.shared.createUser(withEmail: email, password: password, fullname: fullName, age: age, profileColor: "gray")
+        } catch {
+            await MainActor.run {
+                errorr(errorString: error.localizedDescription)
+                print(error.localizedDescription)
+            }
+        }
+        func errorr(errorString: String) {
+            alertMessage = Text(NSLocalizedString(errorString, comment: ""))
+            showAlert = true
+        }
         isAnimation.toggle()
     }
 }

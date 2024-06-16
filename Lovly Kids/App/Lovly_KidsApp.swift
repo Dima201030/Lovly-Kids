@@ -19,9 +19,12 @@ struct LovelyKids: App {
     
     private let appData = AppData()
     private let viewModelUserProfile = UserProfileViewModel()
+    private let viewModelLogin = LoginViewModel()
     
     init() {
-        try? Tips.configure()
+        if #available(iOS 17, *) {
+            try? Tips.configure()
+        }
     }
     
     var body: some Scene {
@@ -29,17 +32,21 @@ struct LovelyKids: App {
             ContentView()
                 .task {
                     if shouldResetTips {
-                        try? Tips.resetDatastore()
-                        try? Tips.showAllTipsForTesting()
+                        if #available(iOS 17, *) {
+                            try? Tips.resetDatastore()
+                            Tips.showAllTipsForTesting()
+                        }
                     }
-                    
-                    try? Tips.configure([
-                        .displayFrequency(.immediate),
-                        .datastoreLocation(.applicationDefault)
-                    ])
+                    if #available(iOS 17, *) {
+                        try? Tips.configure([
+                            .displayFrequency(.immediate),
+                            .datastoreLocation(.applicationDefault)
+                        ])
+                    }
                 }
                 .environmentObject(viewModelUserProfile)
                 .environmentObject(appData)
+                .environmentObject(viewModelLogin)
                 .environment(\.locale, appData.language)
         }
     }
@@ -61,10 +68,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let appData = AppData()
         let viewModelUserProfile = UserProfileViewModel()
+        let viewModelLogin = LoginViewModel()
         
         let contentView = ContentView()
             .environmentObject(appData)
             .environmentObject(viewModelUserProfile)
+            .environmentObject(viewModelLogin)
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

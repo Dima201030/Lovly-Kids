@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    
     @StateObject private var viewModel = RegistredViewModel()
     @Environment(\.dismiss) private var dissmis
     @Environment(\.colorScheme) private var colorScheme
-    
     @State private var age = ""
     
     var body: some View {
@@ -22,12 +22,12 @@ struct RegistrationView: View {
                 .resizable()
                 .cornerRadius(15)
                 .scaledToFit()
-                .shadow(radius: 10)
+                .shadow(radius: 30)
                 .padding()
-                .frame(maxWidth: 200, maxHeight: 200)
+                .frame(maxWidth: 180, maxHeight: 180)
             
             Text("Lovely Kids")
-                .font(.custom("MonteCarlo-Regular", size: 36))
+                .font(.custom("MonteCarlo-Regular", size: 40))
                 .foregroundColor(Color(red: 0.47, green: 0.35, blue: 0.30))
             
             Text("Sig in")
@@ -105,7 +105,7 @@ struct RegistrationView: View {
             .alert(viewModel.alertTitle, isPresented: $viewModel.showAlert) {
                 
             } message: {
-                Text(viewModel.alertMessage)
+                viewModel.alertMessage
             }
             .padding(.vertical)
             

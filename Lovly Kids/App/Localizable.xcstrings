@@ -40,6 +40,17 @@
         }
       }
     },
+    "And here you can customize the application for yourself" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "А здесь вы можете костамизировать приложение под себя "
+          }
+        }
+      }
+    },
     "Appearance" : {
       "localizations" : {
         "ru" : {
@@ -100,6 +111,9 @@
         }
       }
     },
+    "Check Verification Status" : {
+
+    },
     "Color" : {
       "localizations" : {
         "ru" : {
@@ -121,7 +135,14 @@
       }
     },
     "Copy to Clipboard" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скопировать"
+          }
+        }
+      }
     },
     "Current color scheme: %@" : {
       "localizations" : {
@@ -223,46 +244,25 @@
         }
       }
     },
-    "Enter your age" : {
-      "extractionState" : "stale",
+    "Email successfully verified!" : {
+
+    },
+    "Error" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введите свой возраст"
+            "value" : "Ошибка"
           }
         }
       }
     },
-    "Enter your email" : {
-      "extractionState" : "stale",
+    "Error text" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введите свою почту "
-          }
-        }
-      }
-    },
-    "Enter your Fullname" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Введите своё имя"
-          }
-        }
-      }
-    },
-    "Enter your password" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Введите свой пароль"
+            "value" : "Ошибочный текст"
           }
         }
       }
@@ -301,7 +301,7 @@
       "localizations" : {
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "В этой вкладке вы можете редактировать свой профиль под себя. Это будут видеть все."
           }
         }
@@ -428,7 +428,14 @@
       }
     },
     "Mute" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Звук"
+          }
+        }
+      }
     },
     "Name" : {
       "localizations" : {
@@ -440,12 +447,39 @@
         }
       }
     },
+    "Network error (such as timeout, interrupted connection or unreachable host) has occurred." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unstable network connection"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нестабильное подключение к сети "
+          }
+        }
+      }
+    },
     "New Message" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Новое сообщение "
+          }
+        }
+      }
+    },
+    "Not all fields are filled in" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не все строчки заполнены"
           }
         }
       }
@@ -490,6 +524,16 @@
         }
       }
     },
+    "Profile15" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профиль15"
+          }
+        }
+      }
+    },
     "Red" : {
       "localizations" : {
         "ru" : {
@@ -501,18 +545,17 @@
       }
     },
     "Select image" : {
-
-    },
-    "Send" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Отправить"
+            "value" : "Выбрать фото "
           }
         }
       }
+    },
+    "Send Verification Code" : {
+
     },
     "Sessions" : {
       "localizations" : {
@@ -535,7 +578,14 @@
       }
     },
     "Show id" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показать id"
+          }
+        }
+      }
     },
     "Sig in" : {
       "localizations" : {
@@ -573,6 +623,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Часто заказывают"
+          }
+        }
+      }
+    },
+    "The supplied auth credential is malformed or has expired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The supplied auth credential is malformed or has expired"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Такого пользователя не существует"
           }
         }
       }
@@ -627,8 +694,25 @@
         }
       }
     },
+    "You're too small for this app." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ты очень  маленький для этого приложения"
+          }
+        }
+      }
+    },
     "Your name" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваше имя "
+          }
+        }
+      }
     },
     "ООО «LOVLYKIDS»" : {
       "localizations" : {

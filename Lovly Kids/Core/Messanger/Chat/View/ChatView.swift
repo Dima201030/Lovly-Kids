@@ -42,12 +42,16 @@ struct ChatView: View {
                 }
                 
                 ZStack(alignment: .trailing) {
-                    TextField("Message..." , text: $viewModel.messageText, axis: .vertical)
-                        .padding(12)
-                        .padding(.trailing, 48)
-                        .background(Color(.systemGroupedBackground))
-                        .cornerRadius(15)
-                        .font(.subheadline)
+                    if #available(iOS 16.0, *) {
+                        TextField("Message..." , text: $viewModel.messageText, axis: .vertical)
+                            .padding(12)
+                            .padding(.trailing, 48)
+                            .background(Color(.systemGroupedBackground))
+                            .cornerRadius(15)
+                            .font(.subheadline)
+                    } else {
+                        // Fallback on earlier versions
+                    }
                     Button {
                         viewModel.sendMessage()
                         viewModel.messageText = ""

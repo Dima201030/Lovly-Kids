@@ -6,12 +6,91 @@
 //
 
 import SwiftUI
+import Firebase
+
+struct Verefi: View {
+    @State private var email = ""
+    @State private var message = ""
+    @State private var isVerified = false
+    @State private var showingVerificationScreen = false
+
+    var body: some View {
+        if isVerified {
+            VStack {
+                Text("Email successfully verified!")
+                    .font(.largeTitle)
+                    .padding()
+                VStack {
+                    TextField("Email", text: $email)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                    Button(action: sendVerificationCode) {
+                        Text("Send Verification Code")
+                    }
+                    .padding()
+                    Text(message)
+                        .padding()
+                    Button(action: checkVerificationStatus) {
+                        Text("Check Verification Status")
+                    }
+                    .padding()
+                }
+                .padding()
+            }
+            
+            
+        } else {
+            VStack {
+                TextField("Email", text: $email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                Button(action: sendVerificationCode) {
+                    Text("Send Verification Code")
+                }
+                .padding()
+                Text(message)
+                    .padding()
+                Button(action: checkVerificationStatus) {
+                    Text("Check Verification Status")
+                }
+                .padding()
+            }
+            .padding()
+            .onAppear {
+                checkVerificationStatus()
+            }
+        }
+    }
+
+    func sendVerificationCode() {
+        Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+            if let error = error {
+                message = "Error: \(error.localizedDescription)"
+            } else {
+                message = "Verification email sent."
+                showingVerificationScreen = true
+            }
+        })
+    }
+
+    func checkVerificationStatus() {
+        Auth.auth().currentUser?.reload(completion: { error in
+            if let user = Auth.auth().currentUser {
+                if user.isEmailVerified {
+                    isVerified = true
+                } else {
+
+                }
+            }
+        })
+    }
+}
+
 
 struct MainView: View {
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
-        NavigationStack {
             ZStack {
                 if colorScheme == .dark {
                     Color.black
@@ -58,15 +137,11 @@ struct MainView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-        }
+        
     }
 }
 
 #Preview {
     MainView()
         .colorScheme(.light)
-}
-#Preview {
-    MainView()
-        .colorScheme(.dark)
 }

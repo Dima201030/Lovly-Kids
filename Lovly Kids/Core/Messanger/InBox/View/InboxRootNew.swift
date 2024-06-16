@@ -16,7 +16,14 @@ struct InboxRootNew: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            if message.user?.profileImageUrl == "" {
+            if let loadedImage = loadedImage {
+                Image(uiImage: loadedImage)
+                    .resizable()
+                    .cornerRadius(15)
+                    .scaledToFill()
+                    .clipShape(.circle)
+                    .frame(width: 56, height: 56)
+            } else {
                 Circle()
                     .foregroundColor(message.user?.profileColor)
                     .frame(width: 56, height: 56)
@@ -25,31 +32,13 @@ struct InboxRootNew: View {
                             .foregroundColor(.black)
                             .font(.title)
                     )
-            } else {
-                if let loadedImage = loadedImage {
-                    Image(uiImage: loadedImage)
-                        .resizable()
-                        .cornerRadius(15)
-                        .scaledToFill()
-                        .clipShape(.circle)
-                        .frame(width: 56, height: 56)
-                } else {
-                    Circle()
-                        .foregroundColor(message.user?.profileColor)
-                        .frame(width: 56, height: 56)
-                        .overlay(
-                            Text(firstNameLetter)
-                                .foregroundColor(.black)
-                                .font(.title)
-                        )
-                }
             }
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(message.user?.fullname ?? "")
                     .lineLimit(1)
                     .font(.subheadline)
-                    .fontWeight(.semibold)
+//                    .fontWeight(.semibold)
                 
                 Text(text)
                     .font(.subheadline)
