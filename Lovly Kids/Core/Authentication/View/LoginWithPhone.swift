@@ -54,8 +54,6 @@ struct FirstPage: View {
             .padding(.top, 15)
             
             NavigationLink(destination: ScndPage(show: $show, ID: $ID), isActive: $show) {
-                
-                
                 Button {
                     PhoneAuthProvider.provider().verifyPhoneNumber("+" + self.ccode + self.no, uiDelegate: nil) { ID, err in
                         if err != nil {

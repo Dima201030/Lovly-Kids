@@ -52,16 +52,65 @@ struct LovelyKids: App {
     }
 }
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+//@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var window: UIWindow?
+
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        requestPushNotificationAuthorization()
         return true
+    }
+    
+    func requestPushNotificationAuthorization() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                print("Push notification authorization granted")
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            } else {
+                print("Push notification authorization denied")
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Pass device token to Firebase for authentication
+//        Auth.auth().setAPNSToken(deviceToken, type: .prod)
+        #warning("HERE")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register for remote notifications:", error.localizedDescription)
+    }
+    
+    // Handle remote notifications received while app is running
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        // Handle the notification
+        print("Received remote notification while app is running:", userInfo)
+    }
+    
+    // Handle remote notifications for iOS 10 and earlier
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        // Handle the notification
+        print("Received remote notification on iOS 10 or earlier:", userInfo)
+        completionHandler(.newData)
     }
 }
 
+//class AppDelegate: NSObject, UIApplicationDelegate {
+//    func application(_ application: UIApplication,
+//                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+//        FirebaseApp.configure()
+//        return true
+//    }
+//}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {

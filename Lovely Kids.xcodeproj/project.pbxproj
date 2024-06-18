@@ -210,6 +210,7 @@
 		81DD85B82BEEBA0F00BC602E /* MainEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEnum.swift; sourceTree = "<group>"; };
 		81DD85BA2BEEC64200BC602E /* arial_black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial_black.ttf; sourceTree = "<group>"; };
 		81F3DF802C10E27C0011489A /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
+		F31C05D52C2229CE002A812A /* Lovely Kids.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Lovely Kids.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +332,7 @@
 		817F7B032B9C7DFD0067A24A = {
 			isa = PBXGroup;
 			children = (
+				F31C05D52C2229CE002A812A /* Lovely Kids.entitlements */,
 				817F7B0E2B9C7DFD0067A24A /* Lovly Kids */,
 				817F7B1F2B9C7DFF0067A24A /* Lovly KidsTests */,
 				817F7B292B9C7DFF0067A24A /* Lovly KidsUITests */,
@@ -1197,6 +1199,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Lovely Kids.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1231,6 +1234,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Lovely Kids.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
