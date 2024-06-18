@@ -80,7 +80,7 @@ struct EditPrivaryInfo: View {
             
         }
         .navigationTitle("EditProfile")
-        .onAppear() {
+        .onAppear {
             fullname = user.fullname
             age = String(user.age)
         }

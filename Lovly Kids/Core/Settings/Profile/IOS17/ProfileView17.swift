@@ -66,7 +66,7 @@ struct ProfileView17: View {
                                 Text("Select image")
                                     .multilineTextAlignment(.center)
                                     .fontWeight(.bold)
-                                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
                             }
                             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                                 ImagePicker(image: $image)

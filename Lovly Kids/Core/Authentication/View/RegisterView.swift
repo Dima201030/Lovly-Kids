@@ -97,7 +97,7 @@ struct RegistrationView: View {
                 Text("Sign Up")
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                    .foregroundColor(colorScheme == .dark ? .black : .white)
                     .frame(width: 360, height: 44)
                     .background(Color("EED8B7"))
                     .cornerRadius(10)
@@ -118,7 +118,7 @@ struct RegistrationView: View {
             } label: {
                 HStack(spacing: 3) {
                     Text("Already have an account ?")
-                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
                     Text("Sign In")
                         .fontWeight(.semibold)
                         .foregroundColor(.blue)

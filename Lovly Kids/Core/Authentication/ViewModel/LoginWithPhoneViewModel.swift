@@ -12,6 +12,3 @@ class LoginWithPhoneViewModel: ObservableObject {
     @Published var countryNumber = ""
     @Published var code = ""
 }
-
-
-

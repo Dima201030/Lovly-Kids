@@ -131,7 +131,7 @@ struct ProfileView15: View {
                             Text("Select image")
                                 .multilineTextAlignment(.center)
                             // .fontWeight(.bold)
-                                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                             ImagePicker(image: $image)
@@ -140,6 +140,7 @@ struct ProfileView15: View {
                         Spacer()
                     }
                 }
+                
                 Section {
                     Button {
                         showSheet.toggle()
@@ -152,6 +153,7 @@ struct ProfileView15: View {
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                     }
                 }
+                
                 Section {
                     Button(action: {AuthService.shared.singOut()}) {
                         Text("Log out")
@@ -161,11 +163,8 @@ struct ProfileView15: View {
             }
             .offset(y: 75)
         }
-        
-        .onAppear() {
-            
+        .onAppear {
             firstNameLetter = String(user.fullname.prefix(1))
-            
             
             imageURL = URL(string: user.profileImageUrl)
             
@@ -174,7 +173,8 @@ struct ProfileView15: View {
                     loadedImage = image
                 }
             }
-            if let imageURL = imageURL {
+            
+            if let imageURL {
                 Task {
                     do {
                         try await saveDataOfUser(profileImageUrl: imageURL.absoluteString)
@@ -259,6 +259,7 @@ struct ProfileView15: View {
         }
     }
 }
+
 //#Preview {
 //    ProfileView15()
 //}
