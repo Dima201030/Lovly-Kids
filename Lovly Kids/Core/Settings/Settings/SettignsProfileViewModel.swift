@@ -5,8 +5,6 @@
 //  Created by Дима Кожемякин on 05.03.2024.
 //
 
-import Foundation
-
 //class SettignsProfileViewModel: ObservableObject {
 //    
 //}

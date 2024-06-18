@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-import TipKit
 
 @available(iOS 16, *)
 struct SettingsView16: View {
     @StateObject private var viewModel = InboxViewModel()
     @EnvironmentObject private var appData: AppData
+    
     @State private var isTipVisible = true
     
     private var user: User? {
@@ -41,7 +41,7 @@ struct SettingsView16: View {
                                         Text("Profile")
                                     }
                                 }
-                            } else if #available(iOS 15.0, *){
+                            } else if #available(iOS 15, *){
                                 NavigationLink(destination: ProfileView15(user: user)) {
                                     HStack {
                                         ZStack {

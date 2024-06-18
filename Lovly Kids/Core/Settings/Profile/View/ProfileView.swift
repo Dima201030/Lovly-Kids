@@ -8,11 +8,10 @@
 import SwiftUI
 import Firebase
 import FirebaseStorage
-import PhotosUI
-import TipKit
 
 struct ProfileView: View {
     let user: User?
+    
     var body: some View {
         if #available(iOS 17, *) {
             ProfileView17(user: user!)
@@ -21,9 +20,5 @@ struct ProfileView: View {
         } else {
             ProfileView15(user: user!)
         }
-        
     }
-    
 }
-
-

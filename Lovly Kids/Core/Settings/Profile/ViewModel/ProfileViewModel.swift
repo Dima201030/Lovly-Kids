@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-@available(iOS 17.0, *)
+@available(iOS 17, *)
 class ProfileViewModel: ObservableObject {
     @Environment(\.colorScheme) private var colorScheme
     

@@ -27,35 +27,32 @@ struct InboxView: View {
                 List {
                     ForEach(viewModel.recentMessages) { message in
                         ZStack {
-                            if #available(iOS 16.0, *) {
-                                NavigationLink(value: message) {
-                                    EmptyView()
-                                }.opacity(0.0)
-                            } else {
-                                // Fallback on earlier versions
+                            NavigationLink(value: message) {
+                                EmptyView()
                             }
+                            .opacity(0)
                             
                             InboxRootNew(message: message)
                         }
                     }
                 }
                 .refreshable {
-                    await viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных
+                    viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных
                 }
-                .listStyle(PlainListStyle())
-                .navigationDestination(isPresented: $showChat, destination: {
+                .listStyle(.plain)
+                .navigationDestination(isPresented: $showChat) {
                     if let user = selectedUser {
                         ChatView(user: user)
                     }
-                })
-                .onChange(of: selectedUser, perform: { newValue in
+                }
+                .onChange(of: selectedUser) { newValue in
                     showChat = newValue != nil
-                })
-                .navigationDestination(for: Message.self, destination: { message in
+                }
+                .navigationDestination(for: Message.self) { message in
                     if let user = message.user {
                         ChatView(user: user)
                     }
-                })
+                }
                 .fullScreenCover(isPresented: $showNewMessageView) {
                     NewMessageView(selectedUser: $selectedUser)
                         .environment(\.colorScheme, appData.appearance)
@@ -64,7 +61,7 @@ struct InboxView: View {
                 .onAppear {
                     if count != 0 {
                         Task {
-                            await viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных при появлении вида
+                            viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных при появлении вида
                         }
                     } else {
                         count = count + 1
@@ -91,10 +88,7 @@ struct InboxView: View {
                     }
                 }
             }
-        } else {
-            // Fallback on earlier versions
-        }
-            
+        }   
     }
 }
 

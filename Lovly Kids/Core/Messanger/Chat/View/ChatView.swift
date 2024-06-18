@@ -29,7 +29,7 @@ struct ChatView: View {
                         } label: {
                             Text("Profile")
                         }
-
+                        
                         ForEach(viewModel.messages) { message in
                             ChatMessageView(message: message)
                                 .id(message.id) // Убедитесь, что каждое сообщение имеет уникальный id
@@ -49,9 +49,8 @@ struct ChatView: View {
                             .background(Color(.systemGroupedBackground))
                             .cornerRadius(15)
                             .font(.subheadline)
-                    } else {
-                        // Fallback on earlier versions
                     }
+                    
                     Button {
                         viewModel.sendMessage()
                         viewModel.messageText = ""

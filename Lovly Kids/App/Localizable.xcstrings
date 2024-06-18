@@ -20,6 +20,9 @@
         }
       }
     },
+    "+1" : {
+
+    },
     "Age" : {
       "localizations" : {
         "ru" : {
@@ -112,6 +115,9 @@
       }
     },
     "Check Verification Status" : {
+
+    },
+    "Code" : {
 
     },
     "Color" : {
@@ -494,6 +500,12 @@
         }
       }
     },
+    "Number" : {
+
+    },
+    "Ok" : {
+
+    },
     "OR" : {
       "localizations" : {
         "ru" : {
@@ -513,6 +525,12 @@
           }
         }
       }
+    },
+    "Please Enter The Verification Code" : {
+
+    },
+    "Please Enter Your Number To Verify Your Account" : {
+
     },
     "Profile" : {
       "localizations" : {
@@ -553,6 +571,9 @@
           }
         }
       }
+    },
+    "Send" : {
+
     },
     "Send Verification Code" : {
 
@@ -693,6 +714,15 @@
           }
         }
       }
+    },
+    "Verification Code" : {
+
+    },
+    "Verify" : {
+
+    },
+    "Verify Your Number" : {
+
     },
     "You're too small for this app." : {
       "localizations" : {

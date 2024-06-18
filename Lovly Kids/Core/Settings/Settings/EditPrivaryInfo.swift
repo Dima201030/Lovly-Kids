@@ -7,10 +7,11 @@
 
 import SwiftUI
 import PhotosUI
-@available(iOS 17, *) 
+
+@available(iOS 17, *)
 struct EditPrivaryInfo: View {
     @StateObject private var profileViewModel = ProfileViewModel()
-    @Environment (\.colorScheme) private var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dismiss) private var dissmis
     
     @State private var fullname = ""
@@ -42,19 +43,17 @@ struct EditPrivaryInfo: View {
                         Circle()
                             .frame(width: 120, height: 120)
                             .foregroundColor(profileViewModel.averageColor.map { Color($0) } ?? (user.profileColor))
-                            .overlay(
+                            .overlay {
                                 // Добавляем случайную букву "P" внутри круга
                                 Text("\(firstWordOfName())")
                                     .font(.system(size: 50, weight: .bold, design: .default))
                                     .foregroundColor(.white)
-                            )
+                            }
                     }
                 }
             }
             
             Form {
-                
-                
                 Section {
                     TextField("Name", text: $fullname)
                         .font(.title2)
@@ -62,16 +61,18 @@ struct EditPrivaryInfo: View {
                         .multilineTextAlignment(.center)
                     
                     TextField("Age", text: $age)
-                    
                         .font(.subheadline)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
                 }
                 
                 Section {
-                    Picker(selection: $selectColor, label: Text("Color")) {
-                        Text("Red").tag(1)
-                        Text("Blue").tag(2)
+                    Picker("Color", selection: $selectColor) {
+                        Text("Red")
+                            .tag(1)
+                        
+                        Text("Blue")
+                            .tag(2)
                     }
                 }
             }
@@ -94,9 +95,8 @@ struct EditPrivaryInfo: View {
                 saveDataOfUser(fullname: fullname, age: age, email: user.email, profileColor: selectedColor)
             }
         })
-        
-        
     }
+    
     private func firstWordOfName() -> String {
         var words: [Character] = []
         
@@ -116,6 +116,7 @@ struct EditPrivaryInfo: View {
                 print("Failed to save user data with error: \(error.localizedDescription)")
             }
         }
+        
         dissmis()
     }
     
@@ -131,7 +132,5 @@ struct EditPrivaryInfo: View {
 #Preview {
     if #available(iOS 17, *) {
         EditPrivaryInfo(user: User.MOCK_USER)
-    } else {
-        // Fallback on earlier versions
     }
 }

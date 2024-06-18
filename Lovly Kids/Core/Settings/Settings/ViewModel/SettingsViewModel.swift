@@ -1,5 +1,4 @@
 import SwiftUI
-import TipKit
 
 enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
     case Appearance, Language, Notification
@@ -43,7 +42,7 @@ enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
     }
     
     
-    @available(iOS 17.0, *)
+    @available(iOS 17, *)
     var tip: HintTipSettigns {
         switch self {
         case .Appearance:

@@ -11,9 +11,6 @@ import PhotosUI
 class ProfileViewModel15: ObservableObject {
     @Environment(\.colorScheme) private var colorScheme
     
-    
-    
-    
     // Инициализируем profileImage пустым значением
     @Published var profileImage: Image? = nil
     

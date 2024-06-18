@@ -8,19 +8,18 @@
 import SwiftUI
 import Firebase
 import FirebaseStorage
-import PhotosUI
 import TipKit
 
-
-@available(iOS 17.0, *)
+@available(iOS 17, *)
 struct ProfileView17: View {
-    
-    private let tip = HintTipProfile()
-    @State private var isTipVisible = true
     @StateObject private var profileViewModel = ProfileViewModel()
     @Environment(\.colorScheme) private var colorScheme
-    @State private var firstNameLetter = ""
+    
     let user: User
+    private let tip = HintTipProfile()
+    
+    @State private var isTipVisible = true
+    @State private var firstNameLetter = ""
     @State private var showSheet = false
     @State private var image: UIImage?
     @State private var imageURL: URL?
@@ -33,9 +32,7 @@ struct ProfileView17: View {
     var body: some View {
         NavigationStack {
             VStack {
-                
                 if let loadedImage {
-                    
                     Image(uiImage: loadedImage)
                         .resizable()
                         .cornerRadius(15)
@@ -43,9 +40,8 @@ struct ProfileView17: View {
                         .clipShape(.circle)
                         .frame(width: 120, height: 120)
                         .shadow(color: user.profileColor, radius: 30)
-//                        .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? .white : .black)) : .white, radius: 30) // Use average color in shadow
+                    // .shadow(color: colorScheme == .dark ? (profileViewModel.averageColor.map { Color($0) } ?? (colorScheme == .dark ? .white : .black)) : .white, radius: 30) // Use average color in shadow
                         .offset(y: 30)
-                    
                 } else {
                     Circle()
                         .foregroundColor(user.profileColor)
@@ -57,13 +53,13 @@ struct ProfileView17: View {
                                 .font(.title)
                         )
                         .offset(y: 30)
-                    
                 }
-                    
+                
                 List {
                     Section {
                         HStack {
                             Spacer()
+                            
                             Button {
                                 showingImagePicker = true
                             } label: {
@@ -75,9 +71,11 @@ struct ProfileView17: View {
                             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                                 ImagePicker(image: $image)
                             }
+                            
                             Spacer()
                         }
                     }
+                    
                     Section {
                         Button {
                             showSheet.toggle()
@@ -90,9 +88,13 @@ struct ProfileView17: View {
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
-                    .conditionalPopoverTip(tip, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
+                    .conditionalPopoverTip(tip, isTipVisible: $isTipVisible)
+                    // Кастомный модификатор
+                    
                     Section {
-                        Button(action: {AuthService.shared.singOut()}) {
+                        Button {
+                            AuthService.shared.singOut()
+                        } label: {
                             Text("Log out")
                                 .foregroundColor(.red)
                         }
@@ -110,10 +112,8 @@ struct ProfileView17: View {
                     print("DEBUG: TRue \(user.profileImageUrl), \(newValue.absoluteString)")
                 }
             }
-            .onAppear() {
-                
+            .onAppear {
                 firstNameLetter = String(user.fullname.prefix(1))
-                
                 
                 imageURL = URL(string: user.profileImageUrl)
                 
@@ -129,7 +129,6 @@ struct ProfileView17: View {
                 EditPrivaryInfo(user: user)
                     .environmentObject(AppData())
             }
-            
         }
     }
     
@@ -205,6 +204,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
         picker.allowsEditing = true
+        
         return picker
     }
     
@@ -249,7 +249,8 @@ func image(from url: URL, completion: @escaping (UIImage?) -> Void) {
     }
     .resume()
 }
-@available(iOS 17.0, *)
+
+@available(iOS 17, *)
 struct HintTipProfile: Tip {
     var title: Text {
         Text("Edit your profile for yourself")

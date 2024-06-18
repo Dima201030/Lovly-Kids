@@ -55,14 +55,13 @@ class AuthService {
     
     func sendVerificationCode() {
         Auth.auth().languageCode = "en"  // Укажите нужный вам язык
-        Auth.auth().currentUser?.sendEmailVerification(completion: { error in
-            if let error = error {
+        Auth.auth().currentUser?.sendEmailVerification { error in
+            if let error {
 //                message = "Error: \(error.localizedDescription)"
             } else {
 //                message = "Verification email sent."
             }
-        })
-        
+        }
     }
 
     func createNewPartner(partnerId: String, currentUserID: String) async throws {
@@ -70,6 +69,7 @@ class AuthService {
             let partnerData = try await Firestore.firestore().collection("users").document(partnerId).getDocument()
             let user = try partnerData.data(as: User.self)
             guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
+            
             let newPartnerRef = Firestore.firestore()
                 .collection("users")
                 .document(currentUserID)
@@ -79,18 +79,17 @@ class AuthService {
             try await newPartnerRef.setData(encodedUser)
         }
     }
+    
     func singOut() {
         do {
             try Auth.auth().signOut()
             self.userSession = nil
             UserService.shared.currentUser = nil
-            if #available(iOS 17.0, *) {
-                try? Tips.resetDatastore()
-                try? Tips.showAllTipsForTesting()
-            } else {
-                // Fallback on earlier versions
-            }
             
+            if #available(iOS 17, *) {
+                try? Tips.resetDatastore()
+                Tips.showAllTipsForTesting()
+            }
         } catch {
             print("DEBUG: Failed to sign out with error: \(error.localizedDescription)")
         }
@@ -113,7 +112,9 @@ class AuthService {
     }
     
     private func loadCurrentUserData() {
-        Task { try await UserService.shared.fetchCurrentUser() }
+        Task {
+            try await UserService.shared.fetchCurrentUser()
+        }
     }
     
     func deleteUser() {
@@ -141,8 +142,6 @@ class AuthService {
         try await Firestore.firestore().collection("users").document(userId).collection("sessions").document(sessionId).setData(sessionData)
     }
     
-    
-    
     private func checkAndUpdateSession(for userId: String) async throws {
         let currentIP = getCurrentIPAddress()
         let sessionsRef = Firestore.firestore().collection("users").document(userId).collection("sessions")
@@ -151,6 +150,7 @@ class AuthService {
         
         if let session = querySnapshot.documents.first {
             let sessionId = session.documentID
+            
             let sessionData: [String: Any] = [
                 "date": Timestamp(date: Date()),
                 "time": Timestamp(date: Date()),

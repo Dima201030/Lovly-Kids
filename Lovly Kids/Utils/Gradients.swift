@@ -10,9 +10,9 @@ import SwiftUI
 struct AnimatedRadialGradient: View {
     @State private var yOffset = -100.0
     
-    let colors: [Color]
-    let startPoint: UnitPoint
-    let endPoint: UnitPoint
+    private let colors: [Color]
+    private let startPoint: UnitPoint
+    private let endPoint: UnitPoint
     
     var body: some View {
         ZStack {

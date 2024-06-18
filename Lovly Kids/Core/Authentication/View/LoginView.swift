@@ -62,12 +62,12 @@ struct LoginView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         
-                        Button(action: {
+                        Button {
                             Task {
 //                                AuthService.shared.sendVerificationCode()
-                                try await viewModel.login()
+                                await viewModel.login()
                             }
-                        }) {
+                        } label: {
                             if !viewModel.isProcessing {
                                 Text("Login")
                                     .font(.subheadline)
@@ -81,15 +81,16 @@ struct LoginView: View {
                                     .frame(width: 360, height: 44)
                             }
                         }
-                        .alert(isPresented: $viewModel.isActiveErrorAlert, content: {
+                        .alert(isPresented: $viewModel.isActiveErrorAlert) {
                             Alert(title: Text("Error"), message: viewModel.messageAlert)
-                        })
+                        }
                         .padding(.vertical)
                         
                         HStack {
                             Rectangle()
                                 .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
-                                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                            
                             Text("OR")
                                 .font(.footnote)
                                 .foregroundColor(colorScheme == .dark ? Color.white : Color.black)

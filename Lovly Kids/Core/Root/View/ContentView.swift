@@ -12,6 +12,7 @@ struct ContentView: View {
     @StateObject private var viewModelSessions = SessionsViewModel()
     @StateObject private var viewModel = ContentViewModel()
     @EnvironmentObject private var appData: AppData
+    
     @State private var isVerified = false
     
     var body: some View {
@@ -33,10 +34,8 @@ struct ContentView: View {
                             }
                         
                         NavigationView {
-                            if #available(iOS 17.0, *) {
+                            if #available(iOS 17, *) {
                                 SettingsView()
-                            } else {
-                                // Fallback on earlier versions
                             }
                         }
                         .tabItem {

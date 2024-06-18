@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
     var body: some View {
         if #available(iOS 17, *) {
             SettingsView17()
@@ -19,5 +18,3 @@ struct SettingsView: View {
         }
     }
 }
-
-

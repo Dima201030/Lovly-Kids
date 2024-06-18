@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct UserProfileView: View {
+    @EnvironmentObject var viewModel: UserProfileViewModel
+    
     @State private var imageURL: URL?
     @State private var loadedImage: UIImage?
-    @EnvironmentObject var viewModel: UserProfileViewModel
     @State private var firstNameLetter = ""
     @State private var sheetShowId = false
+    
     var body: some View {
         ScrollView {
             VStack{
@@ -34,12 +36,14 @@ struct UserProfileView: View {
                         )
                 }
                 VStack {
-                    Text("\(viewModel.userFullname)")
+                    Text(viewModel.userFullname)
                         .font(.title)
                         .fontWeight(.bold)
-                    Text("\(viewModel.userEmail)")
+                    
+                    Text(viewModel.userEmail)
                         .foregroundColor(.gray)
                 }
+                
                 HStack {
                     Button {
                         
@@ -48,6 +52,7 @@ struct UserProfileView: View {
                             Image(systemName: "bell.slash.fill")
                                 .resizable()
                                 .frame(width: 20, height: 20)
+                            
                             Text("Mute")
                         }
                         .frame(width: (UIScreen.main.bounds.width / 3) - 10, height: 70)
@@ -63,6 +68,7 @@ struct UserProfileView: View {
                             Image(systemName: "hand.raised.fill")
                                 .resizable()
                                 .frame(width: 20, height: 25)
+                            
                             Text("Block")
                         }
                         .frame(width: (UIScreen.main.bounds.width / 3) - 10, height: 70)
@@ -85,17 +91,16 @@ struct UserProfileView: View {
                     .background(Color(.systemGray5))
                     .cornerRadius(10)
                     .foregroundColor(.black)
-                    .sheet(isPresented: $sheetShowId, content: {
-                        Text("\(viewModel.userUid)")
+                    .sheet(isPresented: $sheetShowId) {
+                        Text(viewModel.userUid)
                         
-                        Button(action: {
+                        Button {
                             // Call the copyToClipboard function and pass textToCopy as an argument to copy the text to the clipboard.
                             copyToClipboard(text: viewModel.userUid)
-                        }) {
+                        } label: {
                             Text("Copy to Clipboard")
                         }
-                        
-                    })
+                    }
                     
                     //                        VStack {
                     //                            Image(systemName: "phone")
@@ -126,13 +131,11 @@ struct UserProfileView: View {
                     //                        .cornerRadius(10)
                     //                        .frame(width: (UIScreen.main.bounds.width / 4) - 20, height: 100)
                 }
-                .padding( 4)
+                .padding(4)
             }
             
-            .onAppear() {
-                
+            .onAppear {
                 firstNameLetter = String(viewModel.userFullname.prefix(1))
-                
                 
                 imageURL = URL(string: viewModel.userProfileUrl)
                 
@@ -141,7 +144,7 @@ struct UserProfileView: View {
                         loadedImage = image
                     }
                 }
-        }
+            }
         }
     }
     //        Text("\(viewModel.userFullname)")
@@ -164,6 +167,7 @@ struct UserProfileView: View {
         }
         .resume()
     }
+    
     func copyToClipboard(text: String) {
         UIPasteboard.general.string = text
     }

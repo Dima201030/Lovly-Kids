@@ -14,7 +14,7 @@
 //import SwiftUI
 //import TipKit
 
-//@available(iOS 17.0, *)
+//@available(iOS 17, *)
 //struct SettingsView: View {
 //    private let hintTipProfile = HintTipSettigns(titleWeite: "Look at that!", messageWrite: "See what your profile looks like and how others see it", imageString: "person.crop.rectangle")
 //    private let hintTipLanguage = HintTipSettigns(titleWeite: "And here...", messageWrite: "And here you can change the language", imageString: "globe")
@@ -50,8 +50,8 @@
 //                                        Text("Profile")
 //                                    }
 //                                }
-//                                .conditionalPopoverTip(hintTipProfile, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
-//                            } else if #available(iOS 15.0, *){
+//                                .conditionalPopoverTip(hintTipProfile, isTipVisible: $isTipVisible) //  Кастомный модификатор
+//                            } else if #available(iOS 15, *){
 //                                NavigationLink(destination: ProfileView15(user: user)) {
 //                                    HStack {
 //                                        ZStack {
@@ -87,7 +87,7 @@
 //                                        .font(.subheadline)
 //                                }
 //                            }
-//                            .conditionalPopoverTip(option.tip, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
+//                            .conditionalPopoverTip(option.tip, isTipVisible: $isTipVisible)  // Кастомный модификатор
 //                        }
 //                    }
 //
@@ -174,14 +174,14 @@
 //        }
 //    }
 //}
-//@available(iOS 17.0, *)
+//@available(iOS 17, *)
 //#Preview {
-//    
+//
 //    SettingsView()
 //        .environmentObject(AppData())
 //}
 //
-//@available(iOS 17.0, *)
+//@available(iOS 17, *)
 //struct HintTipSettigns: Tip {
 //    let titleWeite: String
 //    let messageWrite: String
@@ -189,11 +189,11 @@
 //    var title: Text {
 //        Text("\(titleWeite)")
 //    }
-//    
+//
 //    var message: Text? {
 //        Text("\(messageWrite)")
 //    }
-//    
+//
 //    var image: Image? {
 //        Image(systemName: "\(imageString)")
 //    }
@@ -234,7 +234,7 @@ struct SettingsView15: View {
                                     Text("Profile")
                                 }
                             }
-                        } else if #available(iOS 15.0, *){
+                        } else if #available(iOS 15, *) {
                             NavigationLink(destination: ProfileView15(user: user)) {
                                 HStack {
                                     ZStack {

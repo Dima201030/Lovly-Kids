@@ -8,13 +8,17 @@
 import SwiftUI
 import TipKit
 
-@available(iOS 17.0, *)
+@available(iOS 17, *)
 struct SettingsView17: View {
-    private let hintTipProfile = HintTipSettigns(titleWeite: "Look at that!", messageWrite: "See what your profile looks like and how others see it", imageString: "person.crop.rectangle")
-    private let hintTipLanguage = HintTipSettigns(titleWeite: "And here...", messageWrite: "And here you can change the language", imageString: "globe")
-    private let hintTipProfileDevice = HintTipSettigns(titleWeite: "Look at that!", messageWrite: "See what your profile looks like and how others see it", imageString: "person.crop.rectangle")
     @StateObject private var viewModel = InboxViewModel()
     @EnvironmentObject private var appData: AppData
+    
+    private let hintTipProfile = HintTipSettigns(titleWeite: "Look at that!", messageWrite: "See what your profile looks like and how others see it", imageString: "person.crop.rectangle")
+    
+    private let hintTipLanguage = HintTipSettigns(titleWeite: "And here...", messageWrite: "And here you can change the language", imageString: "globe")
+    
+    private let hintTipProfileDevice = HintTipSettigns(titleWeite: "Look at that!", messageWrite: "See what your profile looks like and how others see it", imageString: "person.crop.rectangle")
+    
     @State private var isTipVisible = true
     
     private var user: User? {
@@ -29,7 +33,7 @@ struct SettingsView17: View {
                 List {
                     if let user {
                         Section {
-                            if #available(iOS 17, *){
+                            if #available(iOS 17, *) {
                                 NavigationLink(destination: ProfileView(user: user)) {
                                     HStack {
                                         ZStack {
@@ -44,8 +48,9 @@ struct SettingsView17: View {
                                         Text("Profile")
                                     }
                                 }
-                                .conditionalPopoverTip(hintTipProfile, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
-                            } else if #available(iOS 15.0, *){
+                                // Кастомный модификатор
+                                .conditionalPopoverTip(hintTipProfile, isTipVisible: $isTipVisible)
+                            } else {
                                 NavigationLink(destination: ProfileView15(user: user)) {
                                     HStack {
                                         ZStack {
@@ -81,7 +86,8 @@ struct SettingsView17: View {
                                         .font(.subheadline)
                                 }
                             }
-                            .conditionalPopoverTip(option.tip, isTipVisible: $isTipVisible)  // Используем кастомный модификатор
+                            .conditionalPopoverTip(option.tip, isTipVisible: $isTipVisible)
+                            // Кастомный модификатор
                         }
                     }
                     
@@ -168,29 +174,28 @@ struct SettingsView17: View {
         }
     }
 }
-@available(iOS 17.0, *)
+
+@available(iOS 17, *)
 #Preview {
-    
     SettingsView()
         .environmentObject(AppData())
 }
 
-@available(iOS 17.0, *)
+@available(iOS 17, *)
 struct HintTipSettigns: Tip {
     let titleWeite: String
     let messageWrite: String
     let imageString: String
+    
     var title: Text {
-        Text("\(titleWeite)")
+        Text(titleWeite)
     }
     
     var message: Text? {
-        Text("\(messageWrite)")
+        Text(messageWrite)
     }
     
     var image: Image? {
-        Image(systemName: "\(imageString)")
+        Image(systemName: imageString)
     }
 }
-
-

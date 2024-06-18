@@ -20,7 +20,9 @@ struct SessionsView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("IP: \(session.ip)")
+                        
                         Text("Date: \(session.date, formatter: dateFormatter)")
+                        
                         Text("Time: \(session.time, formatter: timeFormatter)")
                     }
                     
@@ -45,12 +47,14 @@ struct SessionsView: View {
 let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
+    
     return formatter
 }()
 
 let timeFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.timeStyle = .short
+    
     return formatter
 }()
 

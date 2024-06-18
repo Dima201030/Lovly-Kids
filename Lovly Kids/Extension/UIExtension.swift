@@ -5,7 +5,6 @@
 //  Created by Дима Кожемякин on 12.04.2024.
 //
 
-import SwiftUI
 import TipKit
 
 extension UIImage {
@@ -33,10 +32,10 @@ extension UIImage {
         var bitmap = [UInt8](repeating: 0, count: 4)
         CIContext().render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(origin: .zero, size: CGSize(width: 1, height: 1)), format: .RGBA8, colorSpace: nil)
         
-        return UIColor(red: CGFloat(bitmap[0]) / 255.0, green: CGFloat(bitmap[1]) / 255.0, blue: CGFloat(bitmap[2]) / 255.0, alpha: CGFloat(bitmap[3]) / 255.0)
+        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
     }
 }
-@available(iOS 17.0, *)
+@available(iOS 17, *)
 struct PopoverTipModifier<TipType: Tip>: ViewModifier {
     let tip: TipType?
     @Binding var isTipVisible: Bool
@@ -49,10 +48,10 @@ struct PopoverTipModifier<TipType: Tip>: ViewModifier {
         }
     }
 }
-@available(iOS 17.0, *)
+
+@available(iOS 17, *)
 extension View {
     func conditionalPopoverTip<TipType: Tip>(_ tip: TipType?, isTipVisible: Binding<Bool>) -> some View {
         self.modifier(PopoverTipModifier(tip: tip, isTipVisible: isTipVisible))
     }
 }
-

@@ -45,10 +45,13 @@ class RegistredViewModel: ObservableObject {
                 print(error.localizedDescription)
             }
         }
+        
+        @Sendable
         func errorr(errorString: String) {
             alertMessage = Text(NSLocalizedString(errorString, comment: ""))
             showAlert = true
         }
+        
         isAnimation.toggle()
     }
 }
