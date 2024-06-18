@@ -9,12 +9,15 @@ import SwiftUI
 
 struct ChatMessageView: View {
     let message: Message
+    
     @State private var imageURL: URL?
     @State private var loadedImage: UIImage?
     @State private var firstNameLetter = ""
+    
     private var isFromCurrnetUser: Bool {
-        return message.isFromCurrentUser
+        message.isFromCurrentUser
     }
+    
     var body: some View {
         HStack {
             if isFromCurrnetUser {
@@ -50,7 +53,7 @@ struct ChatMessageView: View {
                 .frame(maxWidth: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
             } else {
                 HStack(alignment: .bottom, spacing: 8) {
-                    if let loadedImage = loadedImage {
+                    if let loadedImage {
                         Image(uiImage: loadedImage)
                             .resizable()
                             .cornerRadius(15)
@@ -80,7 +83,7 @@ struct ChatMessageView: View {
                 }
             }
         }
-        .onAppear() {
+        .onAppear {
             if let fullname = message.user?.fullname, !fullname.isEmpty {
                 firstNameLetter = String(fullname.prefix(1))
             }
@@ -95,6 +98,7 @@ struct ChatMessageView: View {
         }
         .padding(.horizontal, 8)
     }
+    
     func image(from url: URL, completion: @escaping (UIImage?) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let data, let image = UIImage(data: data) {
@@ -110,7 +114,7 @@ struct ChatMessageView: View {
         .resume()
     }
 }
-//
+
 //#Preview {
 //    ChatMessageView(message: false)
 //}

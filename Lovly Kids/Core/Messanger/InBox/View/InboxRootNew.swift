@@ -53,7 +53,7 @@ struct InboxRootNew: View {
             }
             .font(.footnote)
             .foregroundColor(.gray)
-            .onAppear() {
+            .onAppear {
                 if let fullname = message.user?.fullname, !fullname.isEmpty {
                     firstNameLetter = String(fullname.prefix(1))
                 }
@@ -68,15 +68,17 @@ struct InboxRootNew: View {
             }
         }
         .frame(height: 72)
-        .onAppear() {
+        .onAppear {
             text = decrypt(text: message.messageText, with: 3)
         }
     }
+    
     func decrypt(text: String, with key: Int) -> String {
-        return String(text.unicodeScalars.map {
+        String(text.unicodeScalars.map {
             Character(UnicodeScalar(UInt32($0.value) - UInt32(key))!)
         })
     }
+    
     func image(from url: URL, completion: @escaping (UIImage?) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let data, let image = UIImage(data: data) {

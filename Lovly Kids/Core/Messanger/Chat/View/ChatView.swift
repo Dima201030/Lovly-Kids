@@ -62,9 +62,9 @@ struct ChatView: View {
                 }
                 .padding()
             }
-            .onAppear() {
+            .onAppear {
                 viewModelUserProfile.userFullname = user.fullname
-                viewModelUserProfile.userUid = "\(user.uid ?? "")"
+                viewModelUserProfile.userUid = user.uid ?? ""
                 viewModelUserProfile.userProfileUrl = user.profileImageUrl
                 viewModelUserProfile.userProfileColor = user.profileColor
                 viewModelUserProfile.userAge = user.age
