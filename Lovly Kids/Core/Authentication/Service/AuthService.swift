@@ -56,11 +56,11 @@ class AuthService {
     func sendVerificationCode() {
         Auth.auth().languageCode = "en"  // Укажите нужный вам язык
         Auth.auth().currentUser?.sendEmailVerification { error in
-            if let error {
+//            if let error {
 //                message = "Error: \(error.localizedDescription)"
-            } else {
+//            } else {
 //                message = "Verification email sent."
-            }
+//            }
         }
     }
 

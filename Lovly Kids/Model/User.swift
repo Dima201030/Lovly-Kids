@@ -20,7 +20,7 @@ struct User: Codable, Identifiable, Hashable {
         uid ?? NSUUID().uuidString
     }
     
-    var profileColor: Color { // Convert String color to Color
+    var profileColor: Color {
         Color(profileColorString)
     }
 }

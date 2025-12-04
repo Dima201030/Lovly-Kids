@@ -49,14 +49,14 @@ struct ContentView: View {
             }
             .edgesIgnoringSafeArea(.all)
         }
-        .sheet(isPresented: $isVerified) {
-            Verefi()
-            .interactiveDismissDisabled(true)
-        }
-        .onAppear {
-            checkVerificationStatus()
-            checkForBlock()
-        }
+//        .sheet(isPresented: $isVerified) {
+////            Verefi()
+////            .interactiveDismissDisabled(true)
+//        }
+//        .onAppear {
+//            checkVerificationStatus()
+////            checkForBlock()
+//        }
     }
     func checkVerificationStatus() {
         Auth.auth().currentUser?.reload(completion: { error in
@@ -68,18 +68,13 @@ struct ContentView: View {
             }
         })
     }
-    // Проверка на блокировку
-    private func checkForBlock() {
-        // Проверяем, заблокирован ли пользователь
-        if isBlocked() {
-            // Если заблокирован, то вызываем signOut()
-            AuthService.shared.singOut()
-        }
-    }
-    
-    // Пример функции проверки на блокировку (здесь может быть ваша реализация)
-    private func isBlocked() -> Bool {
-        //        viewModelSessions.sessions[0].id
-        false // Заглушка, замените на вашу реализацию
-    }
+//    private func checkForBlock() {
+//        if isBlocked() {
+//            AuthService.shared.singOut()
+//        }
+//    }
+//    
+//    private func isBlocked() -> Bool {
+//        false
+//    }
 }

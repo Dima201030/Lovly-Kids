@@ -141,7 +141,7 @@ struct MainView: View {
     }
 }
 
-#Preview {
-    MainView()
-        .colorScheme(.light)
-}
+//#Preview {
+//    MainView()
+//        .colorScheme(.light)
+//}

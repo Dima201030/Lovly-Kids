@@ -64,7 +64,7 @@ struct LoginView: View {
                     
                     Button {
                         Task {
-                            //                                AuthService.shared.sendVerificationCode()
+//                            AuthService.shared.sendVerificationCode()
                             await viewModel.login()
                         }
                     } label: {

@@ -32,7 +32,7 @@ struct ChatView: View {
                         
                         ForEach(viewModel.messages) { message in
                             ChatMessageView(message: message)
-                                .id(message.id) // Убедитесь, что каждое сообщение имеет уникальный id
+                                .id(message.id)
                         }
                     }
                     .padding(.bottom, 16)

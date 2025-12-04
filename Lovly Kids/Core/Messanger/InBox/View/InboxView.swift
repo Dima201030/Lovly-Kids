@@ -37,7 +37,7 @@ struct InboxView: View {
                     }
                 }
                 .refreshable {
-                    viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных
+                    viewModel.resetInBox()
                 }
                 .listStyle(.plain)
                 .navigationDestination(isPresented: $showChat) {
@@ -61,7 +61,7 @@ struct InboxView: View {
                 .onAppear {
                     if count != 0 {
                         Task {
-                            viewModel.resetInBox() // Вызываем асинхронную функцию обновления данных при появлении вида
+                            viewModel.resetInBox()
                         }
                     } else {
                         count = count + 1

@@ -30,6 +30,6 @@ struct AnimatedRadialGradient: View {
                         .repeatForever(autoreverses: true)
                 )
         }
-        .zIndex(-1) // Помещаем на задний план
+        .zIndex(-1)
     }
 }

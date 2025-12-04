@@ -74,7 +74,6 @@ struct ChatService {
             for (index, message) in messages.enumerated() {
                 messages[index].user = chatPartner
                 
-                // Дешифруем текст сообщения
                 messages[index].messageText = decrypt(text: message.messageText, with: message.keyShifr)
             }
             
