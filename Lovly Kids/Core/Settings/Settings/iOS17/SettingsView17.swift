@@ -49,9 +49,9 @@ struct SettingsView17: View {
                                     }
                                 }
                                 // Кастомный модификатор
-                                .conditionalPopoverTip(hintTipProfile, isTipVisible: $isTipVisible)
+//                                .conditionalPopoverTip(hintTipProfile, isTipVisible: $isTipVisible)
                             } else {
-                                NavigationLink(destination: ProfileView15(user: user)) {
+                                NavigationLink(destination: ProfileView17(user: user)) {
                                     HStack {
                                         ZStack {
                                             Color.blue

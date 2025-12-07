@@ -24,6 +24,7 @@ class AuthService {
     func login(withEmail email: String, password: String) async throws {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            print("DEBUG: ", result)
             self.userSession = result.user
             loadCurrentUserData()
             
@@ -39,6 +40,7 @@ class AuthService {
     func createUser(withEmail email: String, password: String, fullname: String, age: Int, profileColor: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            print("DEBUG: ", result)
             self.userSession = result.user
             try await self.uploadUserData(email: email, fullname: fullname, id: result.user.uid, age: age, profileColor: profileColor)
             loadCurrentUserData()

@@ -126,8 +126,10 @@ struct ProfileView17: View {
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $showSheet) {
-                EditPrivaryInfo(user: user)
-                    .environmentObject(AppData())
+                NavigationStack{
+                    EditPrivaryInfo(user: user)
+                        .environmentObject(AppData())
+                }
             }
         }
     }

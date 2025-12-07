@@ -16,21 +16,35 @@ struct NewMessageView: View {
     @Binding var selectedUser: User?
     
     var body: some View {
+        
         ScrollView {
-            TextField("To: ", text: $searchText)
-                .frame(height: 44)
-                .padding(.leading)
-                .background(Color(.systemGroupedBackground))
             
+            // SEARCH FIELD
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.gray)
+                
+                TextField("Search…", text: $searchText)
+                    .autocorrectionDisabled()
+            }
+            .padding()
+            .background(Color(.systemGray6))
+            .cornerRadius(12)
+            .padding(.horizontal)
+            .padding(.top, 8)
+            
+            // CONTACTS TITLE
             Text("CONTACTS")
                 .foregroundColor(.gray)
-                .font(.footnote)
+                .font(.caption)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
+                .padding(.horizontal)
+                .padding(.top, 12)
             
-            ForEach(viewModel.users) { user in
-                VStack {
-                    HStack {
+            // CONTACT LIST
+            LazyVStack(alignment: .leading) {
+                ForEach(viewModel.users) { user in
+                    HStack(spacing: 12) {
                         CircularProfileImageView(user: user, size: .xSmall)
                         
                         Text(user.fullname)
@@ -39,26 +53,39 @@ struct NewMessageView: View {
                         
                         Spacer()
                     }
-                    .padding(.leading)
+                    .padding(.horizontal)
+                    .padding(.vertical, 6)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        selectedUser = user
+                        dismiss()
+                    }
                     
                     Divider()
-                        .padding(.leading, 40)
-                }
-                .onTapGesture {
-                    selectedUser = user
-                    dismiss()
+                        .padding(.leading, 60)
                 }
             }
+            .padding(.top, 4)
         }
         .navigationTitle("New Message")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button("Cancle") {
+                Button {
                     dismiss()
+                } label: {
+                    HStack(spacing: 4) {
+                        Image(systemName: "chevron.left")
+                            .font(.headline)
+                        
+                        Text("Back")
+                            .font(.headline)
+                    }
+                    .foregroundColor(.blue)
                 }
             }
         }
+        .background(Color(.systemBackground))
     }
 }
 

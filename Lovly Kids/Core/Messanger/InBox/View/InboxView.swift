@@ -53,9 +53,11 @@ struct InboxView: View {
                         ChatView(user: user)
                     }
                 }
-                .fullScreenCover(isPresented: $showNewMessageView) {
-                    NewMessageView(selectedUser: $selectedUser)
-                        .environment(\.colorScheme, appData.appearance)
+                .sheet(isPresented: $showNewMessageView) {
+                    NavigationStack {
+                        NewMessageView(selectedUser: $selectedUser)
+                            .environment(\.colorScheme, appData.appearance)
+                    }
                 }
                 
                 .onAppear {
