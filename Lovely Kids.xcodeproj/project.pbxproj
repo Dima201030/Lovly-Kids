@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32EB423C2EE8B501003AC827 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB423B2EE8B4F8003AC827 /* TextField.swift */; };
 		81032B0F2BED1F480068FB0D /* ChangeLaungeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81032B0E2BED1F480068FB0D /* ChangeLaungeView.swift */; };
 		81032B112BED24490068FB0D /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81032B102BED24490068FB0D /* AppData.swift */; };
 		81032B132BED248E0068FB0D /* ChangeLaungeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81032B122BED248E0068FB0D /* ChangeLaungeEnum.swift */; };
@@ -137,6 +138,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		32EB423B2EE8B4F8003AC827 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		81032B0E2BED1F480068FB0D /* ChangeLaungeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLaungeView.swift; sourceTree = "<group>"; };
 		81032B102BED24490068FB0D /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		81032B122BED248E0068FB0D /* ChangeLaungeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLaungeEnum.swift; sourceTree = "<group>"; };
@@ -266,6 +268,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32EB423A2EE8B4D2003AC827 /* AdditionalView */ = {
+			isa = PBXGroup;
+			children = (
+				32EB423B2EE8B4F8003AC827 /* TextField.swift */,
+			);
+			path = AdditionalView;
+			sourceTree = "<group>";
+		};
 		810E14BF2BFB7FE60031CC80 /* Shrifts */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +364,7 @@
 		817F7B0E2B9C7DFD0067A24A /* Lovly Kids */ = {
 			isa = PBXGroup;
 			children = (
+				32EB423A2EE8B4D2003AC827 /* AdditionalView */,
 				817F7B812B9C819A0067A24A /* App */,
 				817F7B862B9C81BE0067A24A /* Core */,
 				817F7B9C2B9C83970067A24A /* Extension */,
@@ -1029,6 +1040,7 @@
 				817F7BD62B9C86560067A24A /* ProfileView.swift in Sources */,
 				817F7BA92B9C84260067A24A /* LoginViewModel.swift in Sources */,
 				817F7BC82B9C85DB0067A24A /* NewMessangeViewModel.swift in Sources */,
+				32EB423C2EE8B501003AC827 /* TextField.swift in Sources */,
 				817F7BBE2B9C85600067A24A /* ChatMessageCell.swift in Sources */,
 				817F7BB82B9C85450067A24A /* ChatViewModel.swift in Sources */,
 				817F7BA22B9C840A0067A24A /* AuthService.swift in Sources */,
@@ -1215,7 +1227,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1250,7 +1262,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1274,7 +1286,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8UJ348LDS3;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dori.Lovly-KidsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1294,7 +1306,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8UJ348LDS3;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dori.Lovly-KidsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

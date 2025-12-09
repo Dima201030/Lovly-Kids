@@ -12,21 +12,20 @@ import TipKit
 
 @main
 struct LovelyKids: App {
-    @AppStorage("shouldResetTips")
-    var shouldResetTips: Bool = true
+    @AppStorage("shouldResetTips") var shouldResetTips = true
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var delegate
     
     private let appData = AppData()
     private let viewModelUserProfile = UserProfileViewModel()
     private let viewModelLogin = LoginViewModel()
-    
+
     init() {
         if #available(iOS 17, *) {
             try? Tips.configure()
         }
     }
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -34,14 +33,9 @@ struct LovelyKids: App {
                     if shouldResetTips {
                         if #available(iOS 17, *) {
                             try? Tips.resetDatastore()
-                            Tips.showAllTipsForTesting()
                         }
-                    }
-                    if #available(iOS 17, *) {
-                        try? Tips.configure([
-                            .displayFrequency(.immediate),
-                            .datastoreLocation(.applicationDefault)
-                        ])
+                        // после первого запуска:
+                        shouldResetTips = false
                     }
                 }
                 .environmentObject(viewModelUserProfile)
