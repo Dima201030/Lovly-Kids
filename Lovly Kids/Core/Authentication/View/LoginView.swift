@@ -1,10 +1,3 @@
-//
-//  LoginVIew.swift
-//  ExamMessager
-//
-//  Created by Дима Кожемякин on 23.02.2024.
-//
-
 import SwiftUI
 
 struct LoginView: View {
@@ -13,135 +6,86 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                VStack {
-                    Spacer()
+            ZStack {
+                LinearGradient(
+                    colors: [
+                        Color("D3A58C").opacity(0.25),
+                        Color(.systemBackground)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
+                
+                VStack() {
+                    
+                    Spacer(minLength: 10)
+                    
                     Image("LOVELYKIDS")
                         .resizable()
                         .cornerRadius(15)
                         .scaledToFit()
-                        .shadow(radius: 30)
+                        .shadow(color: Color("D3A58C"), radius: 30)
+                        .frame(maxWidth: 300, maxHeight: 200)
                         .padding()
-                        .frame(maxWidth: 200, maxHeight: 200)
-                    
-                    Text("Lovely Kids")
-                        .font(.custom("MonteCarlo-Regular", size: 36))
-                        .foregroundColor(Color(red: 0.47, green: 0.35, blue: 0.30))
-                    
                     
                     Text("Log in")
-                        .font(.title)
-                        .fontWeight(.bold)
+                        .font(.largeTitle.bold())
+                        .padding(.bottom, 8)
                     
-                    VStack {
-                        TextField("", text: $viewModel.email, prompt: Text("Email").font(.subheadline).fontWeight(.regular).foregroundColor( Color(red: 0.724, green: 0.665, blue: 0.583)))
-                            .padding(12)
-                            .background(Color("EED8B7"))
-                            .cornerRadius(10)
-                            .padding(.horizontal, 24)
-                            .keyboardType(.emailAddress)
-                            .foregroundColor(.black)
+                    VStack(spacing: 14) {
+                        BasicTextField(placeholder: "Email", text: $viewModel.email, keyboard: .emailAddress)
                         
-                        SecureField("", text: $viewModel.password, prompt: Text("Password").font(.subheadline).fontWeight(.regular).foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)))
-                            .font(.subheadline)
-                            .padding(12)
-                            .background(Color("EED8B7"))
-                            .cornerRadius(10)
-                            .padding(.horizontal, 24)
-                            .keyboardType(.default)
-                            .foregroundColor(.black)
+                        BasicTextField(placeholder: "Password", text: $viewModel.password, isSecure: true)
                     }
-                    
-                    Button(action: { /*isAnimation.toggle()*/} ) {
-                        Text("Forgot your password")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .padding(.top)
-                            .padding(.trailing, 20)
-                            .foregroundColor(.black)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    
+                    .padding(.horizontal, 20)
+                    .padding(.top, 8)
+
                     Button {
-                        Task {
-//                            AuthService.shared.sendVerificationCode()
-                            await viewModel.login()
-                        }
+                        Task { await viewModel.login() }
                     } label: {
-                        if !viewModel.isProcessing {
-                            Text("Login")
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.black)
-                                .frame(width: 360, height: 44)
-                                .background(Color("EED8B7"))
-                                .cornerRadius(10)
-                        } else {
-                            ProgressView()
-                                .frame(width: 360, height: 44)
+                        ZStack {
+                            if viewModel.isProcessing {
+                                ProgressView()
+                            } else {
+                                Text("Login")
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                            }
                         }
+                        .frame(width: 330, height: 48)
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                        .glassEffect(.regular)
                     }
+                    .padding(.top, 10)
                     .alert(isPresented: $viewModel.isActiveErrorAlert) {
                         Alert(title: Text("Error"), message: viewModel.messageAlert)
                     }
-                    .padding(.vertical)
-                    
-                    HStack {
-                        Rectangle()
-                            .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                        
-                        Text("OR")
-                            .font(.footnote)
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                            .fontWeight(.semibold)
-                        Rectangle()
-                            .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                    }
-                    .foregroundColor(.gray)
-                    
-                    Spacer()
-                    
-                    NavigationLink {
-                        LoginWithPhone()
-                    } label: {
-                        Text("Log in with phone")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                    }
-                    .frame(width: 360, height: 44)
-                    .cornerRadius(10)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color("D3A58C"), lineWidth: 2)
-                    }
-                    .foregroundColor(.clear)
                     
                     Spacer()
                     
                     Divider()
+                        .padding(.horizontal, 40)
                     
                     NavigationLink {
                         RegistrationView()
                             .navigationBarBackButtonHidden()
                     } label: {
-                        HStack(spacing: 3) {
-                            Text("Don't have an account ?")
+                        HStack(spacing: 4) {
+                            Text("Don't have an account?")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
-                            
                             Text("Sign Up")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.blue)
                         }
                         .font(.footnote)
                     }
+                    
                 }
                 .padding(.vertical)
             }
         }
-        
     }
 }
 

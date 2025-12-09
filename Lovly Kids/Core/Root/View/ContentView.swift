@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 
+@available(iOS 26, *)
 struct ContentView: View {
     @StateObject private var viewModelSessions = SessionsViewModel()
     @StateObject private var viewModel = ContentViewModel()
