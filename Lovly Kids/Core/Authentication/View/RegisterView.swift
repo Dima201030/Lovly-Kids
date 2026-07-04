@@ -15,117 +15,91 @@ struct RegistrationView: View {
     @State private var age = ""
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-            Image("LOVELYKIDS")
-                .resizable()
-                .cornerRadius(15)
-                .scaledToFit()
-                .shadow(radius: 30)
-                .padding()
-                .frame(maxWidth: 180, maxHeight: 180)
-            
-            Text("Lovely Kids")
-                .font(.custom("MonteCarlo-Regular", size: 40))
-                .foregroundColor(Color(red: 0.47, green: 0.35, blue: 0.30))
-            
-            Text("Sig in")
-                .font(.title)
-                .fontWeight(.bold)
-            VStack {
-                TextField("", text: $viewModel.email, prompt: Text("Email")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-                    .foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)
-                                    ))
-                    .font(.subheadline)
-                    .padding(12)
-                    .background(Color("EED8B7"))
-                    .cornerRadius(10)
-                    .padding(.horizontal, 24)
-                    .keyboardType(.emailAddress)
-                    .textContentType(.emailAddress)
-                    .textInputAutocapitalization(.never)
+        NavigationView {
+            ZStack {
+                LinearGradient(colors: [
+                    Color("D3A58C").opacity(0.25),
+                    Color(.systemBackground)],
+                               startPoint: .top,
+                               endPoint: .bottom
+                )
+                .ignoresSafeArea()
                 
-                SecureField("", text: $viewModel.password, prompt: Text("Password")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-                    .foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)
-                                    ))
-                    .font(.subheadline)
-                    .padding(12)
-                    .background(Color("EED8B7"))
-                    .cornerRadius(10)
-                    .padding(.horizontal, 24)
-                    .keyboardType(.default)
-                    .textContentType(.newPassword)
-                
-                TextField("", text: $viewModel.fullName, prompt: Text("Your name")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-                    .foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)
-                                    ))
-                    .font(.subheadline)
-                    .padding(12)
-                    .background(Color("EED8B7"))
-                    .cornerRadius(10)
-                    .padding(.horizontal, 24)
-                    .keyboardType(.default)
-                    .textContentType(.name)
-                
-                TextField("", text: $age, prompt: Text("Age")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-                    .foregroundColor(/*colorScheme == .dark ? Color(.black) :*/ Color(red: 0.724, green: 0.665, blue: 0.583)
-                                    ))
-                    .font(.subheadline)
-                    .padding(12)
-                    .background(Color("EED8B7"))
-                    .cornerRadius(10)
-                    .padding(.horizontal, 24)
-                    .keyboardType(.numberPad)
-            }
-            
-            Button {
-                viewModel.age = Int(age) ?? 0
-                
-                Task {
-                    try await viewModel.createUser()
+                VStack {
+                    Spacer(minLength: 10)
+                    
+                    Image("LOVELYKIDS")
+                        .resizable()
+                        .cornerRadius(15)
+                        .scaledToFit()
+                        .shadow(color: Color("D3A58C"), radius: 30)
+                        .frame(maxWidth: 300, maxHeight: 200)
+                        .padding()
+                    
+                    Text("Sign up")
+                        .font(.largeTitle.bold())
+                        .padding(.bottom, 8)
+                    
+                    VStack(spacing: 14) {
+                        BasicTextField(placeholder: "Email", text: $viewModel.email, keyboard: .emailAddress)
+                        
+                        BasicTextField(placeholder: "Password", text: $viewModel.password, isSecure: true)
+                        
+                        BasicTextField(placeholder: "FullName", text: $viewModel.fullName, isSecure: false)
+                        
+                        BasicTextField(placeholder: "Age", text: $age, isSecure: false)
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.top, 8)
+                    
+                    Button {
+                        viewModel.age = Int(age) ?? 0
+                        
+                        Task {
+                            try await viewModel.createUser()
+                        }
+                    } label: {
+                        ZStack {
+                            if viewModel.isAnimation {
+                                ProgressView()
+                            } else {
+                                Text("Sign up")
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                            }
+                        }
+                        .frame(width: 330, height: 48)
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                    }
+                    .glassEffect(.regular.interactive())
+                    .alert(viewModel.alertTitle, isPresented: $viewModel.showAlert) {
+                        
+                    } message: {
+                        viewModel.alertMessage
+                    }
+                    .padding(.vertical)
+                    
+                    Spacer()
+                    
+                    Divider()
+                    
+                    Button {
+                        dissmis()
+                    } label: {
+                        HStack(spacing: 3) {
+                            Text("Already have an account ?")
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                            Text("Sign In")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.blue)
+                        }
+                        .font(.footnote)
+                    }
+                    .padding(.vertical)
+                    
                 }
-            } label: {
-                Text("Sign Up")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(colorScheme == .dark ? .black : .white)
-                    .frame(width: 360, height: 44)
-                    .background(Color("EED8B7"))
-                    .cornerRadius(10)
             }
-            .alert(viewModel.alertTitle, isPresented: $viewModel.showAlert) {
-                
-            } message: {
-                viewModel.alertMessage
-            }
-            .padding(.vertical)
-            
-            Spacer()
-            
-            Divider()
-            
-            Button {
-                dissmis()
-            } label: {
-                HStack(spacing: 3) {
-                    Text("Already have an account ?")
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                    Text("Sign In")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.blue)
-                }
-                .font(.footnote)
-            }
-            .padding(.vertical)
         }
     }
 }
